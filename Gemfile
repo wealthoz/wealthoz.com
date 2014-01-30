@@ -6,7 +6,12 @@ gem 'rails', '4.0.2'
 # Use sqlite3 as the database for Active Record
 
 #Ivan GEMS
-  gem 'pg'
+gem 'pg'
+
+gem 'bootstrap-sass', '2.3.2.0'
+gem 'faker', '1.1.2'
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
 
 
 # Use SCSS for stylesheets
