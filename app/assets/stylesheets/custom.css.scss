@@ -62,6 +62,11 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+/* navbar */
+
+@navbarText 
+{color: $green;}
+
 
 /* header */
 
@@ -70,7 +75,7 @@ p {
   margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
-  
+  ext-decoration: none;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
@@ -80,11 +85,7 @@ p {
   text-decoration: none;
 }}
 
-
-
-.btn-primary {@include buttonBackground($btnSuccessBackgroundHighlight, $btnSuccessBackground)}
-
- a {color: $black;}
+ 
 
 /* footer */
 
@@ -96,9 +97,12 @@ footer {
 }
 
  a {
-  color: #555;
+  
+  color: $black;
   &:hover {
-  color: #222;
+  color: $green;
+  font-style: bold;
+  text-decoration: none;
 }}
 
  small {

@@ -8,6 +8,12 @@ gem 'rails', '4.0.2'
 #Ivan GEMS
 gem 'pg'
 
+#gem "libv8", git: "git://github.com/cowboyd/libv8.git", submodules: true
+#gem "therubyracer"
+#gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
+
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'

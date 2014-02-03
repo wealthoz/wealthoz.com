@@ -1,11 +1,10 @@
 WealthOZ201::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/why"
-  get "static_pages/how"
+  
+   root  'static_pages#home'
   
   
-  
-  
+  match '/why',    to: 'static_pages#why',    via: 'get'
+  match '/how',   to: 'static_pages#how',   via: 'get'
   
   
   # The priority is based upon order of creation: first created -> highest priority.
