@@ -1,8 +1,9 @@
 WealthOZ201::Application.routes.draw do
   
-   root  'static_pages#home'
+  get "users/new"
+  root  'static_pages#home'
   
-  
+  match '/signup',  to: 'users#new',            via: 'get'
   match '/why',    to: 'static_pages#why',    via: 'get'
   match '/how',   to: 'static_pages#how',   via: 'get'
   
