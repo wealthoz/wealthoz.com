@@ -64,8 +64,7 @@ p {
 }
 /* navbar */
 
-@navbarText 
-{color: $green;}
+
 
 
 /* header */
@@ -81,7 +80,7 @@ p {
   font-weight: bold;
   line-height: 1;
    &:hover {
-  color: $green  ;
+  color: $blue  ;
   text-decoration: none;
 }}
 
@@ -96,11 +95,20 @@ footer {
   color: $grayLight;
 }
 
+#social ul li{ display:inline;list-style-type:none ; border:none; text-align:right;  }
+img{border:1px solid $white;
+ -webkit-border-radius: 10px;
+ -moz-border-radius: 10px;
+ border-radius: 10px;
+ } 
+ 
+#social a:hover {  opacity: .4;border-bottom:solid;border-color:#C60;  }
+
  a {
   
   color: $black;
   &:hover {
-  color: $green;
+  color: $blue;
   font-style: bold;
   text-decoration: none;
 }}
