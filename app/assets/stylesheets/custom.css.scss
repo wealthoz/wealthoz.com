@@ -107,9 +107,9 @@ img{border:1px solid $white;
 
  a {
   
-  color: $black;
-  &:hover {
   color: $blue;
+  &:hover {
+  color: $red;
   font-style: bold;
   text-decoration: none;
 }}
