@@ -10,20 +10,74 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
                 <li><%= link_to "Home",    root_path %></li>
+                
+                <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Our Approach <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
           		<li><%= link_to "Why",    why_path %></li>
          		<li><%= link_to "How",    how_path %></li>
+                <li><a href="#">Blog</a></li>   
+              </ul>	    
+              </li> 
+
+              <% if signed_in? %>
+            <li><%= link_to "Users", users_path %></li>
+
+
+              <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Settings <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "User Settings", edit_user_path(current_user) %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Sign out", signout_path, method: "delete" %>
+                </li>
+              </ul>
+              
+           	 <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Post <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Purchases</a></li>
+                <li><a href="#">Income</a></li>
+                <li><a href="#">Revaluation</a></li>
+                <li><a href="#">General Accounting</a></li>
+              </ul>	
               
               <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
+                Budget <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#">Sign Out</a></li>
-              </ul>
+                <li><a href="#">Add New</a></li>
+                <li><a href="#">Edit</a></li>
+                <li><a href="#">Goals</a></li>      
+              </ul>	
+              
+				<li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Report <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Wealth Index</a></li>
+                <li><a href="#">Group Balance Sheet</a></li>
+                <li><a href="#">Income and Expences by WU</a></li>
+                <li><a href="#">ncome and Expences by months</a></li>
+                <li><a href="#">Budget vs. Actual</a></li>
+                <li><a href="#">Other</a></li>      
+              </ul>	                                    
+              
             </li>
-            
+            <% else %>
+            <li><%= link_to "Sign in", signin_path %></li>
+          <% end %>
+
             </ul>
           </div><!--/.nav-collapse -->
         </div>

@@ -72,6 +72,7 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
+  font-style:italic;  
   font-size: 1.7em;
   color: #fff;
   ext-decoration: none;
@@ -80,7 +81,7 @@ p {
   font-weight: bold;
   line-height: 1;
    &:hover {
-  color: $blue  ;
+  color: #0066FF ;
   text-decoration: none;
 }}
 
@@ -126,6 +127,8 @@ img{border:1px solid $white;
   float: left;
   margin-left: 10px;
 }
+
+
 
 /* miscellaneous */
 
@@ -194,21 +197,6 @@ input {
 }
 
 
-/* Users index */
-
-.users {
-  float: left;
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $grayLighter;
-    &:last-child {
-      border-bottom: 1px solid $grayLighter;
-    }
-  }
-}
 
 /* microposts */
 
@@ -235,6 +223,21 @@ aside {
   textarea {
     height: 100px;
     margin-bottom: 5px;
+  }
+}
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
   }
 }
 

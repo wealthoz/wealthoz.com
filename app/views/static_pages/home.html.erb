@@ -1,13 +1,21 @@
 <% provide(:title, 'Home') %>
 
 <div class="center hero-unit">
-  <h1>Welcome to the world of WealthOZ</h1>
-
-  <h2>
-    This is the home page for the sample application.
-  </h2>
-
-  <%= link_to "Sign up now!", signup_path , class: "btn btn-large btn-primary" %>
+	
+	
+	<%= render 'shared/video_youtube' %>
+	
+	<h3>"Wealth OZ" a financial app that solves the two most
+		difficult and important financial problems out there." 
+	</h3>
+	<%= link_to "Sign up it's free!", signup_path , class: "btn btn-large btn-primary" %>
+	<h2>Problem A</h2>
+	<p>People do not know their WEALTH !!!</p>
+	
+	<h2>Problem B</h2>
+	<p>People do not know their GROUP WEALTH !!!</p>
+	<h2>COMING SOON ...</h2>
+  
 </div>
 
-<%= render 'parts/video_youtube' %>
+
