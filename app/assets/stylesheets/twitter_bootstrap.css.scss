@@ -1,0 +1,8 @@
+// First import Bootswatch theme variables http://bit.ly/KIu8IN
+@import 'bootswatch/flatly/variables';
+
+// Use Twitter Bootstrap
+@import 'bootstrap';
+
+// And finally Bootswatch style
+@import "bootswatch/flatly/bootswatch"

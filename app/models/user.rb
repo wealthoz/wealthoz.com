@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  belongs_to :group
   has_many :microposts, dependent: :destroy
 
   has_secure_password

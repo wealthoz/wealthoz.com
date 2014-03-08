@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207131417) do
+ActiveRecord::Schema.define(version: 20140227210346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fxes", force: true do |t|
+    t.string   "country"
+    t.string   "fx"
+    t.decimal  "usd_to"
+    t.decimal  "to_usd"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fxes", ["fx"], name: "index_fxes_on_fx", using: :btree
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.string   "fx"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["name"], name: "index_groups_on_name", using: :btree
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -33,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140207131417) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
+    t.string   "group_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

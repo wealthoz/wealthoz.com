@@ -8,6 +8,11 @@ gem 'rails', '4.0.2'
 #Ivan GEMS
 gem 'pg'
 
+group :development do
+  gem "rails-erd"
+end
+
+
 #gem "libv8", git: "git://github.com/cowboyd/libv8.git", submodules: true
 #gem "therubyracer"
 #gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
@@ -19,6 +24,8 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
+
+gem 'bootswatch-rails'
 
 
 # Use SCSS for stylesheets
