@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+    #@groups = Group.find(params[:name])
   end
 
   
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation,:group_id)
     end
     
     def admin_user
@@ -53,13 +54,15 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+    #@group = group.users.build if signed_in?
+    
   end
   
   
   
   def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation,:group_id)
     end
     
     def destroy

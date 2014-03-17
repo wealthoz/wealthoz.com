@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
       flash[:success] = "Wealth GROUP created!"
       redirect_to root_url
     else
-      render 'static_pages/home'
+       flash.now[:error] = "Could not save group"
     end
   end
   

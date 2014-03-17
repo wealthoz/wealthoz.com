@@ -27,7 +27,6 @@ m_Group [label = <<table border="0" align="center" cellspacing="0.5" cellpadding
 </table>
 |
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
-  <tr><td align="left" width="130" port="fx">fx <font face="Arial Italic" color="grey60">string</font></td></tr>
   <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
 </table>
 >];
@@ -46,7 +45,6 @@ m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding=
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
   <tr><td align="left" width="130" port="admin">admin <font face="Arial Italic" color="grey60">boolean</font></td></tr>
   <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
-  <tr><td align="left" width="130" port="group_name">group_name <font face="Arial Italic" color="grey60">string</font></td></tr>
   <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
   <tr><td align="left" width="130" port="password_digest">password_digest <font face="Arial Italic" color="grey60">string</font></td></tr>
   <tr><td align="left" width="130" port="remember_token">remember_token <font face="Arial Italic" color="grey60">string</font></td></tr>

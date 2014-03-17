@@ -1,4 +1,7 @@
 WealthOZ201::Application.routes.draw do
+  resources :fxes
+  resources :groups, only: [:new, :create, :destroy]
+  
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]

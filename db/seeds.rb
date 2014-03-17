@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
 Fx.create(country:  'Andorran Franc'  , fx: 'ADF' , usd_to:  0.2092 , to_usd:  4.7804)
 Fx.create(country:  'Andorran Peseta'  , fx: 'ADP' , usd_to:  0.008248 , to_usd:  121.258)
 Fx.create(country:  'Utd. Arab Emir. Dirham'  , fx: 'AED' , usd_to:  0.2723 , to_usd:  3.6737)
@@ -190,12 +191,14 @@ Fx.create(country:  'Gold (oz.)'  , fx: 'XAU' , usd_to:  1337.16 , to_usd:  0.00
 Fx.create(country:  'East Caribbean Dollar'  , fx: 'XCD' , usd_to:  0.372 , to_usd:  2.7169)
 Fx.create(country:  'ECU'  , fx: 'XEU' , usd_to:  1.3723 , to_usd:  0.7288)
 Fx.create(country:  'CFA Franc BCEAO'  , fx: 'XOF' , usd_to:  0.002095 , to_usd:  477.365)
-Fx.create(country:  'Palladium (oz.)'  , fx: 'XPD' , usd_to:  733.18 , to_usd:  0.001371)
+Fx.create(country:  'Palladium '  , fx: 'XPD' , usd_to:  733.18 , to_usd:  0.001371)
 Fx.create(country:  'CFP Franc'  , fx: 'XPF' , usd_to:  0.01152 , to_usd:  87.2106)
-Fx.create(country:  'Platinum (oz.)'  , fx: 'XPT' , usd_to:  1431.36 , to_usd:  0.0007001)
+Fx.create(country:  'Platinum '  , fx: 'XPT' , usd_to:  1431.36 , to_usd:  0.0007001)
 Fx.create(country:  'Yemeni Rial'  , fx: 'YER' , usd_to:  0.004656 , to_usd:  215.25)
 Fx.create(country:  'Yugoslav Dinar'  , fx: 'YUN' , usd_to:  0.01186 , to_usd:  84.8098)
 Fx.create(country:  'South African Rand'  , fx: 'ZAR' , usd_to:  0.09295 , to_usd:  10.769)
 Fx.create(country:  'Zambian Kwacha'  , fx: 'ZMK' , usd_to:  0.0001932 , to_usd:  5328.9)
 Fx.create(country:  'Zambian Kwacha'  , fx: 'ZMW' , usd_to:  0.1737 , to_usd:  5.8297)
 Fx.create(country:  'Zimbabwe Dollar'  , fx: 'ZWD' , usd_to:  0.002679 , to_usd:  376.3)
+
+Group.create(name: 'wealth-pool',fx_id: 170  )

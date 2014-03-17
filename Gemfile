@@ -12,6 +12,11 @@ group :development do
   gem "rails-erd"
 end
 
+group :development do
+  gem "better_errors"
+end
+
+gem "binding_of_caller"
 
 #gem "libv8", git: "git://github.com/cowboyd/libv8.git", submodules: true
 #gem "therubyracer"
