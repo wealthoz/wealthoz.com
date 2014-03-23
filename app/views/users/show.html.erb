@@ -2,11 +2,16 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>
+      <p>
         <%= gravatar_for @user %>
         <%= @user.name %>
-      </h1>
+        <br>
+        from the Wealth Group:
+        <br>
+       <strong><%= @group.name %></strong> 
+      </p>
     </section>
+     
   </aside>
   
   <div class="span8">

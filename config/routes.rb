@@ -1,6 +1,6 @@
 WealthOZ201::Application.routes.draw do
   resources :fxes
-  resources :groups, only: [:new, :create, :destroy]
+  resources :groups
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
@@ -14,7 +14,7 @@ WealthOZ201::Application.routes.draw do
   match '/signup',  to: 'users#new',            via: 'get'
   match '/why',    to: 'static_pages#why',    via: 'get'
   match '/how',   to: 'static_pages#how',   via: 'get'
-  
+  match '/manage_groups',   to: 'static_pages#manage_groups',   via: 'get'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

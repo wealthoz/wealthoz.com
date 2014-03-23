@@ -5,7 +5,12 @@ class StaticPagesController < ApplicationController
 
   def why
   end
+   
 
   def how
   end
+  
+  def manage_groups
+  end        
+   
 end
