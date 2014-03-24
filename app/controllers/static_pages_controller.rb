@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
   end
   
   def manage_groups
+   
   end        
    
 end
