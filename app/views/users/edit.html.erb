@@ -26,20 +26,27 @@
 
     <%= gravatar_for @user %>
     <a href="http://gravatar.com/emails">change</a>
-      
-  </div>
-				 <div class="panel panel-danger">
+    <br>
+    <br>
+    <br>
+    
+   				 <div class="panel panel-danger">
 				  <div class="panel-heading">
 				    <h3 class="panel-title">First things first</h3>
 				  </div>
 				  <div class="panel-body">
 				    If you don't have an existing 
 		  	Wealth Group of your own go ahead and create one
+		  	
 				  </div>
+				  <%= link_to "Create New Wealth Group", new_group_path , class: "btn btn-danger" %>
 				</div>
- 	
+  
+      
+  </div>
+	
 		        
-    <%= link_to "Create New Wealth Group", new_group_path , class: "btn btn-danger" %>
+  
   
 </div>
 

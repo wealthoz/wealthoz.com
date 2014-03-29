@@ -1,0 +1,18 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @account.name %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @account.group_id %>
+</p>
+
+<p>
+  <strong>Report:</strong>
+  <%= @account.report_id %>
+</p>
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>

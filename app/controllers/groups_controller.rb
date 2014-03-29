@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
   def new
     def new
       @group = Group.new
+      
     end
     
     def create
@@ -20,12 +21,20 @@ class GroupsController < ApplicationController
         flash[:success] = "Wealth GROUP created!"
         redirect_to root_url
       else
-         flash.now[:error] = "Could not save group"
+          render 'groups/new'
       end
      end 
   end
   
-
+    def create
+      @group = Group.new(group_params)
+      if @group.save
+        flash[:success] = "Wealth GROUP created!"
+        redirect_to root_url
+      else
+          render 'groups/new'
+      end
+     end 
   
 
   
@@ -34,12 +43,20 @@ class GroupsController < ApplicationController
 
   def destroy
   end
+  
+  def correct_group
+      @group = Group.find(params[:id])
+      redirect_to(root_url) unless current_group?(@group)
+  end
+
 
   private
 
     def group_params
-      params.require(:group).permit(:name,:id)
+      params.require(:group).permit(:name,:id, :fx_id)
     end
+
+
 
 
 end

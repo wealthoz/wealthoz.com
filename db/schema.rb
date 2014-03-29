@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317084919) do
+ActiveRecord::Schema.define(version: 20140328053535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: true do |t|
+    t.string   "name"
+    t.integer  "group_id"
+    t.integer  "report_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["name"], name: "index_accounts_on_name", using: :btree
+
+  create_table "fs", force: true do |t|
+    t.string   "report"
+    t.string   "report_class"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fs", ["report", "report_class"], name: "index_fs_on_report_and_report_class", using: :btree
 
   create_table "fxes", force: true do |t|
     t.string   "country"
@@ -44,6 +63,29 @@ ActiveRecord::Schema.define(version: 20140317084919) do
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
+
+  create_table "projects", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.integer  "percent_owned"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "projects", ["name", "group_id"], name: "index_projects_on_name_and_group_id", using: :btree
+
+  create_table "relationships", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

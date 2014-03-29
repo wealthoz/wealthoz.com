@@ -11,6 +11,24 @@ fontname = "Arial Bold";
 node[ shape  =  "Mrecord" , fontsize  =  "10" , fontname  =  "Arial" , margin  =  "0.07,0.05" , penwidth  =  "1.0"];
 edge[ fontname  =  "Arial" , fontsize  =  "7" , dir  =  "both" , arrowsize  =  "0.9" , penwidth  =  "1.0" , labelangle  =  "32" , labeldistance  =  "1.8"];
 label = "WealthOZ201 domain model\n\n";
+m_Account [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Account</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="report_id">report_id <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+>];
+m_Fs [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Fs</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="report">report <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="report_class">report_class <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
 m_Fx [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Fx</font></td></tr>
 </table>
@@ -27,7 +45,7 @@ m_Group [label = <<table border="0" align="center" cellspacing="0.5" cellpadding
 </table>
 |
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
-  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
 </table>
 >];
 m_Micropost [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
@@ -36,6 +54,16 @@ m_Micropost [label = <<table border="0" align="center" cellspacing="0.5" cellpad
 |
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
   <tr><td align="left" width="130" port="content">content <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+</table>
+>];
+m_Project [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Project</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="percent_owned">percent_owned <font face="Arial Italic" color="grey60">integer</font></td></tr>
 </table>
 >];
 m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
@@ -50,7 +78,11 @@ m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding=
   <tr><td align="left" width="130" port="remember_token">remember_token <font face="Arial Italic" color="grey60">string</font></td></tr>
 </table>
 >];
+  m_Group -> m_Account [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Fs -> m_Account [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Fx -> m_Group [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Group -> m_User [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Group -> m_Project [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_User -> m_Micropost [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Project [arrowhead = "normal", arrowtail = "none", weight = "2"];
 }

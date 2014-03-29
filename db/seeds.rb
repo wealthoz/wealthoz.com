@@ -201,4 +201,11 @@ Fx.create(country:  'Zambian Kwacha'  , fx: 'ZMK' , usd_to:  0.0001932 , to_usd:
 Fx.create(country:  'Zambian Kwacha'  , fx: 'ZMW' , usd_to:  0.1737 , to_usd:  5.8297)
 Fx.create(country:  'Zimbabwe Dollar'  , fx: 'ZWD' , usd_to:  0.002679 , to_usd:  376.3)
 
-Group.create(name: 'wealth-pool',fx_id: 170  )
+Group.create(name: 'Pool',fx_id: 171  )
+
+Fs.create(report: 'Balance Sheet',report_class: 'Assets')
+Fs.create(report: 'Balance Sheet',report_class: 'Debt')
+Fs.create(report: 'Income Statement',report_class: 'Income')
+Fs.create(report: 'Income Statement',report_class: 'Expenses')
+
+

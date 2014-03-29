@@ -16,8 +16,11 @@
     	<br>
     	<%= link_to "2. Link to an existing Wealth Group",edit_user_path(current_user) , class: "btn btn-success" %>
     	<br>
-    	<br>		
-		<%= link_to "3. Change your currency",edit_group_path(current_user) , class: "btn btn-danger" %>
+    	<br>	
+    	<%= link_to "3. Manage Projects",new_project_path(current_user) , class: "btn btn-success" %>
+    	<br>
+    	<br>	
+		<%= link_to "3. Manage Accounts",accounts_path , class: "btn btn-success" %>
     </section>
 
       

@@ -1,0 +1,31 @@
+<h1>Wealth Group Accounts</h1>
+
+<table class="table table-striped table-hover" >
+  <thead>
+    <tr>
+      <th>Account Name</th>
+      <th>Group</th>
+      <th>Report</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr class="info">
+        <td><%= account.name %></td>
+        <td><%= account.group_id %></td>
+        <td><%= account.report_id %></td>
+        <td><%= link_to 'Show', account, class: "btn btn-default" %></td>
+        <td><%= link_to 'Edit', edit_account_path(account), class: "btn btn-default" %></td>
+        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Deleting an account will destroy all related records. Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Account', new_account_path, class: "btn btn-success" %>

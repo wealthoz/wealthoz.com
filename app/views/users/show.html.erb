@@ -11,7 +11,11 @@
        <strong><%= @group.name %></strong> 
       </p>
     </section>
-     
+	  <section>
+		  <div class="span8">
+		    <%= render 'shared/projects_info' %>
+	  	  </div>  
+	 </section>
   </aside>
   
   <div class="span8">
@@ -23,6 +27,5 @@
       <%= will_paginate @microposts %>
     <% end %>
   </div>
-   
 </div>
 

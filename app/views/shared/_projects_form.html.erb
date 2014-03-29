@@ -1,0 +1,24 @@
+<% provide(:title, 'Create New Project') %>
+<h1>Create your new Project!</h1>
+<p>Project can be a business, family member or activity 
+	for whom you want to keep a separate accounting. </p>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@project) do |f| %>
+    	<%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :percent_owned, "What % of this project you own?"  %>
+      <%= f.password_field :percent_owned  %>
+
+     
+      <%= f.submit "Create Project", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

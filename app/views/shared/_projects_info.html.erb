@@ -1,0 +1,9 @@
+  <div class="span8">
+    <% if @user.projects.any? %>
+      <h4>Projects (<%= @user.projects.count %>)</h4>
+      <ol class="projects">
+        <%= render @projects %>
+      </ol>
+      
+    <% end %>
+  </div>
