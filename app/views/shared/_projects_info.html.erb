@@ -1,6 +1,6 @@
   <div class="span8">
     <% if @user.projects.any? %>
-      <h4>Projects (<%= @user.projects.count %>)</h4>
+      <h4>Projects <span class="badge"><%= @user.projects.count %></span></h4>
       <ol class="projects">
         <%= render @projects %>
       </ol>

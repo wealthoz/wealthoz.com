@@ -2,25 +2,30 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <p>
+      <h5>
         <%= gravatar_for @user %>
         <%= @user.name %>
         <br>
-        from the Wealth Group:
+        from
         <br>
        <strong><%= @group.name %></strong> 
-      </p>
+      </h5>
     </section>
-	  <section>
-		  <div class="span8">
-		    <%= render 'shared/projects_info' %>
-	  	  </div>  
-	 </section>
-  </aside>
-  
+    <section>
+    	<%= link_to "Create New Wealth Group", new_group_path , class: "btn btn-default" %>
+    	<h4><%= @group.name %> Memebers <span class="badge"><%= @current_group.all.collect(&:name).count %></span></h4>
+   	
+    	<strong><%= @current_group.all.collect(&:name).join ", " %></strong>
+    	    		    
+     </section>
+ </aside>
+  <div class="span8">
+  	<%= render 'shared/projects_info' %>
+  <div>
+  	
   <div class="span8">
     <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <h4>Microposts <span class="badge"><%= @user.microposts.count %></span></h4>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>

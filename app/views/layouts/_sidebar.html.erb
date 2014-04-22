@@ -1,24 +1,55 @@
-    <div class="container-fluid">
+	    <div id="sidebar" class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">TODO LIST: </li>
-              
-			      <form class="navbar-form navbar-left" role="search">
-			        <div class="form-group">
-			          <input type="text" class="form-control" placeholder="Search">
-			        </div>
-			        <button type="button" class="btn btn-default btn-lg">
-			        	<span class="glyphicon glyphicon-star"></span> Search</button>
-			        
-			      </form>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link4", "/path4"  %></li>
-              
-              
-              
+            <ul class="nav nav-list">            	
+              <li class="nav-header">Sidebar</li>
+        		  <br />
+        		  <div class="btn-group-vertical ">
+					  <div class="btn-group">
+					    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+					      10 steps to Wealth
+					      <span class="caret"></span>
+					    </button>
+					    <ul class="dropdown-menu">
+					    	<% if signed_in? %>
+					    	<li><p class="text-success"><i class="icon-check"></i>You are Logged as:
+					    		<small><%= render 'shared/user_info' %></small></p></li>
+					    	<% else %>
+							 <li><p class="text-warning"><i class="icon-frown"></i>Register and Login to WealthOZ</p></li>
+							 <% end %>
+
+							 <li><p class="text-warning">Setup a Wealth Group of yours</p></li>
+							 <li><p class="text-warning">Add your Projects</p></li>
+							 <li><p class="text-warning">Manage your Group Accounts</p></li>
+							 <li><p class="text-warning">Cut-off your Group Wealth</p></li>
+							 <li><p class="text-warning">Start entering your Group-transactions</p></li>
+							 <li><p class="text-warning">Budget the future</p></li>
+							 <li><p class="text-warning">Start seeing everything</p></li>
+							 <li><p class="text-warning">Communicate and Manage your Wealth</p></li>
+							 <li><p class="text-warning">Explore Opportunities</p></li>					   
+					 </ul>
+					  </div>
+				</div>
+     			  <br />
+     			  <section>
+			       	 <ul>
+
+					</ul> 
+			    	</section>
+			    	<form class="navbar-search pull-left">
+						<input type="text" class="search-query" placeholder="Search">
+					</form>
+   		      
+               	<nav>
+				  <ul class="nav nav-pills nav-stacked span2">
+				    <li><a href="#">Home</a></li>
+				    <li><a href="#">About</a></li>
+				    <li><a href="#">Contact</a></li>
+				  </ul>
+				</nav>
+ 
+                                      
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

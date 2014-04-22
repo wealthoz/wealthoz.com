@@ -32,6 +32,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 
 gem 'bootswatch-rails'
 
+gem "google_visualr", "~> 2.1.0" 
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
