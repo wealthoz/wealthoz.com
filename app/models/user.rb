@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   belongs_to :group
   has_many :projects, dependent: :destroy
   has_many :microposts, dependent: :destroy
+  has_many :accounts, dependent: :destroy
 
   has_secure_password
   before_save { self.email = email.downcase }

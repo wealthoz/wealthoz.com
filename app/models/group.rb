@@ -1,8 +1,8 @@
 class Group < ActiveRecord::Base
   belongs_to :fx
   has_many :users, dependent: :destroy
-  has_many :projects
-  has_many :accounts, dependent: :destroy
+  #has_many :projects
+  
   
   validates :name, presence: true, 
                    length: { maximum: 25 }, 

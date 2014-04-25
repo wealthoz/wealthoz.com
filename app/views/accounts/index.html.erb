@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Account Name</th>
-      <th>Group</th>
+      <th>User</th>
       <th>Report</th>
       <th></th>
       <th></th>
@@ -16,8 +16,8 @@
     <% @accounts.each do |account| %>
       <tr class="info">
         <td><%= account.name %></td>
-        <td><%= account.group_id %></td>
-        <td><%= account.report_id %></td>
+        <td><%= account.user_id %></td>
+        <td><%= account.fs_id %></td>
         <td><%= link_to 'Show', account, class: "btn btn-default" %></td>
         <td><%= link_to 'Edit', edit_account_path(account), class: "btn btn-default" %></td>
         <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Deleting an account will destroy all related records. Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
@@ -29,3 +29,4 @@
 <br>
 
 <%= link_to 'New Account', new_account_path, class: "btn btn-success" %>
+

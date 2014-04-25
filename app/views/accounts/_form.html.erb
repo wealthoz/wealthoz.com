@@ -15,8 +15,8 @@
     <%= f.label :name,"New account name" %><br>
     <%= f.text_field :name %>
     
-    <%= f.label :report_id, "Account Category" %>
-    <%= f.collection_select(:report_id, Fs.all, :id, :report_class ) %>
+    <%= f.label :fs_id, "Account Category" %>
+    <%= f.collection_select(:fs_id, Fs.all, :id, :report_class ) %>
 
   </div>
  <div class="actions">

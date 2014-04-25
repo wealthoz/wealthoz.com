@@ -1,5 +1,5 @@
 class Account < ActiveRecord::Base
-  belongs_to :group
+  belongs_to :user
   belongs_to :fs
   validates :name, presence: true, 
                    length: { maximum: 25 }

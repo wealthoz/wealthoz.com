@@ -4,12 +4,14 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = current_user.accounts 
+    
   end
 
   # GET /accounts/1
   # GET /accounts/1.json
   def show
+    @account = Account.find(params[:id])
   end
 
   # GET /accounts/new
@@ -24,7 +26,7 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(account_params)
+    @account = current_user.accounts.build(account_params)
 
     respond_to do |format|
       if @account.save
@@ -69,6 +71,6 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:name, :group_id, :report_id)
+      params.require(:account).permit(:name, :user_id, :fs_id)
     end
 end
