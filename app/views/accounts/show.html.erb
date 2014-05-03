@@ -6,13 +6,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @account.user_id %>
+  <%= @account.user.name  %>
 </p>
 
 <p>
   <strong>Report:</strong>
-  <%= @account.fs_id %>
+  <%= @account.fs.report_class %>
 </p>
 
-<%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>

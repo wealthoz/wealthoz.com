@@ -1,11 +1,17 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_action :set_account, only: [:show, :update,]
 
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = current_user.accounts 
     
+    @accounts = Account.joins(:user,:fs).where('user_id = ? OR "default" = ?', current_user.id, true,)
+        
+    respond_to do |format|
+      format.html
+      format.csv { send_data @accounts.to_csv }
+      format.xls # { send_data @accounts.to_csv(col_sep: "\t") }
+    end
   end
 
   # GET /accounts/1
@@ -20,7 +26,8 @@ class AccountsController < ApplicationController
   end
 
   # GET /accounts/1/edit
-  def edit
+  def list
+    
   end
 
   # POST /accounts
@@ -55,13 +62,13 @@ class AccountsController < ApplicationController
 
   # DELETE /accounts/1
   # DELETE /accounts/1.json
-  def destroy
-    @account.destroy
-    respond_to do |format|
-      format.html { redirect_to accounts_url }
-      format.json { head :no_content }
-    end
-  end
+  #def destroy
+    #@account.destroy
+    #respond_to do |format|
+      #format.html { redirect_to accounts_url }
+      #format.json { head :no_content }
+    #end
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.
