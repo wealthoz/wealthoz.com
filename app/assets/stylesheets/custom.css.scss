@@ -173,8 +173,8 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
+  width: 150px !important;
+  margin-bottom: 2px;
   @include box_sizing;
 }
 

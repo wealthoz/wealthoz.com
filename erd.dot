@@ -16,6 +16,7 @@ m_Account [label = <<table border="0" align="center" cellspacing="0.5" cellpaddi
 </table>
 |
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="default">default <font face="Arial Italic" color="grey60">boolean</font></td></tr>
   <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
 </table>
 >];
@@ -45,6 +46,18 @@ m_Group [label = <<table border="0" align="center" cellspacing="0.5" cellpadding
 |
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
   <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+</table>
+>];
+m_Ledger [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Ledger</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="ammount">ammount <font face="Arial Italic" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="post_date">post_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="quantity">quantity <font face="Arial Italic" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="text">text <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="wunit_id">wunit_id <font face="Arial Italic" color="grey60">integer</font></td></tr>
 </table>
 >];
 m_Micropost [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
@@ -83,6 +96,7 @@ m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding=
 >];
   m_User -> m_Account [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Fs -> m_Account [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Account -> m_Ledger [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Fx -> m_Group [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Group -> m_User [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_User -> m_Micropost [arrowhead = "normal", arrowtail = "none", weight = "2"];

@@ -1,6 +1,7 @@
 class Account < ActiveRecord::Base
   belongs_to :user
   belongs_to :fs
+  has_many :ledgers
   validates :name, presence: true, 
                    length: { maximum: 25 }
  

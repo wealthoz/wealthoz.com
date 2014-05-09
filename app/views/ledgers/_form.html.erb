@@ -1,0 +1,34 @@
+
+<table class="table table-striped table-hover " >
+	<%= form_for(@ledger) do |f| %>
+  <% if @ledger.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ledger.errors.count, "error") %> prohibited this ledger from being saved:</h2>
+
+      <ul>
+      <% @ledger.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+      <%= f.label :account_id %>
+       <%= f.label :wunit_id %> 
+      <%= f.label :post_date %>
+      <%= f.label :ammount %>
+      <%= f.label :text %>
+      <%= f.label :quantity %>
+      
+  
+      <%= f.collection_select(:account_id, Account.where('user_id = ? OR "default" = ?', current_user.id, true), :id, :name ) %>
+      <%= f.number_field :wunit_id  %>
+      <%= f.date_select :post_date %>
+      <%= f.text_field :ammount %>
+      <%= f.text_field :text %>
+      <%= f.text_field :quantity %>
+            
+
+<%= f.submit "Save", class: "btn btn-large btn-primary" %><% end %>
+<br/>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Account:</strong>
+  <%= @ledger.account_id %>
+</p>
+
+<p>
+  <strong>Wunit:</strong>
+  <%= @ledger.wunit_id %>
+</p>
+
+<p>
+  <strong>Post date:</strong>
+  <%= @ledger.post_date %>
+</p>
+
+<p>
+  <strong>Ammount:</strong>
+  <%= @ledger.ammount %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @ledger.text %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @ledger.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_ledger_path(@ledger) %> |
+<%= link_to 'Back', ledgers_path %>

@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   
   def index
     @users = User.paginate(page: params[:page])
+    @projects = Project.count
   end
 
   def show

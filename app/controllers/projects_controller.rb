@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   end
   
   def show
-     @Projects = Projects.all.by_name
+     @projects = Projects.all.by_name
   end
 
   def new

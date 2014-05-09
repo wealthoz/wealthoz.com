@@ -1,5 +1,6 @@
 WealthOZ201::Application.routes.draw do
  
+  resources :ledgers
   resources :fxes
   resources :groups
   
