@@ -28,15 +28,14 @@ class LedgersController < ApplicationController
  
   
   def create
-    #@selected_account = Account.where('user_id = ? OR "default" = ?', current_user.id, true)
-    #@selected_account = account
     
-    @ledger = account.ledgers.create(ledger_params)
-        if @ledger.save
+    @ledger = Ledger.new(ledger_params)
+
+    if @ledger.save
       flash[:success] = "Transaction was created!"
       redirect_to ledgers_path
     else
-      render 'static_pages/home'
+      render :new
     end
   end
 

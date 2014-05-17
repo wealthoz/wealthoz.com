@@ -12,7 +12,10 @@ class MicropostsController < ApplicationController
       render 'static_pages/home'
     end
   end
-
+  
+  def post_date
+    @post_date > Time.now + 7.days
+  end
 
   def destroy
     @micropost.destroy
@@ -22,7 +25,7 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content)
+      params.require(:micropost).permit(:content, :post_date)
     end
 
     def correct_user

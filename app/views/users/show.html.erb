@@ -25,7 +25,7 @@
   	
   <div class="span8">
     <% if @user.microposts.any? %>
-      <h4>Microposts <span class="badge"><%= @user.microposts.count %></span></h4>
+      <h4>FuturePosts <span class="badge"><%= @user.microposts.count %></span></h4>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>

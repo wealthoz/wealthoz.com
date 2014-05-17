@@ -66,6 +66,7 @@ m_Micropost [label = <<table border="0" align="center" cellspacing="0.5" cellpad
 |
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
   <tr><td align="left" width="130" port="content">content <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="post_date">post_date <font face="Arial Italic" color="grey60">date ∗</font></td></tr>
 </table>
 >];
 m_Project [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
@@ -99,6 +100,7 @@ m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding=
   m_Account -> m_Ledger [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Fx -> m_Group [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Group -> m_User [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Group -> m_Project [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_User -> m_Micropost [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_User -> m_Project [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_User -> m_Relationship [arrowhead = "normal", arrowtail = "none", weight = "1"];

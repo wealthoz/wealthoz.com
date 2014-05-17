@@ -1,11 +1,19 @@
 <li>
+  <% if Time.now > micropost.post_date %>	
   <span class="content"><%= micropost.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
   </span>
+  <p>Expectations about...</p>
+  <span class="post_date"><%= micropost.post_date %></span>
+
   <% if current_user?(micropost.user) %>
     <%= link_to "delete", micropost, method: :delete,
                                      data: { confirm: "Are you sure?" },
                                      title: micropost.content %>
   <% end %>
+    <% else %>
+    <p>The FuturePost will open on: <%= micropost.post_date %></p>
+   <% end %>
+  
 </li>

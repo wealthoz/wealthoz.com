@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :user
-  #belongs_to :group
+  belongs_to :group
   default_scope -> { order('name DESC') }
   validates :name, presence: true, length: { maximum: 25 }
   

@@ -1,6 +1,6 @@
 
-<table class="table table-striped table-hover " >
-	<%= form_for(@ledger) do |f| %>
+
+<%= form_for(@ledger) do |f| %>
   <% if @ledger.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ledger.errors.count, "error") %> prohibited this ledger from being saved:</h2>
@@ -13,22 +13,28 @@
     </div>
   <% end %>
 
- 
+	<div class="field"> 
       <%= f.label :account_id %>
-       <%= f.label :wunit_id %> 
-      <%= f.label :post_date %>
-      <%= f.label :ammount %>
-      <%= f.label :text %>
-      <%= f.label :quantity %>
-      
-  
       <%= f.collection_select(:account_id, Account.where('user_id = ? OR "default" = ?', current_user.id, true), :id, :name ) %>
-      <%= f.number_field :wunit_id  %>
+      
+      <%= f.label :wunit_id %> 
+       <%= f.number_field :wunit_id  %>
+       
+      <%= f.label :post_date %>
       <%= f.date_select :post_date %>
+      
+      <%= f.label :ammount %>
       <%= f.text_field :ammount %>
+      
+      <%= f.label :text %>
       <%= f.text_field :text %>
+      
+      <%= f.label :quantity %>
       <%= f.text_field :quantity %>
+	</div>
             
-
-<%= f.submit "Save", class: "btn btn-large btn-primary" %><% end %>
+	<div class="actions">
+		<%= f.submit "Save", class: "btn btn-large btn-primary" %>
+	</div>
+<% end %>
 <br/>

@@ -18,11 +18,11 @@
   <tbody>
     <% @ledgers.each do |ledger| %>
       <tr class="info">
-        <td><%= ledger.account_id %></td>
+        <td><%= ledger.account.name %></td>
         <td><%= ledger.wunit_id %></td>
         <td><%= ledger.post_date %></td>
         <td><%= ledger.ammount %></td>
-                <td><%= ledger.quantity %></td>
+        <td><%= ledger.quantity %></td>
         <td><%= link_to 'Show', ledger %></td>
         <td><%= link_to 'Edit', edit_ledger_path(ledger) %></td>
         <td><%= link_to 'Destroy', ledger, method: :delete, data: { confirm: 'Are you sure?' } %></td>
