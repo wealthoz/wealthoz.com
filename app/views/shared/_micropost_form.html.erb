@@ -1,9 +1,14 @@
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  
+  <div class="field">  
+    <%= f.label :topic %>
+    <%= f.text_field :topic%>
+   </div>
   <div class="field">
     <%= f.text_area :content, placeholder: "Compose something about the Future..." %>
   </div>
-     <h3>Future date</h3>
+     <p>Future date</p>
   <div class="field"> 	
       <%= f.date_select :post_date, default: 7.days.from_now %>
   </div>

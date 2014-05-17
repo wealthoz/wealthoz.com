@@ -4,4 +4,5 @@ class Micropost < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 250 }
   validates :user_id, presence: true
   validates :post_date, presence: true
+  validates :topic, presence: true
 end

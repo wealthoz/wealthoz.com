@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513052213) do
+ActiveRecord::Schema.define(version: 20140517054249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,8 +76,10 @@ ActiveRecord::Schema.define(version: 20140513052213) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "post_date"
+    t.string   "topic"
   end
 
+  add_index "microposts", ["topic"], name: "index_microposts_on_topic", using: :btree
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
 
   create_table "projects", force: true do |t|

@@ -1,19 +1,21 @@
 <li>
-  <% if Time.now > micropost.post_date %>	
-  <span class="content"><%= micropost.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-  </span>
-  <p>Expectations about...</p>
-  <span class="post_date"><%= micropost.post_date %></span>
+  <% if Time.now > micropost.post_date %>
 
+   <span class="topic">
+    <strong>Topic:</strong> <%= micropost.topic %>
+  </span>
+  <strong><span class="content"><%= micropost.content %></span></strong>
+  <p>Expectations about...<%= micropost.post_date %>
+  
   <% if current_user?(micropost.user) %>
     <%= link_to "delete", micropost, method: :delete,
                                      data: { confirm: "Are you sure?" },
                                      title: micropost.content %>
   <% end %>
+  </p>
     <% else %>
-    <p>The FuturePost will open on: <%= micropost.post_date %></p>
+    <p><strong><%= current_user.name %></strong> posted something about <strong><%= micropost.topic %></strong>. 
+    	You can see it on </strong><%= micropost.post_date()%></strong></p>
    <% end %>
   
 </li>
