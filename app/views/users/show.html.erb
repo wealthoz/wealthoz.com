@@ -11,8 +11,16 @@
        <strong><%= @group.name %></strong> 
       </h5>
     </section>
+       <section>
+      <%= render 'shared/stats' %>
+    </section>
+
+       <div class="span8">
+  			<%= render 'follow_form' if signed_in? %>
+  		<div>
+  	
     <section>
-    	<%= link_to "Create New Wealth Group", new_group_path , class: "btn btn-default" %>
+    	
     	<h4><%= @group.name %> Memebers <span class="badge"><%= @current_group.all.collect(&:name).count %></span></h4>
    	
     	<strong><%= @current_group.all.collect(&:name).join ", " %></strong>
