@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
   
   def show
      @projects = Projects.all.by_name
+    
   end
 
   def new
@@ -15,10 +16,13 @@ class ProjectsController < ApplicationController
   end
     
   def create
-    @project = current_user.projects.build(project_params)
+        
+    current_group = current_user.group
+
+    @project = current_group.projects.build(project_params)
     if @project.save
       flash[:success] = "A new Project was created!"
-      redirect_to root_url
+      redirect_to current_user
     else
       render 'projects/new'
     end
@@ -31,8 +35,8 @@ class ProjectsController < ApplicationController
   def destroy
   end
 
-  def correct_user
-      @project = current_user.projectss.find_by(id: params[:id])
+  def correct_group
+      @project = current_group.projects.find_by(id: params[:id])
       redirect_to root_url if @project.nil?
   end
   
@@ -40,7 +44,7 @@ class ProjectsController < ApplicationController
   private
 
     def project_params
-      params.require(:project).permit(:name,:id, :email,:percent_owned)
+      params.require(:project).permit(:name,:id,:percent_owned, :group_id)
     end
 
 

@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
   belongs_to :group
-  has_many :projects, dependent: :destroy
+  #belongs_to :wunit
+  #has_many :projects, dependent: :destroy
   has_many :microposts, dependent: :destroy
   has_many :accounts, dependent: :destroy
+  has_many :ledgers
   
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed

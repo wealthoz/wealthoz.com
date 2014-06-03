@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
     @group = @user.group(params[:name])
-    @projects = @user.projects(params[:name])
+    @projects = @group.projects(params[:name])
     @current_group = @group.users.select(:name)
   end
 

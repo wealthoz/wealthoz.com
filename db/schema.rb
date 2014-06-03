@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140519130116) do
+ActiveRecord::Schema.define(version: 20140603122023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,16 +59,18 @@ ActiveRecord::Schema.define(version: 20140519130116) do
 
   create_table "ledgers", force: true do |t|
     t.integer  "account_id"
-    t.integer  "wunit_id"
+    t.integer  "user_id"
     t.date     "post_date"
     t.decimal  "ammount"
     t.string   "text"
     t.decimal  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "wunit"
   end
 
-  add_index "ledgers", ["account_id", "wunit_id", "post_date"], name: "index_ledgers_on_account_id_and_wunit_id_and_post_date", using: :btree
+  add_index "ledgers", ["account_id", "user_id", "post_date"], name: "index_ledgers_on_account_id_and_user_id_and_post_date", using: :btree
+  add_index "ledgers", ["wunit"], name: "index_ledgers_on_wunit", using: :btree
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -84,8 +86,6 @@ ActiveRecord::Schema.define(version: 20140519130116) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
-    t.string   "email"
-    t.integer  "user_id"
     t.integer  "percent_owned"
     t.datetime "created_at"
     t.datetime "updated_at"

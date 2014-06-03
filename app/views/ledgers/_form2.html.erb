@@ -1,0 +1,18 @@
+<table>
+<tr>
+<td>account</td>
+<td>wunit</td>
+<td>Post date</td>
+<td>ammount</td>
+<td>text</td>
+<td>quantity</td>
+</tr
+
+<% 2.times do %>
+<%= text_field_tag "fields[][user_name]",'', :class => "user_name" %>
+<%= radio_button_tag "fields[][is_checked]", '1', false %><br>
+<% end %>
+
+
+
+<br/>

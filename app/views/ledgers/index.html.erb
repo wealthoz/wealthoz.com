@@ -4,7 +4,7 @@
   <thead>
       <tr>
       <th>Account</th>
-      <th>Wunit</th>
+      <th>User_id</th>
       <th>Post date</th>
       <th>Ammount</th>
       <th>Quantity</th>
@@ -19,7 +19,7 @@
     <% @ledgers.each do |ledger| %>
       <tr class="info">
         <td><%= ledger.account.name %></td>
-        <td><%= ledger.wunit_id %></td>
+        <td><%= ledger.user_id %></td>
         <td><%= ledger.post_date %></td>
         <td><%= ledger.ammount %></td>
         <td><%= ledger.quantity %></td>

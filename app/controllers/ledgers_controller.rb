@@ -4,13 +4,14 @@ class LedgersController < ApplicationController
   # GET /ledgers
   # GET /ledgers.json
   def index
-    @ledgers = Ledger.all
+    #All User transactions.Have to implement all Group transaction
+    @ledgers = current_user.ledgers.all
   end
 
   # GET /ledgers/1
   # GET /ledgers/1.json
   def show
-    
+    @ledger = Ledger.find(params[:id])
   end
 
   # GET /ledgers/new
@@ -23,13 +24,10 @@ class LedgersController < ApplicationController
   def edit
   end
 
-  # POST /ledgers
-  # POST /ledgers.json
  
-  
   def create
     
-    @ledger = Ledger.new(ledger_params)
+    @ledger = current_user.ledgers.build(ledger_params)
 
     if @ledger.save
       flash[:success] = "Transaction was created!"
@@ -63,19 +61,18 @@ class LedgersController < ApplicationController
       format.json { head :no_content }
     end
   end
+ 
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_ledger
-      @ledger = Ledger.find(params[:id])
-    end
-    
-    def correct_account
-       @account = Account.find(params[:id ])
-    end
-
+ 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ledger_params
-      params.require(:ledger).permit(:account_id, :wunit_id, :post_date, :ammount, :text, :quantity)
+      params.require(:ledger).permit(:account_id, :wunit,:user_id, :post_date, :ammount, :text, :quantity)
     end
+    def correct_user
+      @ledger = current_user.ledgers.find_by(id: params[:id])
+      redirect_to root_url if @ledger.nil?
+    end
+
 end

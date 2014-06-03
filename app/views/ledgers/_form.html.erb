@@ -17,9 +17,9 @@
       <%= f.label :account_id %>
       <%= f.collection_select(:account_id, Account.where('user_id = ? OR "default" = ?', current_user.id, true), :id, :name ) %>
       
-      <%= f.label :wunit_id %> 
-       <%= f.number_field :wunit_id  %>
-       
+      <%= f.label :wunit %>
+      <%= f.select(:wunit, options_from_collection_for_select(User.all,:name,:name)) %>
+             
       <%= f.label :post_date %>
       <%= f.date_select :post_date %>
       
@@ -33,7 +33,7 @@
       <%= f.text_field :quantity %>
 	</div>
             
-	<div class="actions">
+	<div class="ledgers">
 		<%= f.submit "Save", class: "btn btn-large btn-primary" %>
 	</div>
 <% end %>
