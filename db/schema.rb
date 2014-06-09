@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603122023) do
+ActiveRecord::Schema.define(version: 20140606114501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140603122023) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "default"
+    t.integer  "group_id"
   end
 
   add_index "accounts", ["default"], name: "index_accounts_on_default", using: :btree
@@ -59,7 +60,7 @@ ActiveRecord::Schema.define(version: 20140603122023) do
 
   create_table "ledgers", force: true do |t|
     t.integer  "account_id"
-    t.integer  "user_id"
+    t.integer  "group_id"
     t.date     "post_date"
     t.decimal  "ammount"
     t.string   "text"
@@ -67,9 +68,10 @@ ActiveRecord::Schema.define(version: 20140603122023) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "wunit"
+    t.integer  "user_id"
   end
 
-  add_index "ledgers", ["account_id", "user_id", "post_date"], name: "index_ledgers_on_account_id_and_user_id_and_post_date", using: :btree
+  add_index "ledgers", ["account_id", "group_id", "post_date"], name: "index_ledgers_on_account_id_and_group_id_and_post_date", using: :btree
   add_index "ledgers", ["wunit"], name: "index_ledgers_on_wunit", using: :btree
 
   create_table "microposts", force: true do |t|

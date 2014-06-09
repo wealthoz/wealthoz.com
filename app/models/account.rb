@@ -1,5 +1,6 @@
 class Account < ActiveRecord::Base
-  belongs_to :user
+  #belongs_to :user
+  belongs_to :group
   belongs_to :fs
   has_many :ledgers
   validates :name, presence: true, 

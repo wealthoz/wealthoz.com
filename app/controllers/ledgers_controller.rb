@@ -4,8 +4,9 @@ class LedgersController < ApplicationController
   # GET /ledgers
   # GET /ledgers.json
   def index
+    current_group = current_user.group
     #All User transactions.Have to implement all Group transaction
-    @ledgers = current_user.ledgers.all
+    @ledgers = current_group.ledgers
   end
 
   # GET /ledgers/1
@@ -16,8 +17,11 @@ class LedgersController < ApplicationController
 
   # GET /ledgers/new
   def new
-    
-    @ledger = Ledger.new
+   current_group = current_user.group
+   @accounts = Account.joins(:group,:fs).where('group_id = ? OR "default" = ?', current_group.id, true,)
+   @ledger = Ledger.new
+   
+
   end
 
   # GET /ledgers/1/edit
@@ -26,17 +30,20 @@ class LedgersController < ApplicationController
 
  
   def create
-    
-    @ledger = current_user.ledgers.build(ledger_params)
+    current_group = current_user.group
+       
+    @ledger = current_group.ledgers.build(ledger_params)
 
-    if @ledger.save
-      flash[:success] = "Transaction was created!"
-      redirect_to ledgers_path
-    else
-      render :new
+  respond_to do |format|
+      if @ledger.save
+        format.html { redirect_to ledgers_path, notice: 'Transaction was successfully created.' }
+        format.json { render action: 'index', status: :created, location: @ledger }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @ledger.errors, status: :unprocessable_entity }
+      end
     end
   end
-
   
   # PATCH/PUT /ledgers/1
   # PATCH/PUT /ledgers/1.json
@@ -68,11 +75,10 @@ class LedgersController < ApplicationController
  
     # Never trust parameters from the scary internet, only allow the white list through.
     def ledger_params
-      params.require(:ledger).permit(:account_id, :wunit,:user_id, :post_date, :ammount, :text, :quantity)
+      params.require(:ledger).permit(:account_id, :group_id,:w, :post_date, :ammount, :text, :quantity, :wunit)
     end
-    def correct_user
-      @ledger = current_user.ledgers.find_by(id: params[:id])
-      redirect_to root_url if @ledger.nil?
+  
+    def set_ledger
+      @ledger = Ledger.find(params[:id])
     end
-
 end

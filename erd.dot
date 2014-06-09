@@ -18,6 +18,7 @@ m_Account [label = <<table border="0" align="center" cellspacing="0.5" cellpaddi
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
   <tr><td align="left" width="130" port="default">default <font face="Arial Italic" color="grey60">boolean</font></td></tr>
   <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="user_id">user_id <font face="Arial Italic" color="grey60">integer</font></td></tr>
 </table>
 >];
 m_Fs [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
@@ -57,7 +58,8 @@ m_Ledger [label = <<table border="0" align="center" cellspacing="0.5" cellpaddin
   <tr><td align="left" width="130" port="post_date">post_date <font face="Arial Italic" color="grey60">date</font></td></tr>
   <tr><td align="left" width="130" port="quantity">quantity <font face="Arial Italic" color="grey60">decimal</font></td></tr>
   <tr><td align="left" width="130" port="text">text <font face="Arial Italic" color="grey60">string</font></td></tr>
-  <tr><td align="left" width="130" port="wunit_id">wunit_id <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="user_id">user_id <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="wunit">wunit <font face="Arial Italic" color="grey60">string</font></td></tr>
 </table>
 >];
 m_Micropost [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
@@ -75,7 +77,6 @@ m_Project [label = <<table border="0" align="center" cellspacing="0.5" cellpaddi
 </table>
 |
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
-  <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string</font></td></tr>
   <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
   <tr><td align="left" width="130" port="percent_owned">percent_owned <font face="Arial Italic" color="grey60">integer</font></td></tr>
 </table>
@@ -96,27 +97,17 @@ m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding=
   <tr><td align="left" width="130" port="remember_token">remember_token <font face="Arial Italic" color="grey60">string</font></td></tr>
 </table>
 >];
-m_Wunit [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
-  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Wunit</font></td></tr>
-</table>
-|
-<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
-  <tr><td align="left" width="130" port="project_id">project_id <font face="Arial Italic" color="grey60">integer ∗</font></td></tr>
-  <tr><td align="left" width="130" port="user_id">user_id <font face="Arial Italic" color="grey60">integer ∗</font></td></tr>
-</table>
->];
-  m_User -> m_Account [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Group -> m_Account [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Fs -> m_Account [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Account -> m_Ledger [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Group -> m_Fs [arrowhead = "none", arrowtail = "none", weight = "2"];
   m_Fx -> m_Group [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Group -> m_User [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Group -> m_Project [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Group -> m_Ledger [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_User -> m_Micropost [arrowhead = "normal", arrowtail = "none", weight = "2"];
-  m_User -> m_Project [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_User -> m_Relationship [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_User -> m_Relationship [arrowhead = "normal", arrowtail = "none", weight = "2"];
-  m_Wunit -> m_User [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_User -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
   m_User -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
-  m_Wunit -> m_Project [arrowhead = "normal", arrowtail = "none", weight = "1"];
 }

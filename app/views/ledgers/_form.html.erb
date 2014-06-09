@@ -15,11 +15,11 @@
 
 	<div class="field"> 
       <%= f.label :account_id %>
-      <%= f.collection_select(:account_id, Account.where('user_id = ? OR "default" = ?', current_user.id, true), :id, :name ) %>
-      
+      <%= f.collection_select(:account_id, @accounts, :id, :name) %>
+
       <%= f.label :wunit %>
-      <%= f.select(:wunit, options_from_collection_for_select(User.all,:name,:name)) %>
-             
+      <%= f.collection_select(:wunit, User.all + Project.all,:name,:name) %>     
+            
       <%= f.label :post_date %>
       <%= f.date_select :post_date %>
       
@@ -34,7 +34,7 @@
 	</div>
             
 	<div class="ledgers">
-		<%= f.submit "Save", class: "btn btn-large btn-primary" %>
+		<%= f.submit "Save", class: "btn btn-large btn-success" %>
 	</div>
 <% end %>
 <br/>

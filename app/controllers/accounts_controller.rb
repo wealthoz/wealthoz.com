@@ -4,8 +4,9 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
+    current_group = current_user.group
     
-    @accounts = Account.joins(:user,:fs).where('user_id = ? OR "default" = ?', current_user.id, true,)
+    @accounts = Account.joins(:group,:fs).where('group_id = ? OR "default" = ?', current_group.id, true,)
         
     respond_to do |format|
       format.html
@@ -33,12 +34,14 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = current_user.accounts.build(account_params)
+    current_group = current_user.group
+    
+    @account = current_group.accounts.build(account_params)
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @account }
+        format.html { redirect_to accounts_path, notice: 'Account was successfully created.' }
+        format.json { render action: 'index', status: :created, location: @account }
       else
         format.html { render action: 'new' }
         format.json { render json: @account.errors, status: :unprocessable_entity }
