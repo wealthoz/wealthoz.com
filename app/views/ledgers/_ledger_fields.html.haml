@@ -1,0 +1,4 @@
+%td= select_tag "ledger[][account_id]", options_from_collection_for_select(@accounts, "id", "name"), prompt: 'Select account'
+%td= select_tag "ledger[][wunit]", grouped_options_for_select(@wunit), prompt: 'Select wunit'
+%td= text_field_tag "ledger[][text]"
+%td= link_to 'Delete', '#', class: 'delete-link'

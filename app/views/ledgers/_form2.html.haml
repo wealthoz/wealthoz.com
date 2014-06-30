@@ -1,20 +1,12 @@
-= form_tag(url: ledgers_path, remote: true, method: "post") do
+= form_tag(ledgers_path, remote: true, id: 'new-ledgers-form') do
   %table
     %tr
-      %td= text_field_tag "ledger[][account]"
-      %td= text_field_tag "ledger[][text]"
+      = render 'ledger_fields'
 
     %tr.actions
       %td= submit_tag 'Save'
       %td= button_tag 'Add new ledger form', id: '_form2'
 
-    %tr.new_ledger_row.hidden 
-      %td= text_field_tag "ledger[][account]"
-      %td= text_field_tag "ledger[][text]"
+    %tr.new_ledger_row.hidden
+      = render 'ledger_fields'
 
-:javascript
-  $('#_form2').on('click', function(e) {
-    e.preventDefault()
-    var row = $('tr.new_ledger_row').clone().removeClass('hidden new_ledger_row');
-    $('tr.actions').before(row); 
-  });
