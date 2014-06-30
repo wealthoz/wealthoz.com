@@ -18,9 +18,14 @@ class LedgersController < ApplicationController
   # GET /ledgers/new
   def new
    current_group = current_user.group
-   @accounts = Account.joins(:group,:fs).where('group_id = ? OR "default" = ?', current_group.id, true,)
+   # @accounts = Account.joins(:group,:fs).where('group_id = ? OR "default" = ?', current_group.id, true,)
+   @accounts = current_group.accounts
+   @wunit = {
+              projects: current_group.projects.pluck(:name),
+              people: current_group.users.pluck(:name)
+            }
    @ledger = Ledger.new
-   
+
 
   end
 
@@ -28,26 +33,26 @@ class LedgersController < ApplicationController
   def edit
   end
 
- 
+
   def create
     current_group = current_user.group
-   
+
     params[:ledger].each do |attr|
-    current_group.ledgers.create(attr)
-  end    
-    #@ledger = current_group.ledgers.build(ledger_params)
+      current_group.ledgers.create(attr)
+    end
 
   respond_to do |format|
-      if @ledger.save
+      # if @ledger.save
         format.html { redirect_to ledgers_path, notice: 'Transaction Y was successfully created.' }
         format.json { render action: 'index', status: :created, location: @ledger }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @ledger.errors, status: :unprocessable_entity }
-      end
+        format.js
+      # else
+      #   format.html { render action: 'new' }
+      #   format.json { render json: @ledger.errors, status: :unprocessable_entity }
+      # end
     end
   end
-  
+
   # PATCH/PUT /ledgers/1
   # PATCH/PUT /ledgers/1.json
   def update
@@ -71,16 +76,16 @@ class LedgersController < ApplicationController
       format.json { head :no_content }
     end
   end
- 
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
- 
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def ledger_params
       params.require(:ledger).permit(:account_id, :group_id,:w, :post_date, :ammount, :text, :quantity, :wunit)
     end
-  
+
     def set_ledger
       @ledger = Ledger.find(params[:id])
     end
