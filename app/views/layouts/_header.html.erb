@@ -65,11 +65,9 @@
                 <i class="icon-signal"></i> Report <b class="caret"></b>               
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Wealth Index</a></li>
-                <li><a href="#">Group Balance Sheet</a></li>
-                <li><a href="#">Income and Expences by WU</a></li>
-                <li><a href="#">Income and Expences by months</a></li>
-                <li><a href="#">Budget vs. Actual</a></li>
+                <li><%= link_to "Past Reports",    demo1_path %></li>
+                <li><%= link_to "Future Reports",    demo2_path %></li>
+                <li><a href="#">Ratios</a></li>    
                 <li><%= link_to '<i class="icon-list-alt "></i> Chronology'.html_safe, ledgers_path %></li>      
               </ul>	                                    
               

@@ -31,12 +31,15 @@ class LedgersController < ApplicationController
  
   def create
     current_group = current_user.group
-       
-    @ledger = current_group.ledgers.build(ledger_params)
+   
+    params[:ledger].each do |attr|
+    current_group.ledgers.create(attr)
+  end    
+    #@ledger = current_group.ledgers.build(ledger_params)
 
   respond_to do |format|
       if @ledger.save
-        format.html { redirect_to ledgers_path, notice: 'Transaction was successfully created.' }
+        format.html { redirect_to ledgers_path, notice: 'Transaction Y was successfully created.' }
         format.json { render action: 'index', status: :created, location: @ledger }
       else
         format.html { render action: 'new' }

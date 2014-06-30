@@ -8,6 +8,14 @@ gem 'rails', '4.0.2'
 #Ivan GEMS
 gem 'pg'
 
+gem 'haml-rails'
+
+group :development do
+  gem 'hpricot'
+  gem 'ruby_parser'
+end
+
+
 group :development do
   gem "rails-erd"
 end
