@@ -18,8 +18,8 @@ class LedgersController < ApplicationController
   # GET /ledgers/new
   def new
    current_group = current_user.group
-   # @accounts = Account.joins(:group,:fs).where('group_id = ? OR "default" = ?', current_group.id, true,)
-   @accounts = current_group.accounts
+   @accounts = Account.joins(:group,:fs).where('group_id = ? OR "default" = ?', current_group.id, true,)
+   #@accounts = current_group.accounts
    @wunit = {
               projects: current_group.projects.pluck(:name),
               people: current_group.users.pluck(:name)
@@ -80,7 +80,7 @@ class LedgersController < ApplicationController
   
   def report
     current_group = current_user.group
-    ledgers = current_group.ledgers
+    ledgers = current_group.ledgers.joins(:account)
     
     grid = PivotTable::Grid.new do |g|
       g.source_data  = ledgers
