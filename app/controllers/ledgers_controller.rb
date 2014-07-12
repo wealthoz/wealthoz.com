@@ -95,9 +95,10 @@ class LedgersController < ApplicationController
     @column_headers = grid.column_headers
     @column_count = grid.columns.length
     @row_count = grid.rows.length
-    @row1 = grid.rows[0].data
-    
+    @row1 = grid.rows[0]
+    @rowa = grid.rows[0].total + grid.rows[0].total + grid.rows[0].total
     @column_total = grid.column_totals
+    @g_total = grid.grand_total
     
   end
 

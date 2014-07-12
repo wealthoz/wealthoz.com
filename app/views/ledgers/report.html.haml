@@ -6,15 +6,15 @@
     %th Total
         
   %tr
-    %td
-    -@column_count.times do |i|
-      %td=@row1[i].ammount
+    %td= @row1.header
+      
+    %td= @row1.total
           
   %tr{:class => "info"}
     %td Total Wealth
     -@column_count.times do |i|
       %td=@column_total[i]
-     
+    %td= @g_total
 
 
 %p1
