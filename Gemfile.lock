@@ -27,7 +27,6 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.2)
     atomic (1.1.15)
-    bcrypt-ruby (3.1.2)
     bcrypt-ruby (3.1.2-x86-mingw32)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -79,8 +78,8 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
-    pg (0.17.1)
     pg (0.17.1-x86-mingw32)
+    pivot_table (0.2.0)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -165,6 +164,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   pg
+  pivot_table
   rails (= 4.0.2)
   rails-erd
   ruby_parser

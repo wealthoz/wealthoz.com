@@ -9,6 +9,7 @@ gem 'rails', '4.0.2'
 gem 'pg'
 
 gem 'haml-rails'
+gem 'pivot_table'
 
 group :development do
   gem 'hpricot'

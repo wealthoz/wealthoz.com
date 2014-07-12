@@ -1,5 +1,5 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<h4>Update your profile</h4>
 
 <div class="row">
   <div class="span6 offset3">
@@ -20,18 +20,18 @@
       
       <%= f.label :group_id, "Change Your Wealth Group" %>
       <%= f.collection_select(:group_id, Group.all, :id, :name ) %>
-
+	<section>
       <%= f.submit "Save changes", class: "btn btn-large btn-success" %>
+    </section>
     <% end %>
-
     <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
+    <a href="http://gravatar.com/emails">change</a>     
+  </div>  
+    <section>
+		<%= link_to "Create New Wealth Group", new_group_path , class: "btn btn-warning" %>
+		<h5 class="text-warning">You can have only <strong>one Wealth Group</strong> !!!</h5>
+	</section>
+	<br />
  
-      
-  </div>
-	
-		        
-  
-  
 </div>
-
+ 

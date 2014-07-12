@@ -31,6 +31,8 @@ class LedgersController < ApplicationController
 
   # GET /ledgers/1/edit
   def edit
+    current_group = current_user.group
+    @accounts = current_group.accounts
   end
 
 
@@ -58,17 +60,15 @@ class LedgersController < ApplicationController
   def update
     respond_to do |format|
       if @ledger.update(ledger_params)
-        format.html { redirect_to @ledger, notice: 'Ledger was successfully updated.' }
+        format.html { redirect_to ledgers_url , notice: 'Transaction was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'index' }
         format.json { render json: @ledger.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /ledgers/1
-  # DELETE /ledgers/1.json
   def destroy
     @ledger.destroy
     respond_to do |format|
@@ -77,13 +77,37 @@ class LedgersController < ApplicationController
     end
   end
 
+  
+  def report
+    current_group = current_user.group
+    ledgers = current_group.ledgers
+    
+    grid = PivotTable::Grid.new do |g|
+      g.source_data  = ledgers
+      g.column_name  = :wunit
+      g.row_name     = :account_id
+      g.value_name   = :ammount
+    
+    end  
+    grid.build
+    
+    @row_headers = grid.row_headers
+    @column_headers = grid.column_headers
+    @column_count = grid.columns.length
+    @row_count = grid.rows.length
+    @row1 = grid.rows[0].data
+    
+    @column_total = grid.column_totals
+    
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ledger_params
-      params.require(:ledger).permit(:account_id, :group_id,:w, :post_date, :ammount, :text, :quantity, :wunit)
+      params.require(:ledger).permit(:account_id, :group_id, :post_date, :ammount, :text, :quantity, :wunit)
     end
 
     def set_ledger

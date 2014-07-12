@@ -171,10 +171,23 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+ textarea,.uneditable-input {
   border: 1px solid #bbb;
-  width: 150px !important;
+  width: 200px !important;
   margin-bottom: 2px;
+  @include box_sizing;
+}
+input,select,{
+  border: 1px solid #bbb;
+  width: 120px !important;
+  margin-bottom: 1px;
+  @include box_sizing;
+}
+
+#ledgers2.input.select.textarea.uneditable-input{
+  border: 1px solid #bbb;
+  width: 100px !important;
+  margin-bottom: 1px;
   @include box_sizing;
 }
 
@@ -241,6 +254,8 @@ aside {
     }
   }
 }
+/* Select date*/
+
 /* Sidebar*/
 .stats {
   overflow: auto;

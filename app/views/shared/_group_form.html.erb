@@ -1,10 +1,10 @@
-<h1>Create New Wealth Group:</h1>
+<h4>Create New Wealth Group:</h4>
 
 
 <%= form_for(@group) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :name, placeholder: "Create a Wealth Group!" %>
+    <%= f.text_area :name, placeholder: "Wealth Group Name" %>
     
     <%= f.label :fx_id, "Choose currency" %>
     <%= f.collection_select(:fx_id, Fx.all, :id, :fx ) %>

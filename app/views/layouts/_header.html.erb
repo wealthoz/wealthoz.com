@@ -30,8 +30,8 @@
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to '<i class="icon-user "></i> Profile'.html_safe, current_user %></li>
-                <li><%= link_to "User Settings", edit_user_path(current_user) %></li>
-                <li><%= link_to "Group Settings",  manage_groups_path %></li>
+                <li><%= link_to '<i class="icon-cog "></i> User Settings'.html_safe, edit_user_path(current_user) %></li>
+                <li><%= link_to '<i class="icon-star "></i> Group Settings'.html_safe,  manage_groups_path %></li>
                 <li><%= link_to '<i class="icon-wrench "></i> Accounts'.html_safe,  accounts_path %></li>
                 <li class="divider"></li>
                 <li>
@@ -47,7 +47,7 @@
                 <li><a href="#">Purchases</a></li>
                 <li><a href="#">Income</a></li>
                 <li><a href="#">Revaluation</a></li>
-                <li><a href="#"><%= link_to '<i class="icon-pencil "></i> General Accounting'.html_safe, new_ledger_path %></a></li>
+                <li><%= link_to '<i class="icon-pencil "></i> General Accounting'.html_safe, new_ledger_path %></li>
               </ul>	
               
               <li id="fat-menu" class="dropdown">

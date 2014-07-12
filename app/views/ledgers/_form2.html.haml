@@ -1,12 +1,30 @@
+
 = form_tag(ledgers_path, remote: true, id: 'new-ledgers-form') do
-  %table
+  %table{:class => "table table-striped table-hover "}
     %tr
+      %th{:class=>"text-success"} + ASSETS increase (+)
+      %th{:class=>"text-warning"} - DEBT increace (-)
+      %th =
+      %th{:class=>"text-success"} + INCOME increace (+)
+      %th{:class=>"text-warning"} - EXPENSES increace (-)          
+      %th =
+      %th WEALTH
+    %tr
+      %th *Account
+      %th *W.Unit
+      %th *Date d.m.y
+      %th *Ammount
+      %th Text
+      %th Quantity
+      %th Action
+      
+    %tr{:class => "info"}
       = render 'ledger_fields'
 
     %tr.actions
-      %td= submit_tag 'Save'
-      %td= button_tag 'Add new ledger form', id: '_form2'
+      %td= submit_tag 'POST',class: "btn btn-large btn-success" 
+      %td= button_tag 'Add row', id: '_form2',class: "btn btn-large btn-primary" 
 
-    %tr.new_ledger_row.hidden
+    %tr.new_ledger_row.hidden{:class => "info"}
       = render 'ledger_fields'
 

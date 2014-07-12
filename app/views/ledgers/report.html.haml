@@ -1,0 +1,22 @@
+%table{:class => "table table-striped table-hover "}
+  %tr
+    %th Accounts/W.units
+    -@column_count.times do |i|
+      %th=@column_headers[i]
+    %th Total
+        
+  %tr
+    %td
+    -@column_count.times do |i|
+      %td=@row1[i].ammount
+          
+  %tr{:class => "info"}
+    %td Total Wealth
+    -@column_count.times do |i|
+      %td=@column_total[i]
+     
+
+
+%p1
+  =@row1
+  

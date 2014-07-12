@@ -9,21 +9,22 @@ class GroupsController < ApplicationController
      @groups = Groups.all.by_name
   end
 
+  
+    
   def new
-    def new
       @group = Group.new
       
-    end
+  end
     
-    def create
+  def create
       @group = Group.new(group_params)
       if @group.save
         flash[:success] = "Wealth GROUP created!"
         redirect_to root_url
       else
           render 'groups/new'
-      end
-     end 
+   end
+   
   end
   
     def create

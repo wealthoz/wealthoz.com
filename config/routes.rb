@@ -3,7 +3,7 @@ WealthOZ201::Application.routes.draw do
   resources :transactions
 
   resources :ledgers
-  
+  match '/report',   to: 'ledgers#report',   via: 'get'
   
   resources :fxes
   resources :groups
