@@ -21,7 +21,6 @@ WealthOZ201::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :projects
-  resources :project
   resources :accounts
   
   root  'static_pages#home'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140609115723) do
+ActiveRecord::Schema.define(version: 20140713124556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 20140609115723) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "wunit"
-    t.integer  "transaction_id"
   end
 
   add_index "ledgers", ["account_id", "group_id", "post_date"], name: "index_ledgers_on_account_id_and_group_id_and_post_date", using: :btree

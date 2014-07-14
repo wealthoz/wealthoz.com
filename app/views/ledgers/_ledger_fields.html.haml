@@ -1,5 +1,5 @@
-%td= select_tag "ledger[][account_id]", options_from_collection_for_select(@accounts, "id", "name"), prompt: 'Account'
-%td= select_tag "ledger[][wunit]", grouped_options_for_select(@wunit), prompt: 'W.Unit'
+%td= select_tag "ledger[][account_id]", options_from_collection_for_select(@accounts, "id", "name"), prompt: 'Select Account'
+%td= select_tag "ledger[][wunit]", grouped_options_for_select(@wunit), prompt: 'Select W.Unit'
 %td= date_field_tag"ledger[][post_date]", Date.today
 %td= text_field_tag "ledger[][ammount]"
 %td= text_field_tag "ledger[][text]"

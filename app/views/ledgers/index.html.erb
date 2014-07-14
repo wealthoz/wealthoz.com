@@ -10,7 +10,6 @@
       <th>Quantity</th>
       
       <th>Actions</th>
-      <th></th>
       <th>Text</th>
     </tr>
   </thead>
@@ -25,7 +24,6 @@
         <td><%= ledger.quantity %></td>
         
         <td><%= link_to 'Edit', edit_ledger_path(ledger) %></td>
-        <td><%= link_to 'Destroy', ledger, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= ledger.text %></td>
       </tr>
     <% end %>

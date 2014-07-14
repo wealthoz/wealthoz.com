@@ -8,8 +8,7 @@
   %tr
     %td= @row1.header   
     -@column_count.times do |i|
-      %td= @row1a[i]
-            
+      %td= @row1a[i]            
     %td= @row1.total
           
   %tr{:class => "info"}
@@ -18,5 +17,8 @@
       %td=@column_total[i]
     %td= @g_total
 
-
+%p
+  =@row1a
+  =@columns
+  
   

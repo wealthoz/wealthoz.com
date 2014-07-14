@@ -1,10 +1,12 @@
 class Account < ActiveRecord::Base
-  #belongs_to :user
+  
   belongs_to :group
   belongs_to :fs
   has_many :ledgers
   validates :name, presence: true, 
                    length: { maximum: 25 }
+ 
+ default_scope -> { order('name DESC') }
  
   def self.to_csv(options = {})
   CSV.generate(options) do |csv|

@@ -5,24 +5,21 @@ class LedgersController < ApplicationController
   # GET /ledgers.json
   def index
     current_group = current_user.group
-    #All User transactions.Have to implement all Group transaction
+    #All Group transaction
     @ledgers = current_group.ledgers
   end
 
-  # GET /ledgers/1
-  # GET /ledgers/1.json
   def show
     @ledger = Ledger.find(params[:id])
   end
 
-  # GET /ledgers/new
   def new
    current_group = current_user.group
-   @accounts = Account.joins(:group,:fs).where('group_id = ? OR "default" = ?', current_group.id, true,)
-   #@accounts = current_group.accounts
+   @accounts = current_group.accounts
+   
    @wunit = {
-              projects: current_group.projects.pluck(:name),
-              people: current_group.users.pluck(:name)
+              Projects: current_group.projects.pluck(:name),
+              People: current_group.users.pluck(:name)
             }
    @ledger = Ledger.new
 
@@ -80,7 +77,7 @@ class LedgersController < ApplicationController
   
   def report
     current_group = current_user.group
-    ledgers = current_group.ledgers.joins(:account)
+    ledgers = current_group.ledgers
     
     grid = PivotTable::Grid.new do |g|
       g.source_data  = ledgers
@@ -91,13 +88,15 @@ class LedgersController < ApplicationController
     end  
     grid.build
     
-    @row_headers = grid.row_headers
+    @columns = grid.columns[0].data 
     @column_headers = grid.column_headers
     @column_count = grid.columns.length
+    
+    @row_headers = grid.row_headers
     @row_count = grid.rows.length
     @row1 = grid.rows[0]
     @row1a = grid.rows[0].data
-    @rowa = grid.rows[0].total + grid.rows[0].total + grid.rows[0].total
+    
     @column_total = grid.column_totals
     @g_total = grid.grand_total
     

@@ -6,7 +6,8 @@ class AccountsController < ApplicationController
   def index
     current_group = current_user.group
     
-    @accounts = Account.joins(:group,:fs).where('group_id = ? OR "default" = ?', current_group.id, true,)
+    #@accounts = Account.joins(:group,:fs).where('group_id = ? OR "default" = ?', current_group.id, true,)
+    @accounts = current_group.accounts.joins(:fs)
         
     respond_to do |format|
       format.html
@@ -66,13 +67,12 @@ class AccountsController < ApplicationController
   # DELETE /accounts/1
   # DELETE /accounts/1.json
   #def destroy
+    #@account = Account.find(params[:id])
+    
     #@account.destroy
-    #respond_to do |format|
-      #format.html { redirect_to accounts_url }
-      #format.json { head :no_content }
-    #end
+    #redirect_to accounts_path
   #end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_account
