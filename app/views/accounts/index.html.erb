@@ -9,8 +9,7 @@
       <th>Account Name</th>
       <th>Report</th>
       <th>Wealth Group</th>
-      <th>Actions</th>
-      <th></th>
+      <th>Action</th>
      </tr>
   </thead>
 
@@ -21,7 +20,6 @@
         <td><%= account.fs.report_class %></td>
         <td><%= account.group.name %></td>
         <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Delete', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -77,6 +77,7 @@ class LedgersController < ApplicationController
   
   def report
     current_group = current_user.group
+    accounts = current_group.accounts
     ledgers = current_group.ledgers
     
     grid = PivotTable::Grid.new do |g|
@@ -86,6 +87,7 @@ class LedgersController < ApplicationController
       g.value_name   = :ammount
     
     end  
+    
     grid.build
     
     @columns = grid.columns[0].data 
@@ -97,6 +99,11 @@ class LedgersController < ApplicationController
     @row1 = grid.rows[0]
     @row1a = grid.rows[0].data
     
+    @row1_table =  grid.rows[0].data[0..@row_count]
+    
+    #@row = grid.rows
+    
+    @row_total = grid.row_totals
     @column_total = grid.column_totals
     @g_total = grid.grand_total
     
