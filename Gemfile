@@ -11,6 +11,8 @@ gem 'pg'
 gem 'haml-rails'
 gem 'pivot_table'
 
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+
 group :development do
   gem 'hpricot'
   gem 'ruby_parser'

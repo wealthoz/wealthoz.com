@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: ee838ffc755e7c205a416870efb4f27400eb2c53
+  specs:
+    jquery-datatables-rails (2.1.10.0.3)
+      jquery-rails
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -27,6 +35,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.2)
     atomic (1.1.15)
+    bcrypt-ruby (3.1.2)
     bcrypt-ruby (3.1.2-x86-mingw32)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -78,6 +87,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
+    pg (0.17.1)
     pg (0.17.1-x86-mingw32)
     pivot_table (0.2.0)
     polyglot (0.3.4)
@@ -162,6 +172,7 @@ DEPENDENCIES
   haml-rails
   hpricot
   jbuilder (~> 1.2)
+  jquery-datatables-rails!
   jquery-rails
   pg
   pivot_table
