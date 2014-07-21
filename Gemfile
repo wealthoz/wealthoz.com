@@ -7,6 +7,7 @@ gem 'rails', '4.0.2'
 
 #Ivan GEMS
 gem 'pg'
+#gem 'sqlite3'
 
 gem 'haml-rails'
 gem 'pivot_table'
@@ -21,6 +22,8 @@ end
 
 group :development do
   gem "rails-erd"
+  gem 'hirb'
+  gem 'quiet_assets'
 end
 
 group :development do
@@ -43,7 +46,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 
 gem 'bootswatch-rails'
 
-gem "google_visualr", "~> 2.1.0" 
+gem "google_visualr", "~> 2.1.0"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -82,7 +85,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-
-
-
