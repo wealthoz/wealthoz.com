@@ -1,23 +1,26 @@
 %table{:class => "table table-striped table-hover "}
-  %tr
-    %th #
-    -@column_count.times do |i|
-      %th=@column_headers[i]
+  %thead
+    %th Accounts
+    - @ledgers_hash.each do |wunit, ledegers|
+      %td
+        = wunit
     %th Total
-        
-  -@row_count.times do |j|
+  %tbody
+    - @accounts.each do |account|
+      %tr
+        %td
+          = account.name
+        - @ledgers_hash.each do |k, v|
+          %td
+            - if v[account.id]
+              = v[account.id].map(&:ammount).inject(0, &:+)
+        %td
+          - if @account_hash[account.id]
+            = @account_hash[account.id].map(&:ammount).inject(0, &:+)
     %tr
-      %td=@row_headers[j]
-      -@column_count.times do |i|
-        %td= @row1a[0].ammount                         
-      %td= @row1.total
-           
-  %tr{:class => "info"}
-    %td Total Wealth
-    -@column_count.times do |i|
-      %td=@column_total[i]
-    %td= @g_total
-
-%p
-  =@row1a[0].ammount
-  =@row1_table 
+      %td Total
+      - @ledgers_hash.each do |k, v|
+        %td
+          = v.values.flatten.map(&:ammount).inject(0, &:+)
+      %td
+        = @account_hash.values.flatten.map(&:ammount).inject(0, &:+)

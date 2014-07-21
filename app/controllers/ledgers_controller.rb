@@ -1,5 +1,5 @@
 class LedgersController < ApplicationController
-  before_action :set_ledger, only: [:show, :edit, :update, :destroy]
+  # before_action :set_ledger, only: [:show, :edit, :update, :destroy]
 
   # GET /ledgers
   # GET /ledgers.json
@@ -16,7 +16,7 @@ class LedgersController < ApplicationController
   def new
    current_group = current_user.group
    @accounts = current_group.accounts
-   
+
    @wunit = {
               Projects: current_group.projects.pluck(:name),
               People: current_group.users.pluck(:name)
@@ -74,39 +74,18 @@ class LedgersController < ApplicationController
     end
   end
 
-  
+
   def report
     current_group = current_user.group
-    accounts = current_group.accounts
-    ledgers = current_group.ledgers
-    
-    grid = PivotTable::Grid.new do |g|
-      g.source_data  = ledgers
-      g.column_name  = :wunit
-      g.row_name     = :account_id
-      g.value_name   = :ammount
-    
-    end  
-    
-    grid.build
-    
-    @columns = grid.columns[0].data 
-    @column_headers = grid.column_headers
-    @column_count = grid.columns.length
-    
-    @row_headers = grid.row_headers
-    @row_count = grid.rows.length
-    @row1 = grid.rows[0]
-    @row1a = grid.rows[0].data
-    
-    @row1_table =  grid.rows[0].data[0..@row_count]
-    
-    #@row = grid.rows
-    
-    @row_total = grid.row_totals
-    @column_total = grid.column_totals
-    @g_total = grid.grand_total
-    
+    @accounts = current_group.accounts
+    @ledgers = current_group.ledgers
+
+    @ledgers_hash = @ledgers.group_by(&:wunit).sort_by {|k,v| k}.reverse.map do |k, v|
+      [k, v.group_by(&:account_id)]
+    end.to_h
+
+    @account_hash = @ledgers.group_by(&:account_id)
+
   end
 
 
