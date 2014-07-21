@@ -1,5 +1,5 @@
 class LedgersController < ApplicationController
-  # before_action :set_ledger, only: [:show, :edit, :update, :destroy]
+  before_action :set_ledger, only: [:show, :edit, :update, :destroy]
 
   # GET /ledgers
   # GET /ledgers.json
@@ -82,7 +82,7 @@ class LedgersController < ApplicationController
 
     @ledgers_hash = @ledgers.group_by(&:wunit).sort_by {|k,v| k}.reverse.map do |k, v|
       [k, v.group_by(&:account_id)]
-    end.to_h
+    end
 
     @account_hash = @ledgers.group_by(&:account_id)
 
