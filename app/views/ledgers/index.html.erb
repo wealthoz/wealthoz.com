@@ -7,7 +7,6 @@
       <th>wunit</th>
       <th>Post date</th>
       <th>Ammount</th>
-      <th>Quantity</th>
       <th></th>
       <th>Actions</th>
       <th>Text</th>
@@ -21,7 +20,6 @@
         <td><%= ledger.wunit %></td>
         <td><%= ledger.post_date %></td>
         <td><%= ledger.ammount %></td>
-        <td><%= ledger.quantity %></td>
         <td><%= link_to 'Edit', edit_ledger_path(ledger) %></td>
         <td><%= link_to 'Delete', ledger, method: :delete, data: { confirm: 'Delete this Transaction?' } %></td>
         <td><%= ledger.text %></td>
