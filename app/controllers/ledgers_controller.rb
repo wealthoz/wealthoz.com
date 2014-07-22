@@ -77,14 +77,27 @@ class LedgersController < ApplicationController
 
   def report
     current_group = current_user.group
-    @accounts = current_group.accounts
+    #Balance Sheet accounts
+    @accounts_bs = current_group.accounts.where('fs_id = 1') + current_group.accounts.where('fs_id = 2') + current_group.accounts.where('fs_id = 5')
+    #Profit and loss accounts
+    @accounts_pl = current_group.accounts.where('fs_id = 3') + current_group.accounts.where('fs_id = 4')
     @ledgers = current_group.ledgers
-
-    @ledgers_hash = @ledgers.group_by(&:wunit).sort_by {|k,v| k}.reverse.map do |k, v|
+    #Balance Sheet Transactions
+    @ledgers_bs = @ledgers.joins(:account).where('fs_id = 1')+@ledgers.joins(:account).where('fs_id = 2')+@ledgers.joins(:account).where('fs_id = 5')
+    #Profit&Loss Transactions
+    @ledgers_pl = @ledgers.joins(:account).where('fs_id = 3')+@ledgers.joins(:account).where('fs_id = 4')
+    
+    
+    @ledgers_hash_bs = @ledgers_bs.group_by(&:wunit).sort_by {|k,v| k}.reverse.map do |k, v|
       [k, v.group_by(&:account_id)]
     end
 
-    @account_hash = @ledgers.group_by(&:account_id)
+    @ledgers_hash_pl = @ledgers_pl.group_by(&:wunit).sort_by {|k,v| k}.reverse.map do |k, v|
+      [k, v.group_by(&:account_id)]
+    end
+
+    @account_hash_bs = @ledgers_bs.group_by(&:account_id)
+    @account_hash_pl = @ledgers_pl.group_by(&:account_id)
 
   end
 
