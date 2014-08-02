@@ -1,9 +1,12 @@
 <section>
 <ul class="nav nav-tabs " style="margin-bottom: 15px;">
+<li>
+%h5=current_user.group.name
+</li>
 <li class="active"><a href="#home" data-toggle="tab">Balance WU</a></li>
 <li><a href="#profile" data-toggle="tab">P&L Monthly</a></li>
 <li><a href="#profile1" data-toggle="tab">P&L WU</a></li>
-<li><a href="#profile2" data-toggle="tab">CAPEX</a></li>
+<li><a href="#profile2" data-toggle="tab">Summary</a></li>
 
 </ul>
 </section>
@@ -11,10 +14,11 @@
 <div id="myTabContent" class="tab-content">
 <div class="tab-pane fade active in" id="home">
 
+=render 'chart_bs'
 %h4 Balance Sheet by Wealth Units
-%table{:class => "table table-striped table-hover "}
+%table{:class => "table table-striped table-hover ", :id => "bs_table"}
   %thead
-    %th{:class => "success"} Accounts
+    %th{:class => "success"} Accounts\Wealth Units
     - @ledgers_hash_bs.each do |wunit, ledegers|
       %td
         = wunit
@@ -27,32 +31,59 @@
         - @ledgers_hash_bs.each do |k, v|
           %td
             - if v[account.id]
-              ="%.2f" % v[account.id].map(&:ammount).inject(0, &:+)
+              =number_with_precision( v[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
         %td
           - if @account_hash_bs[account.id]
-            ="%.2f" % @account_hash_bs[account.id].map(&:ammount).inject(0, &:+)
+            =number_with_precision( @account_hash_bs[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+
     %tr{:class => "success"}
       %td 
         %strong Accumulated Wealth
       - @ledgers_hash_bs.each do |k, v|
         %td
-          ="%.2f" % v.values.flatten.map(&:ammount).inject(0, &:+)
+          =number_with_precision( v.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
       %td
-        ="%.2f" % @account_hash_bs.values.flatten.map(&:ammount).inject(0, &:+)
+        =number_with_precision( @account_hash_bs.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
 
 </div>
 <div class="tab-pane fade" id="profile">
-<div id='chart'></div>
-<h1>C0</h1>
-<div id='chart'></div>
+
+%h4 Profit & Loss Monthly
+%table{:class => "table table-striped table-hover " }
+  %thead
+    %th{:class => "success"} Accounts\Months
+    - @ledgers_hash_pl_m.each do |m, ledegers|
+      %td
+        = m.month
+    %th Total
+  %tbody
+    - @accounts_pl.each do |account|
+      %tr{:class => "info"}
+        %td
+          = account.name
+        - @ledgers_hash_pl_m.each do |k, v|
+          %td
+            - if v[account.id]
+              =number_with_precision(  v[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+        %td
+          - if @account_hash_pl[account.id]
+            =number_with_precision( @account_hash_pl[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+    %tr{:class => "success"}
+      %td 
+        %strong Wealth for the period
+      - @ledgers_hash_pl_m.each do |k, v|
+        %td
+          =number_with_precision(v.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+      %td
+        =number_with_precision(@account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
 
 </div>
 <div class="tab-pane fade" id="profile1">
 
 %h4 Profit & Loss by Wealth Units
-%table{:class => "table table-striped table-hover "}
+%table{:class => "table table-striped table-hover " }
   %thead
-    %th{:class => "success"} #
+    %th{:class => "success"} Accounts\Wealth Units
     - @ledgers_hash_pl.each do |wunit, ledegers|
       %td
         = wunit
@@ -65,19 +96,18 @@
         - @ledgers_hash_pl.each do |k, v|
           %td
             - if v[account.id]
-              ="%.2f" %  v[account.id].map(&:ammount).inject(0, &:+)
+              =number_with_precision(  v[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
         %td
           - if @account_hash_pl[account.id]
-            ="%.2f" %  @account_hash_pl[account.id].map(&:ammount).inject(0, &:+)
+            =number_with_precision( @account_hash_pl[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
     %tr{:class => "success"}
       %td 
         %strong Wealth for the period
       - @ledgers_hash_pl.each do |k, v|
         %td
-          ="%.2f" % v.values.flatten.map(&:ammount).inject(0, &:+)
+          =number_with_precision(v.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
       %td
-        ="%.2f" % @account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+)
-
+        =number_with_precision(@account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
 
 </div>
 <div class="tab-pane fade" id="profile2">

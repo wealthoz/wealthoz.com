@@ -16,7 +16,10 @@ class LedgersController < ApplicationController
   def new
    current_group = current_user.group
    @accounts = current_group.accounts
-
+#  @accounts = {
+#                 Assets: current_group.accounts.where('fs_id = 1').pluck(:name),
+#                 }
+      
    @wunit = {
               Projects: current_group.projects.pluck(:name),
               People: current_group.users.pluck(:name)
@@ -77,27 +80,71 @@ class LedgersController < ApplicationController
 
   def report
     current_group = current_user.group
-    #Balance Sheet accounts
-    @accounts_bs = current_group.accounts.where('fs_id = 1') + current_group.accounts.where('fs_id = 2') + current_group.accounts.where('fs_id = 5')
-    #Profit and loss accounts
-    @accounts_pl = current_group.accounts.where('fs_id = 3') + current_group.accounts.where('fs_id = 4')
+   #Balance Sheet accounts
+    @accounts_bs = current_group.accounts.where('fs_id = 1 OR fs_id = 2 OR fs_id = 5')
+    @accounts_bs_a = current_group.accounts.where('fs_id = 1')
+    @accounts_bs_d = current_group.accounts.where('fs_id = 2')
+    
+   #Profit and loss accounts
+    @accounts_pl = current_group.accounts.where('fs_id = 3 OR fs_id = 4')
+    
     @ledgers = current_group.ledgers
-    #Balance Sheet Transactions
-    @ledgers_bs = @ledgers.joins(:account).where('fs_id = 1')+@ledgers.joins(:account).where('fs_id = 2')+@ledgers.joins(:account).where('fs_id = 5')
-    #Profit&Loss Transactions
-    @ledgers_pl = @ledgers.joins(:account).where('fs_id = 3')+@ledgers.joins(:account).where('fs_id = 4')
+   #Balance Sheet Transactions
+    @ledgers_bs = @ledgers.joins(:account).where('fs_id = 1 OR fs_id = 2 OR fs_id = 5')    
+   #Profit&Loss Transactions
+    @ledgers_pl = @ledgers.joins(:account).where('fs_id = 3 OR fs_id = 4')
     
-    
+   #HAshes
     @ledgers_hash_bs = @ledgers_bs.group_by(&:wunit).sort_by {|k,v| k}.reverse.map do |k, v|
       [k, v.group_by(&:account_id)]
     end
-
+     
     @ledgers_hash_pl = @ledgers_pl.group_by(&:wunit).sort_by {|k,v| k}.reverse.map do |k, v|
       [k, v.group_by(&:account_id)]
     end
-
+    
+    @ledgers_hash_pl_m = @ledgers_pl.group_by{ |m| m.post_date.beginning_of_month}.sort_by {|k,v| k}.map do |k, v|
+      [k, v.group_by(&:account_id)]
+    end  
+   #Accounts
     @account_hash_bs = @ledgers_bs.group_by(&:account_id)
     @account_hash_pl = @ledgers_pl.group_by(&:account_id)
+
+   #Charts
+    #Draw Assets by WU
+    @ledgers_bs_a = @ledgers.joins(:account).where('fs_id = 1')
+    @ledgers_hash_bs_a = @ledgers_bs_a.group_by{ |item| item[:wunit] }    
+    ledger_hash_a_summed = {}
+    @ledgers_bs_a.each do |item|
+    key = item[:wunit]
+    ledger_hash_a_summed[key] = 0 unless ledger_hash_a_summed[key]  
+    ledger_hash_a_summed[key] += item[:ammount]
+    end
+    
+    #Draw Debt by WU
+    @ledgers_bs_d = @ledgers.joins(:account).where('fs_id = 2')
+    @ledgers_hash_bs_d = @ledgers_bs_d.group_by{ |item| item[:wunit] }    
+    ledger_hash_d_summed = {}
+    @ledgers_bs_d.each do |item|
+    key = item[:wunit]
+    ledger_hash_d_summed[key] = 0 unless ledger_hash_d_summed[key]  
+    ledger_hash_d_summed[key] += item[:ammount]
+    end                      
+    
+    graph_names = ledger_hash_a_summed.keys
+    graph_assets =   ledger_hash_a_summed.values.as_json.map { |i| i.to_i } 
+    graph_debt =   ledger_hash_d_summed.values.as_json.map { |i| i.to_i } 
+    
+   @chart_bs = LazyHighCharts::HighChart.new('column') do |f|
+      f.series(:name=>'Assets',:data=> graph_assets )
+      f.series(:name=>'Debt',:data=> graph_debt )     
+      f.title({ :text=>"Balance Sheet by Wealth Units"})
+      f.xAxis(:categories => graph_names)
+
+      ## options for column
+      f.options[:chart][:defaultSeriesType] = "column"
+      f.plot_options({:column=>{:stacking=>"normal"}})
+    end
 
   end
 

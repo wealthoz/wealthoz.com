@@ -11,6 +11,7 @@ gem 'pg'
 
 gem 'haml-rails'
 gem 'pivot_table'
+gem 'lazy_high_charts', '1.3.3' 
 
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 

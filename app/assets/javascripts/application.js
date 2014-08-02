@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
+//= require highcharts
+//= require exporting
 //= require bootstrap
 //= require twitter/bootstrap
 

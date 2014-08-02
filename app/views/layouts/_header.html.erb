@@ -31,7 +31,8 @@
               <ul class="dropdown-menu">
                 <li><%= link_to '<i class="icon-user "></i> Profile'.html_safe, current_user %></li>
                 <li><%= link_to '<i class="icon-cog "></i> User Settings'.html_safe, edit_user_path(current_user) %></li>
-                <li><%= link_to '<i class="icon-star "></i> Group Settings'.html_safe,  manage_groups_path %></li>
+                <li><%= link_to '<i class="icon-star "></i> Group Settings'.html_safe,  new_group_path  %></li>
+                <li><%= link_to '<i class="icon-suitcase "></i> Projects '.html_safe,  new_project_path  %></li>
                 <li><%= link_to '<i class="icon-wrench "></i> Accounts'.html_safe,  accounts_path %></li>
                 <li class="divider"></li>
                 <li>
@@ -44,22 +45,12 @@
                 <i class="icon-play "></i> Post <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Purchases</a></li>
+                <li><a href="#">Budgets</a></li>
                 <li><a href="#">Income</a></li>
                 <li><a href="#">Revaluation</a></li>
                 <li><%= link_to '<i class="icon-pencil "></i> General Accounting'.html_safe, new_ledger_path %></li>
               </ul>	
-              
-              <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="icon-sun"></i> Budget <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Add New</a></li>
-                <li><a href="#">Edit</a></li>
-                <li><a href="#">Goals</a></li>      
-              </ul>	
-              
+                            
 			<li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-signal"></i> Report <b class="caret"></b>               

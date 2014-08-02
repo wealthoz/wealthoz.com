@@ -16,22 +16,12 @@ class GroupsController < ApplicationController
       
   end
     
-  def create
-      @group = Group.new(group_params)
-      if @group.save
-        flash[:success] = "Wealth GROUP created!"
-        redirect_to root_url
-      else
-          render 'groups/new'
-   end
-   
-  end
   
     def create
       @group = Group.new(group_params)
       if @group.save
-        flash[:success] = "Wealth GROUP created!"
-        redirect_to root_url
+        flash[:success] = "A New Wealth GROUP was created!"
+        redirect_to current_user
       else
           render 'groups/new'
       end
