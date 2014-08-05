@@ -22,7 +22,7 @@
               </ul>	    
               </li> 
 
-              <% if signed_in? %>
+      <% if signed_in? %>
               
               <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -39,7 +39,7 @@
                   <%= link_to '<i class="icon-power-off "></i> Sign out'.html_safe, signout_path, method: "delete" %>
                 </li>
               </ul>
-              
+          <% if current_user.group.name != "Pool" %>
            	 <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon-play "></i> Post <b class="caret"></b>
@@ -68,14 +68,14 @@
               </a>
               <ul class="dropdown-menu">
               	<li><%= link_to '<i class="icon-group "></i> Members'.html_safe, users_path %></li>
-                <li><a href="#">Wealth Index</a></li>
-                
+              	<li><%= link_to '<i class="icon-flag "></i> WealthOZ'.html_safe, wealthoz_path %></li>
+                <li><a href="#">Wealth Index</a></li>                
               </ul>	                                             
-  
+  		<%end%>
             </li>
-            <% else %>
+      <% else %>
             <li><%= link_to '<i class="icon-signin "></i> Sign in'.html_safe, signin_path %></li>
-          <% end %>
+      <% end %>
 
 
             </ul>

@@ -131,7 +131,41 @@ class LedgersController < ApplicationController
     ledger_hash_d_summed[key] += item[:ammount]
     end                      
     
+    #Draw Expenses by M
+    @ledgers_expenses = @ledgers.joins(:account).where('fs_id = 4')
+    @ledgers_income = @ledgers.joins(:account).where('fs_id = 3')
+    @hash_expenses_m = @ledgers_expenses.group_by{ |item| item.post_date.beginning_of_month }
+    ledger_hash_expenses_summed = {}
+    @ledgers_expenses.each do |item|
+    key = item.post_date.beginning_of_month
+    ledger_hash_expenses_summed[key] = 0 unless ledger_hash_expenses_summed[key]  
+    ledger_hash_expenses_summed[key] += item[:ammount]
+    end                      
+
+    #Draw Income by M
+    @ledgers_income = @ledgers.joins(:account).where('fs_id = 3')
+    @hash_income_m = @ledgers_income.group_by{ |item| item.post_date.beginning_of_month }
+    ledger_hash_income_summed = {}
+    @ledgers_income.each do |item|
+    key = item.post_date.beginning_of_month
+    ledger_hash_income_summed[key] = 0 unless ledger_hash_income_summed[key]  
+    ledger_hash_income_summed[key] += item[:ammount]
+    end                      
+         
+    #Draw P&L by WU
+    @ledgers_hash_pl_w = @ledgers_pl.group_by{ |item| item[:wunit] }    
+    ledger_hash_plw_summed = {}
+    @ledgers_pl.each do |item|
+    key = item[:wunit]
+    ledger_hash_plw_summed[key] = 0 unless ledger_hash_plw_summed[key]  
+    ledger_hash_plw_summed[key] += item[:ammount]
+    end                      
+           
     graph_names = ledger_hash_a_summed.keys
+    graph_pl = ledger_hash_plw_summed.values.as_json.map { |i| i.to_i }
+    graph_months = ledger_hash_expenses_summed.keys.map { |i| i.strftime("%B") }
+    graph_income = ledger_hash_income_summed.values.as_json.map { |i| i.to_i }
+    graph_expense = ledger_hash_expenses_summed.values.as_json.map { |i| i.to_i }   
     graph_assets =   ledger_hash_a_summed.values.as_json.map { |i| i.to_i } 
     graph_debt =   ledger_hash_d_summed.values.as_json.map { |i| i.to_i } 
     
@@ -140,14 +174,58 @@ class LedgersController < ApplicationController
       f.series(:name=>'Debt',:data=> graph_debt )     
       f.title({ :text=>"Balance Sheet by Wealth Units"})
       f.xAxis(:categories => graph_names)
-
-      ## options for column
-      f.options[:chart][:defaultSeriesType] = "column"
+      f.options[:chart][:defaultSeriesType] = "bar"
+      f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
       f.plot_options({:column=>{:stacking=>"normal"}})
     end
-
+    @chart_pl_m = LazyHighCharts::HighChart.new('column') do |f|
+      f.series(:name=>'Income',:data=> graph_income )
+      f.series(:name=>'Expenses',:data=> graph_expense )     
+      f.title({ :text=>"Profit and Loss by Months"})
+      f.xAxis(:categories => graph_months)
+      f.options[:chart][:defaultSeriesType] = "column"
+      f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
+      f.plot_options({:column=>{:stacking=>"normal"}})
+    end
+   @chart_pl_w = LazyHighCharts::HighChart.new('column') do |f|
+      f.series(:name=>'Profit&Loss',:data=> graph_pl )
+      f.series(:name=>'a',:data=> [100,300,200])   
+      f.series(:name=>'b',:data=> [100,300,200])
+      f.series(:name=>'c',:data=> [100,300,200])
+      f.series(:name=>'D',:data=> [100,300,200])
+      f.series(:name=>'X',:data=> [-1000,-3000,-2000])
+        
+      f.title({ :text=>"Profit and Loss by Wealth Units"})
+      f.xAxis(:categories => graph_names)
+      f.options[:chart][:defaultSeriesType] = "column"
+      f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
+      f.plot_options({:column=>{:stacking=>"normal"}})
+    end
+      
+      data_table = GoogleVisualr::DataTable.new
+      data_table.new_column('string'  , 'Label')
+      data_table.new_column('number'  , 'Value')
+      data_table.add_rows(3)
+      data_table.set_cell(0, 0, 'Leverage*' )
+      data_table.set_cell(0, 1, 0.5)
+      data_table.set_cell(1, 0, 'Margin**')
+      data_table.set_cell(1, 1, 0.1)
+      data_table.set_cell(2, 0, 'ROE***')
+      data_table.set_cell(2, 1, 0.1)
+     
+      opts   = { :width => 700, :height => 400, :redFrom => -1, :redTo => 0, :yellowFrom => 50, :yellowTo => 80, :minorTicks => 5 }
+      @chart_ratio = GoogleVisualr::Interactive::Gauge.new(data_table, opts) 
+  
+  
+      
   end
-
+  
+def wealthoz
+  @wealthoz = Group.find(14)
+  
+  
+end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

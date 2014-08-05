@@ -4,7 +4,7 @@ WealthOZ201::Application.routes.draw do
 
   resources :ledgers
   match '/report',   to: 'ledgers#report',   via: 'get'
-  
+  match '/wealthoz',   to: 'ledgers#wealthoz',   via: 'get'
   resources :fxes
   resources :groups
   
