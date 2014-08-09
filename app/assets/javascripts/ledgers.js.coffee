@@ -4,8 +4,15 @@
 
 jQuery ->
   $('#transactions').dataTable()
+  
+jQuery ->
+  $('#bs_table').dataTable(ordering: false)  
 
+jQuery ->
+  $('#pl_m_table').dataTable(ordering: false)  
 
+jQuery ->
+  $('#pl_w_table').dataTable(ordering: false)  
 
 ready = ->
 

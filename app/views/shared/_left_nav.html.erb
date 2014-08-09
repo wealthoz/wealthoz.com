@@ -1,0 +1,119 @@
+	    <div id="sidebar" class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">            	
+              <li class="nav-header">navigation</li>
+        		  <br />
+        		  <div class="btn-group-vertical ">
+					  <div class="btn-group">
+					    <button type="button" class="btn btn-success dropdown-toggle " data-toggle="dropdown">
+					      10 steps to Wealth
+					      <span class="caret"></span>
+					    </button>
+					    <ul class="dropdown-menu">
+					    	<% if signed_in? %>
+					    	<li><p class="text-success"><i class="icon-check"></i>You are Logged as:
+					    		<small><%= render 'shared/user_info' %></small></p></li>
+					    	<% else %>
+							 <li><p class="text-warning"><i class="icon-frown"></i>Register and Login to WealthOZ</p></li>
+							 <% end %>
+							
+							 <li><p class="text-warning">Setup a Wealth Group of yours</p></li>
+							
+							 <li><p class="text-warning">Add your Projects</p></li>
+							 <li><p class="text-warning">Cut-off your Group Wealth</p></li>
+							 <li><p class="text-warning">Start entering your Group-transactions</p></li>
+							 <li><p class="text-warning">Budget the future</p></li>
+							 <li><p class="text-warning">Start seeing everything</p></li>
+							 <li><p class="text-warning">Communicate and Manage your Wealth</p></li>
+							 <li><p class="text-warning">Explore Opportunities</p></li>					   
+					 </ul>
+					  </div>
+				</div>
+     			  <br />
+     			  <section>
+			       	 <ul>
+
+					</ul> 
+			    	</section>
+               	<nav>
+						  <ul class="nav nav-pills nav-stacked span13">
+		                <li><%= link_to '<i class="icon-bullhorn "></i> FuturePost'.html_safe, root_path %></li>
+		                
+		                <li id="fat-menu" class="dropdown">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                <i class="icon-book "></i> Approach <b class="caret"></b>
+		              </a>
+		              <ul class="dropdown-menu">
+		          		<li><%= link_to "Why",    why_path %></li>
+		         		<li><%= link_to "How",    how_path %></li>
+		                <li><a href="#">Blog</a></li>   
+		              </ul>	    
+		              </li> 
+		
+		      <% if signed_in? %>
+		              
+		              <li id="fat-menu" class="dropdown">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                <i class="icon-cogs "></i> Settings <b class="caret"></b>
+		              </a>
+		              <ul class="dropdown-menu">
+		                <li><%= link_to '<i class="icon-user "></i> Profile'.html_safe, current_user %></li>
+		                <li><%= link_to '<i class="icon-cog "></i> User Settings'.html_safe, edit_user_path(current_user) %></li>
+		                <li><%= link_to '<i class="icon-star "></i> Group Settings'.html_safe,  new_group_path  %></li>
+		                <li><%= link_to '<i class="icon-suitcase "></i> Projects '.html_safe,  new_project_path  %></li>
+		                <li><%= link_to '<i class="icon-wrench "></i> Accounts'.html_safe,  accounts_path %></li>
+		                <li class="divider"></li>
+		                <li>
+		                  <%= link_to '<i class="icon-power-off "></i> Sign out'.html_safe, signout_path, method: "delete" %>
+		                </li>
+		              </ul>
+		          <% if current_user.group.name != "Pool" %>
+		           	 <li id="fat-menu" class="dropdown">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                <i class="icon-play "></i> Post <b class="caret"></b>
+		              </a>
+		              <ul class="dropdown-menu">
+		                <li><a href="#">Budgets</a></li>
+		                <li><a href="#">Income</a></li>
+		                <li><a href="#">Revaluation</a></li>
+		                <li><%= link_to '<i class="icon-pencil "></i> General Accounting'.html_safe, new_ledger_path %></li>
+		              </ul>	
+		                            
+					<li id="fat-menu" class="dropdown">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                <i class="icon-signal"></i> Report <b class="caret"></b>               
+		              </a>
+		              <ul class="dropdown-menu">
+		                <li><%= link_to '<i class="icon-rotate-left "></i> Past Reports'.html_safe, report_path %></li>  
+		                <li><%= link_to "Future Reports",    demo2_path %></li>
+		                <li><a href="#">Ratios</a></li>    
+		                <li><%= link_to '<i class="icon-list-alt "></i> Chronology'.html_safe, ledgers_path %></li>      
+		              </ul>	                                    
+		              
+		 			<li id="fat-menu" class="dropdown">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		               <i class="icon-globe "></i>  Altogether <b class="caret"></b>               
+		              </a>
+		              <ul class="dropdown-menu">
+		              	<li><%= link_to '<i class="icon-group "></i> Members'.html_safe, users_path %></li>
+		              	<li><%= link_to '<i class="icon-flag "></i> WealthOZ'.html_safe, wealthoz_path %></li>
+		                <li><a href="#">Wealth Index</a></li>                
+		              </ul>	                                             
+		  		<%end%>
+		            </li>
+		      <% else %>
+		            <li><%= link_to '<i class="icon-signin "></i> Sign in'.html_safe, signin_path %></li>
+      <% end %>
+
+
+				  </ul>
+				</nav>
+ 				<div id ="metrics">
+ 					<%= render 'ledgers/nav_stat'%>
+ 				</div>
+                                      
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->

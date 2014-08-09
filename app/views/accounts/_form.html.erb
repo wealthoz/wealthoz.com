@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name,"New account name" %><br>
+    <%= f.label :name,"New Account Name" %><br>
     <%= f.text_field :name %>
     
-    <%= f.label :fs_id, "Account Category" %>
-    <%= f.collection_select(:fs_id, Fs.all, :id, :report_class ) %>
+    <%= f.label :fs_id,"Report Class" %><br>
+    <%= f.collection_select(:fs_id, Fs.all, :id, :report_class ) %>    
 
   </div>
  <div class="actions">
-    <%= f.submit "Save", class: "btn btn-large btn-success" %>
+    <%= f.submit "Save", class: "btn btn-large btn-primary" %>
   </div>
 <% end %>

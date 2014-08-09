@@ -5,8 +5,6 @@ class AccountsController < ApplicationController
   # GET /accounts.json
   def index
     current_group = current_user.group
-    
-    #@accounts = Account.joins(:group,:fs).where('group_id = ? OR "default" = ?', current_group.id, true,)
     @accounts = current_group.accounts.joins(:fs)
         
     respond_to do |format|
@@ -28,8 +26,11 @@ class AccountsController < ApplicationController
   end
 
   # GET /accounts/1/edit
-  def list
-    
+  def edit
+    @account = Account.find(params[:id])
+    current_group = current_user.group
+    @accounts = current_group.accounts
+  
   end
 
   # POST /accounts
@@ -53,6 +54,7 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1
   # PATCH/PUT /accounts/1.json
   def update
+    @account = Account.find(params[:id])
     respond_to do |format|
       if @account.update(account_params)
         format.html { redirect_to @account, notice: 'Account was successfully updated.' }

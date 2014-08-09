@@ -4,9 +4,9 @@
   <thead>
       <tr>
       <th>Account</th>
-      <th>wunit</th>
+      <th>Wealth Unit</th>
       <th>Post date</th>
-      <th>Ammount</th>
+      <th>Amount</th>
       <th></th>
       <th>Actions</th>
       <th>Text</th>
@@ -18,7 +18,7 @@
       <tr class="info">
         <td><%= ledger.account.name %></td>
         <td><%= ledger.wunit %></td>
-        <td><%= ledger.post_date %></td>
+        <td><%= ledger.post_date.strftime("%d-%b-%Y") %></td>
         <td><%= ledger.ammount %></td>
         <td><%= link_to 'Edit', edit_ledger_path(ledger) %></td>
         <td><%= link_to 'Delete', ledger, method: :delete, data: { confirm: 'Delete this Transaction?' } %></td>
