@@ -40,6 +40,11 @@ class ProjectsController < ApplicationController
       redirect_to root_url if @project.nil?
   end
   
+  def left_nav
+    current_group = current_user.group
+    @abv = "proba"
+  end
+  
 
   private
 
