@@ -33,9 +33,9 @@ class StaticPagesController < ApplicationController
    
   end        
   
-  def demo1
+  def donate
 
- end
+  end
   
   def demo2
   end

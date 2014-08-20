@@ -67,20 +67,30 @@ p {
 
 #logo {
   float: left;
-  margin-right: 10px;
   font-style:italic;  
   font-size: 1.7em;
-  color: #fff;
-  ext-decoration: none;
-  letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
    &:hover {
-  color: $green ;
   text-decoration: none;
   background-color: none;
 }}
+
+#move2 {
+   float: left;
+  font-style:italic;  
+  font-size: 1em;
+  padding-top: 4px;
+  margin-left :10px;
+ 
+  line-height: 1;
+   &:hover {
+  text-decoration: none;
+  background-color: none;
+
+}}
+
 
 /* sidebar */
 

@@ -1,0 +1,57 @@
+	<div id="sidebar" class="container-fluid">
+     <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list" >            	
+              <li class="nav-header" ">"10 steps to Wealth"</li>
+        		  <br />
+        		  <br />
+        		  <ol class="text-primary">
+	        		  <li>
+							<%= link_to '<i class="icon"></i> Sign up'.html_safe, signup_path %>        		  	 
+	        		  		or 
+	        		  		<%= link_to '<i class="icon-signin "></i> Log in'.html_safe, signin_path %>
+	        		  </li><br />
+	        		  <li>
+	        		  		Create a 
+	        		  		<%= link_to '<i class="icon-bullhorn "></i> FuturePost'.html_safe, root_path %>
+	        		  </li><br />
+	        		  <li>
+	        		  		Follow other 
+	        		  		<%= link_to '<i class="icon-group "></i> Members'.html_safe, users_path %>
+	        		  </li><br />
+	        		  <li>
+	        		  		Create your own 
+	        		  		<%= link_to '<i class="icon-star "></i>Wealth Group'.html_safe,  new_group_path  %>
+	        		  		and 
+	        		  		<%= link_to '<i class="icon-cog "></i>link to it'.html_safe, edit_user_path(current_user) %>
+	        		  </li><br />
+	        		  <li>
+	        		  		Add your 
+	        		  		<%= link_to '<i class="icon-suitcase "></i> Projects '.html_safe,  new_project_path  %>
+	        		  </li><br />
+	        		  <li>
+		        		  	Create 
+		        		  	<%= link_to '<i class="icon-wrench "></i> Accounts'.html_safe,  accounts_path %> 
+		        		  	(min 15)
+	        		  </li><br />
+	        		  <li>
+	        		  		Book your 
+	        		  		<%= link_to '<i class="icon-pencil "></i>Transactions'.html_safe, new_ledger_path %>
+	        		  		and 
+	        		  		Budgets
+	        		  </li><br />
+	        		  <li>
+		        		  	See 
+		        		  	<%= link_to '<i class="icon-rotate-left "></i> Past'.html_safe, report_path %>
+		        		  	and 
+		        		  	Future 
+		        		  	Reports
+	        		  </li><br />
+	        		  <li>Analyze and explore opportunities</li><br />
+	        		  <li><%= link_to '<i class="icon-gift "></i> Support Us'.html_safe, donate_path %></li><br />
+        		  </ol>
+                                     
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->

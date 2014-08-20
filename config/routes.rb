@@ -33,7 +33,7 @@ WealthOZ201::Application.routes.draw do
   match '/how',   to: 'static_pages#how',   via: 'get'
   match '/manage_groups',   to: 'static_pages#manage_groups',   via: 'get'
   
-  match '/demo1',   to: 'static_pages#demo1',   via: 'get'
+  match '/donate',   to: 'static_pages#donate',   via: 'get'
   
   match '/demo2',   to: 'static_pages#demo2',   via: 'get'
   match '/demo3',   to: 'static_pages#demo3',   via: 'get'

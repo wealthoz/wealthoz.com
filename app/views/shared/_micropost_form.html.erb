@@ -5,11 +5,21 @@
     <%= f.text_field :topic, placeholder: "A Future Topic..."%>
    </div>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose something about the Future..." %>
+    <%= f.text_area :content, placeholder: "Compose something about the Future... Try to predict something or surprize someone!" %>
   </div>
-     <p>Future date</p>
-  <div class="field"> 	
-      <%= f.date_select :post_date, default: 7.days.from_now %>
-  </div>
+     
+	<div class="field" >
+	    <%= f.text_field :post_date, 'data-behaviour' => 'datepicker', placeholder: "Future Post Date"%>
+	</div>
+	
+	<script type="text/javascript">
+	  $('[data-behaviour~=datepicker]').datepicker({
+	  	 	weekStart: 1,
+			autoclose: true,
+			todayHighlight: true   
+	  });
+	</script>
+  
   <%= f.submit "Post", class: "btn btn-large btn-success" %>
 <% end %>
+
