@@ -50,7 +50,8 @@
                 <li><a href="#">Budgets</a></li>
                 <li><a href="#">Income</a></li>
                 <li><a href="#">Revaluation</a></li>
-                <li><%= link_to '<i class="icon-pencil "></i> General Accounting'.html_safe, new_ledger_path %></li>
+                <li><%= link_to '<i class="icon-pencil "></i> Transaction'.html_safe, new_ledger_path %></li>
+                <li><%= link_to '<i class="icon-pencil "></i> Budget'.html_safe, new_budget_path %></li>
               </ul>	
                             
 			<li id="fat-menu" class="dropdown">
@@ -61,7 +62,8 @@
                 <li><%= link_to '<i class="icon-rotate-left "></i> Past Reports'.html_safe, report_path %></li>  
                 <li><%= link_to "Future Reports",    demo2_path %></li>
                 <li><a href="#">Ratios</a></li>    
-                <li><%= link_to '<i class="icon-list-alt "></i> Chronology'.html_safe, ledgers_path %></li>      
+                <li><%= link_to '<i class="icon-list-alt "></i> Transactions'.html_safe, ledgers_path %></li>
+                <li><%= link_to '<i class="icon-list-alt "></i> Budgets'.html_safe, budgets_path %></li>       
               </ul>	                                    
               
  			<li id="fat-menu" class="dropdown">
@@ -71,7 +73,7 @@
               <ul class="dropdown-menu">
               	<li><%= link_to '<i class="icon-group "></i> Members'.html_safe, users_path %></li>
               	<li><%= link_to '<i class="icon-flag "></i> WealthOZ'.html_safe, wealthoz_path %></li>
-                <li><a href="#">Wealth Index</a></li>
+                <li><%= link_to '<i class="icon "></i> Wealth Index'.html_safe, wealth_index_path %></li>
                 <li><%= link_to '<i class="icon-gift "></i> Support Us'.html_safe, donate_path %></li>                
               </ul>	                                             
   		<%end%>

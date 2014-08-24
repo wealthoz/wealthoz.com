@@ -1,12 +1,14 @@
-	<div id="sidebar" class="container-fluid">
+	<div id="sidebar" class="container-fluid" >
      <div class="row-fluid">
         <div class="span3">
-          <div class="well sidebar-nav">
+          <div class="well sidebar-nav" >
             <ul class="nav nav-list" >            	
               <li class="nav-header" ">"10 steps to Wealth"</li>
         		  <br />
         		  <br />
-        		  <ol class="text-primary">
+        		  <ol class="text-primary" >
+    
+        		  	<% if signed_in? %>        		  	
 	        		  <li>
 							<%= link_to '<i class="icon"></i> Sign up'.html_safe, signup_path %>        		  	 
 	        		  		or 
@@ -50,8 +52,28 @@
 	        		  </li><br />
 	        		  <li>Analyze and explore opportunities</li><br />
 	        		  <li><%= link_to '<i class="icon-gift "></i> Support Us'.html_safe, donate_path %></li><br />
+	        		  <% else %>
+	        		  <div class="alert alert-dismissable alert-success">
+						  <button class="close" type="button" data-dismiss="alert">×</button>
+						  <p>You have to Sign in to the system in order to see all "10 STEPS"</p>
+					</div>
+	        		  
+	        		<% end %>
         		  </ol>
                                      
             </ul>
+            
+ 			<div class="well">
+			  <h4>Wealth Formula:</h4>
+			  <p class="text-success">+Assets </p>
+			  <p class="text-warning">-Debt </p>
+			  <p>=</p>
+			  <p class="text-success">+Income </p>
+			  <p class="text-warning">-Expenses </p>
+			  <p>=</p>
+			  <h5>Wealth</h5>
+			  
+			</div>
+			              
           </div><!--/.well -->
         </div><!--/span-->

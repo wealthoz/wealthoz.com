@@ -1,8 +1,6 @@
 class LedgersController < ApplicationController
   before_action :set_ledger, only: [:show, :edit, :update, :destroy]
 
-  # GET /ledgers
-  # GET /ledgers.json
   def index
     current_group = current_user.group
     #All Group transaction
@@ -55,8 +53,6 @@ class LedgersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /ledgers/1
-  # PATCH/PUT /ledgers/1.json
   def update
     respond_to do |format|
       if @ledger.update(ledger_params)
@@ -228,7 +224,7 @@ class LedgersController < ApplicationController
       f.yAxis(:title => {:text => "All amounts in " + @fx})
       f.options[:chart][:defaultSeriesType] = "bar"
       f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
-      f.plot_options(:bar=>{:stacking=>"normal",:dataLabels => {:enabled => "true",:color=>"grey",}})
+      f.plot_options(:bar=>{:stacking=>"normal",:dataLabels => {:enabled => "true",:color=>"black",}})
     end
     @chart_index = LazyHighCharts::HighChart.new('line') do |f|
       f.chart(:width => 800)
@@ -289,6 +285,10 @@ def wealthoz
     @account_hash_bs = @ledgers_bs.group_by(&:account_id)
     @account_hash_pl = @ledgers_pl.group_by(&:account_id)  
   
+end
+
+def wealth_index
+     
 end
   
 

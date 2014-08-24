@@ -21,6 +21,17 @@ m_Account [label = <<table border="0" align="center" cellspacing="0.5" cellpaddi
   <tr><td align="left" width="130" port="user_id">user_id <font face="Arial Italic" color="grey60">integer</font></td></tr>
 </table>
 >];
+m_Budget [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Budget</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="ammount">ammount <font face="Arial Italic" color="grey60">decimal ∗</font></td></tr>
+  <tr><td align="left" width="130" port="budget_date">budget_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="text">text <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="wunit">wunit <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+</table>
+>];
 m_Fs [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Fs</font></td></tr>
 </table>
@@ -99,6 +110,9 @@ m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding=
   m_Group -> m_Account [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Fs -> m_Account [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Account -> m_Ledger [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Account -> m_Budget [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Group -> m_Budget [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Group -> m_Fs [arrowhead = "none", arrowtail = "none", weight = "2"];
   m_Fx -> m_Group [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Group -> m_User [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Group -> m_Project [arrowhead = "normal", arrowtail = "none", weight = "2"];

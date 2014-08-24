@@ -1,0 +1,7 @@
+%td= "!?"
+%td= select_tag "budget[][account_id]", options_from_collection_for_select(@accounts, "id", "name"), prompt: 'Select Account'
+%td= select_tag "budget[][wunit]", grouped_options_for_select(@wunit), prompt: 'Select W.Unit'
+%td= date_field_tag"budget[][budget_date]", Date.today 
+%td= text_field_tag "budget[][ammount]"
+%td= text_field_tag "budget[][text]"
+%td= link_to 'Delete', '#', class: 'delete-link btn-danger'

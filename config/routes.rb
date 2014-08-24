@@ -1,10 +1,11 @@
 WealthOZ201::Application.routes.draw do
  
-  resources :transactions
+  resources :budgets
 
   resources :ledgers
   match '/report',   to: 'ledgers#report',   via: 'get'
   match '/wealthoz',   to: 'ledgers#wealthoz',   via: 'get'
+  match '/wealth_index',   to: 'ledgers#wealth_index',   via: 'get'
   resources :fxes
   resources :groups
   

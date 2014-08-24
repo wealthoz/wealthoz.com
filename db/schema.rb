@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713124556) do
+ActiveRecord::Schema.define(version: 20140820081009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 20140713124556) do
 
   add_index "accounts", ["default"], name: "index_accounts_on_default", using: :btree
   add_index "accounts", ["name"], name: "index_accounts_on_name", using: :btree
+
+  create_table "budgets", force: true do |t|
+    t.integer  "account_id"
+    t.integer  "group_id"
+    t.date     "budget_date"
+    t.decimal  "ammount"
+    t.string   "text"
+    t.string   "wunit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "budgets", ["account_id", "wunit", "budget_date"], name: "index_budgets_on_account_id_and_wunit_and_budget_date", using: :btree
 
   create_table "fs", force: true do |t|
     t.string   "report"

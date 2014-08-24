@@ -3,6 +3,7 @@ class Account < ActiveRecord::Base
   belongs_to :group
   belongs_to :fs
   has_many :ledgers
+  has_many :budgets
   validates :name, presence: true, 
                    length: { maximum: 25 }
  

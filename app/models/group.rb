@@ -5,7 +5,7 @@ class Group < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   has_many :accounts
   has_many :ledgers
-  
+  has_many :budgets
   
   validates :name, presence: true, 
                    length: { maximum: 25 }, 

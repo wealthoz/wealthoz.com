@@ -18,7 +18,7 @@
       <tr class="info">
         <td><%= ledger.account.name %></td>
         <td><%= ledger.wunit %></td>
-        <td><%= ledger.post_date.strftime("%d-%b-%Y") %></td>
+        <td><%= ledger.post_date %></td>
         <td><%= ledger.ammount %></td>
         <td><%= link_to 'Edit', edit_ledger_path(ledger) %></td>
         <td><%= link_to 'Delete', ledger, method: :delete, data: { confirm: 'Delete this Transaction?' } %></td>
