@@ -1,7 +1,7 @@
 class BudgetsController < ApplicationController
   #before_action :set_budget, only: [:show, :edit, :update, :destroy]
 
- 
+
   def index
     current_group = current_user.group
     @budgets = current_group.budgets
@@ -17,7 +17,7 @@ class BudgetsController < ApplicationController
 #  @accounts = {
 #                 Assets: current_group.accounts.where('fs_id = 1').pluck(:name),
 #                 }
-      
+
    @wunit = {
               Projects: current_group.projects.pluck(:name),
               People: current_group.users.pluck(:name)
@@ -25,7 +25,7 @@ class BudgetsController < ApplicationController
    @budget = Budget.new
   end
 
-  
+
   def edit
     current_group = current_user.group
     @accounts = current_group.accounts
@@ -35,19 +35,17 @@ class BudgetsController < ApplicationController
   def create
     current_group = current_user.group
 
-    params[:budget].each do |attr|
-      current_group.budgets.create(attr)
+    current_group.budgets.create(budget_params[:budgets])
+
+    respond_to do |format|
+      format.html { redirect_to budgets_path, notice: 'Budget was successfully created.' }
+      format.json { render action: 'index', status: :created, location: @budget }
+      format.js
     end
 
-  respond_to do |format|
-     
-        format.html { redirect_to budgets_path, notice: 'Budget was successfully created.' }
-        format.json { render action: 'index', status: :created, location: @budget }
-        format.js
-    end
    end
 
- 
+
   def update
     respond_to do |format|
       if @budget.update(budget_params)
@@ -71,13 +69,13 @@ class BudgetsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+    def budget_params
+      params.permit(budgets: [:account_id, :group_id, :budget_date, :ammount, :text, :wunit])
+    end
+
     def set_budget
       @budget = Budget.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def budget_params
-      params.require(:budget).permit(:account_id, :group_id, :budget_date, :ammount, :text, :wunit)
-    end
 end
