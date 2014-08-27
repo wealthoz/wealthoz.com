@@ -1,5 +1,5 @@
 WealthOZ201::Application.routes.draw do
- 
+
   resources :budgets
 
   resources :ledgers
@@ -7,40 +7,42 @@ WealthOZ201::Application.routes.draw do
   match '/wealthoz',   to: 'ledgers#wealthoz',   via: 'get'
   match '/wealth_index',   to: 'ledgers#wealth_index',   via: 'get'
   resources :fxes
-  resources :groups
-  
-   
+  resource :group
+
+
   #resources :users
   resources :users do
     member do
       get :following, :followers
     end
+
   end
-  
+  resource :group_user
+
   resources :relationships, only: [:create, :destroy]
-  
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :projects
   resources :accounts
-  
+
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
-  
+
   match '/signup',  to: 'users#new',            via: 'get'
   match '/why',    to: 'static_pages#why',    via: 'get'
   match '/how',   to: 'static_pages#how',   via: 'get'
   match '/manage_groups',   to: 'static_pages#manage_groups',   via: 'get'
-  
+
   match '/donate',   to: 'static_pages#donate',   via: 'get'
-  
+
   match '/demo2',   to: 'static_pages#demo2',   via: 'get'
   match '/demo3',   to: 'static_pages#demo3',   via: 'get'
   match '/demo4',   to: 'static_pages#demo4',   via: 'get'
   match '/demo5',   to: 'static_pages#demo5',   via: 'get'
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

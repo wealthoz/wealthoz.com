@@ -1,0 +1,5 @@
+= form_for(@group_user, url: group_user_path) do |f|
+  = f.label :group_id, "Change Your Wealth Group"
+  = f.collection_select(:group_id, Group.all, :id, :name )
+
+  = f.submit 'Change', class: 'btn btn-primary'
