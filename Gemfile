@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.5'
 
 # Use sqlite3 as the database for Active Record
 
@@ -11,26 +11,23 @@ gem 'pg'
 
 gem 'haml-rails'
 #gem 'pivot_table'
-gem 'lazy_high_charts', '1.3.3' 
+gem 'lazy_high_charts', '1.5.4'
 
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
 group :development do
   gem 'hpricot'
   gem 'ruby_parser'
-end
 
-
-group :development do
   gem "rails-erd"
   gem 'hirb'
   gem 'quiet_assets'
-end
 
-group :development do
   gem "better_errors"
+  gem 'jazz_hands'
 end
 
+gem 'highline'
 gem "binding_of_caller"
 
 #gem "libv8", git: "git://github.com/cowboyd/libv8.git", submodules: true
