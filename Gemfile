@@ -23,8 +23,10 @@ group :development do
   gem 'hirb'
   gem 'quiet_assets'
 
-  gem "better_errors"
-  gem 'jazz_hands'
+  # gem "better_errors"
+  # gem 'jazz_hands'
+  gem 'pry'
+  gem 'hirb'
 end
 
 gem 'highline'
