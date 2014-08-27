@@ -13,10 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
-//= require highcharts
-//= require exporting
-//= require bootstrap
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/highstock
 //= require twitter/bootstrap
+//= require bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-tooltip
 //= require bootstrap-popover
