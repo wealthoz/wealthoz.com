@@ -19,7 +19,7 @@ class GroupUsersController < ApplicationController
   end
 
   def group_user_attrs
-    %i( group_id )
+    [ :group_id ]
   end
 
 end
