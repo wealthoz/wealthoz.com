@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  
+
   def home
     if signed_in?
       @micropost  = current_user.microposts.build
@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
 
   def why
   end
-   
+
 
   def how
       data_table = GoogleVisualr::DataTable.new
@@ -22,33 +22,33 @@ class StaticPagesController < ApplicationController
       data_table.set_cell(1, 1, 55)
       data_table.set_cell(2, 0, 'Savings')
       data_table.set_cell(2, 1, 68)
-     
+
       opts   = { :width => 800, :height => 240, :redFrom => 80, :redTo => 100, :yellowFrom => 50, :yellowTo => 80, :minorTicks => 5 }
       @chart = GoogleVisualr::Interactive::Gauge.new(data_table, opts)
-        
-        
+
+
   end
-  
+
   def manage_groups
-   
-  end        
-  
+
+  end
+
   def donate
 
   end
-  
+
   def demo2
   end
-  
+
   def demo3
-    
+
   end
 
   def demo4
-    
+
   end
 
   def demo5
-    
-  end 
+
+  end
 end
