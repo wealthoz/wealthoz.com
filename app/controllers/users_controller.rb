@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.group = Group.where(name: 'Pool').first
     if @user.save
       flash[:success] = "Welcome to Wealth OZ!"
       redirect_to @user
