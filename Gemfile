@@ -7,7 +7,7 @@ gem 'rails', '4.1.5'
 
 #Ivan GEMS
 gem 'pg'
-#gem 'sqlite3'
+# gem 'sqlite3'
 
 gem 'haml-rails'
 #gem 'pivot_table'
@@ -47,7 +47,7 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'bootswatch-rails'
 
-gem "google_visualr", "~> 2.1.0"
+gem "google_visualr"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
