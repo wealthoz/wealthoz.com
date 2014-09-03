@@ -2,7 +2,15 @@ WealthOZ201::Application.routes.draw do
 
   resources :budgets
 
-  resources :ledgers
+  resources :ledgers do
+    collection do
+      get :report_balance
+      get :report_plm
+      get :report_plwu
+      get :report_kpi
+
+    end
+  end
   match '/report',   to: 'ledgers#report',   via: 'get'
   match '/wealthoz',   to: 'ledgers#wealthoz',   via: 'get'
   match '/wealth_index',   to: 'ledgers#wealth_index',   via: 'get'
