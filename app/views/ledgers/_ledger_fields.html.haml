@@ -1,7 +1,7 @@
 %td= "!?"
-%td= select_tag "ledger[][account_id]", options_from_collection_for_select(@accounts, "id", "name"), prompt: 'Select Account'
-%td= select_tag "ledger[][wunit]", grouped_options_for_select(@wunit), prompt: 'Select W.Unit'
-%td= date_field_tag"ledger[][post_date]", Date.today 
-%td= text_field_tag "ledger[][ammount]"
-%td= text_field_tag "ledger[][text]"
+%td= select_tag "ledgers[][account_id]", options_from_collection_for_select(@accounts, "id", "name"), prompt: 'Select Account'
+%td= select_tag "ledgers[][wunit]", grouped_options_for_select(@wunit), prompt: 'Select W.Unit'
+%td= date_field_tag"ledgers[][post_date]", Date.today 
+%td= text_field_tag "ledgers[][ammount]"
+%td= text_field_tag "ledgers[][text]"
 %td= link_to 'Delete', '#', class: 'delete-link btn-danger'
