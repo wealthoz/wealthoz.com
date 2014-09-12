@@ -21,4 +21,6 @@
 //= require bootstrap-datepicker
 //= require bootstrap-tooltip
 //= require bootstrap-popover
+//= require bootstrapValidator.min
+//= require validator
 //= require_tree .
