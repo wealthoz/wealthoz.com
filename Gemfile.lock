@@ -44,6 +44,9 @@ GEM
       railties (>= 3.0)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
+    bootstrap-validator-rails (0.5.1)
+      jquery-rails (>= 3.0)
+      railties (>= 3.0)
     bootstrap-will_paginate (0.0.9)
       will_paginate
     bootswatch-rails (3.2.3)
@@ -189,6 +192,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-datepicker-rails
   bootstrap-sass (= 2.3.2.0)
+  bootstrap-validator-rails
   bootstrap-will_paginate (= 0.0.9)
   bootswatch-rails
   coffee-rails (~> 4.0.0)
