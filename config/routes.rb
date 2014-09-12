@@ -32,7 +32,11 @@ WealthOZ201::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :projects
-  resources :accounts
+  resources :accounts do
+    collection do
+      get :check
+    end
+  end
 
   root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
