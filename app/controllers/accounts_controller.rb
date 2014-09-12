@@ -1,4 +1,7 @@
 class AccountsController < ApplicationController
+
+  respond_to :json, :html
+
   before_action :set_account, only: [:show, :update,]
 
   # GET /accounts
@@ -6,7 +9,7 @@ class AccountsController < ApplicationController
   def index
     current_group = current_user.group
     @accounts = current_group.accounts.joins(:fs)
-        
+
     respond_to do |format|
       format.html
       format.csv { send_data @accounts.to_csv }
@@ -30,14 +33,14 @@ class AccountsController < ApplicationController
     @account = Account.find(params[:id])
     current_group = current_user.group
     @accounts = current_group.accounts
-  
+
   end
 
   # POST /accounts
   # POST /accounts.json
   def create
     current_group = current_user.group
-    
+
     @account = current_group.accounts.build(account_params)
 
     respond_to do |format|
@@ -49,6 +52,16 @@ class AccountsController < ApplicationController
         format.json { render json: @account.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def check
+    # @account = Account.find(params[:id])
+    # @fs = @account.fs
+    # @fs_account_ids = Account.where(fs_id: @fs.id).pluck(:id)
+    @grouped_accounts = Hash[Account.all.group_by(&:fs_id).map {|k, v| [k, v.map(&:id)]}]
+    @fss = Hash[Fs.all.map {|ob| [ob.id, ob.report_class ]}]
+
+    render json: { grouped_accounts: @grouped_accounts, fss: @fss }.as_json
   end
 
   # PATCH/PUT /accounts/1
@@ -70,11 +83,11 @@ class AccountsController < ApplicationController
   # DELETE /accounts/1.json
   #def destroy
     #@account = Account.find(params[:id])
-    
+
     #@account.destroy
     #redirect_to accounts_path
   #end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_account

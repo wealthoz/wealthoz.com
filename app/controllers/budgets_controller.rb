@@ -3,15 +3,15 @@ class BudgetsController < ApplicationController
 
 
   def index
-    
+
     current_group = current_user.group
     @budgets = current_group.budgets
     @ledgers = current_group.ledgers
     @entries = @budgets + @ledgers
     @accounts_bs = current_group.accounts.where('fs_id = 1 OR fs_id = 2 OR fs_id = 5')
-    
-    
-    
+
+
+
   end
 
   def show
@@ -20,10 +20,10 @@ class BudgetsController < ApplicationController
 
   def new
     current_group = current_user.group
-   @accounts = current_group.accounts
-#  @accounts = {
-#                 Assets: current_group.accounts.where('fs_id = 1').pluck(:name),
-#                 }
+   @accounts = current_group.accounts.group_by(&:fs).map do |k,v|
+     [k.report_class, v.map {|el|  [el.name, el.id] }]
+   end
+
 
    @wunit = {
               Projects: current_group.projects.pluck(:name),
