@@ -1,28 +1,24 @@
 %h4=current_user.group.name+"'s Budgeted Transactions"
 
-%table{:class => "table table-striped table-hover "}
+%table{:class => "table table-striped table-hover ",:id => "budgets"}
   %thead
     %tr
       %th Account
-      %th Group
+      %th Wealth Unit
       %th Budget date
-      %th Ammount
+      %th Amount
       %th Text
-      %th Wunit
-      %th
       %th
       %th
 
   - @budgets.each do |budget|
     %tbody
-      %tr
-        %td= budget.account.name 
-        %td= budget.group_id
+      %tr.active
+        %td= budget.account.name
+        %td= budget.wunit 
         %td= budget.budget_date
         %td= budget.ammount
         %td= budget.text
-        %td= budget.wunit
-        %td= link_to 'Show', budget
         %td= link_to 'Edit', edit_budget_path(budget)
         %td= link_to 'Destroy', budget, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
@@ -31,6 +27,6 @@
 = link_to 'New Budget', new_budget_path, class: "btn btn-success"
 %br
 
-%h4 Actual vs Budget
+
 
 

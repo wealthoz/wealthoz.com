@@ -1,12 +1,12 @@
 
 
-<%= form_for(@ledger) do |f| %>
-  <% if @ledger.errors.any? %>
+<%= form_for(@budget) do |f| %>
+  <% if @budget.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@ledger.errors.count, "error") %> prohibited this ledger from being saved:</h2>
+      <h2><%= pluralize(@budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
 
       <ul>
-      <% @ledger.errors.full_messages.each do |msg| %>
+      <% @budget.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -20,18 +20,18 @@
       <%= f.label :wunit %>
       <%= f.collection_select(:wunit, User.all + Project.all,:name,:name) %>     
             
-      <%= f.label :post_date %>
-      <%= f.date_select :post_date %>
+      <%= f.label :budget_date %>
+      <%= f.date_select :budget_date %>
       
       <%= f.label :ammount %>
-      <%= f.number_field :ammount %>
+      <%= f.text_field :ammount %>
       
       <%= f.label :text %>
       <%= f.text_field :text %>
       
 	</div>
             
-	<div class="ledgers">
+	<div class="budgets">
 		<%= f.submit "Save", class: "btn btn-large btn-success" %>
 	</div>
 <% end %>

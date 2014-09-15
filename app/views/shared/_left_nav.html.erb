@@ -63,15 +63,23 @@
                                      
             </ul>
             
- 			<div class="well">
+ 			<div >
 			  <h4>Wealth Formula:</h4>
-			  <p class="text-success">+Assets </p>
-			  <p class="text-warning">-Debt </p>
-			  <p>=</p>
-			  <p class="text-success">+Income </p>
-			  <p class="text-warning">-Expenses </p>
-			  <p>=</p>
-			  <h5>Wealth</h5>
+				  <div class="btn-group-vertical">
+
+					<a class="btn btn-success " data-toggle="modal" data-target=".bs-example1-modal-lg">Assets</a>
+					<%= render 'shared/help_assets'%>
+					<a class="btn btn-warning " data-toggle="modal" data-target=".bs-example2-modal-lg">-Debt</a>
+					<%= render 'shared/help_debt'%>
+					<a>=</a>
+					<a class="btn btn-success " data-toggle="modal" data-target=".bs-example3-modal-lg">Income</a>
+					<%= render 'shared/help_income'%>
+					<a class="btn btn-warning " data-toggle="modal" data-target=".bs-example4-modal-lg">-Expenses</a>
+					<%= render 'shared/help_expenses'%>
+					<a>=</a>
+					<a class="btn" data-toggle="modal" data-target=".bs-example5-modal-lg"><strong>Wealth</strong></a>
+					<%= render 'shared/help_wealth'%>
+				  </div>
 			  
 			</div>
 			              

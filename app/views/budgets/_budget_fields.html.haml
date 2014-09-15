@@ -1,4 +1,4 @@
-%td= "!?"
+
 %td
   .form-group
     = select_tag "budgets[][account_id]", grouped_options_for_select(@accounts), class: 'budget-account-select form-control required-field' , prompt: 'Select Account'
@@ -15,4 +15,4 @@
 %td
   .form-group
     = text_field_tag "budgets[][text]"
-%td= link_to 'Delete', '#', class: 'delete-link btn-danger'
+%td= link_to 'Delete', '#', class: 'delete-link btn-warning'

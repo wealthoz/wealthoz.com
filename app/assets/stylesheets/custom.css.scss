@@ -93,7 +93,12 @@ p {
 
 
 /* sidebar */
-
+body .modal {
+    /* new custom width */
+    width: 900px;
+    /* must be half of the width, minus scrollbar on the left (30px) */
+    margin-left: -280px;
+}
 
 /* footer */
 

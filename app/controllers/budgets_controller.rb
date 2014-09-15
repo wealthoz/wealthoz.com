@@ -36,7 +36,7 @@ class BudgetsController < ApplicationController
   def edit
     current_group = current_user.group
     @accounts = current_group.accounts
-
+    @budget = Budget.find(params[:id])
   end
 
   def create
@@ -54,12 +54,14 @@ class BudgetsController < ApplicationController
 
 
   def update
+    
+    @budget = Budget.find(params[:id])
     respond_to do |format|
       if @budget.update(budget_params)
-        format.html { redirect_to @budget, notice: 'Budget was successfully updated.' }
+        format.html { redirect_to budgets_url, notice: 'Budget was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'index' }
         format.json { render json: @budget.errors, status: :unprocessable_entity }
       end
     end
@@ -68,6 +70,7 @@ class BudgetsController < ApplicationController
   # DELETE /budgets/1
   # DELETE /budgets/1.json
   def destroy
+    @budget = Budget.find(params[:id])
     @budget.destroy
     respond_to do |format|
       format.html { redirect_to budgets_url }
