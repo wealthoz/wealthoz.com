@@ -10,12 +10,13 @@ title="Increase(-) Decrease(+)">-Expenses<span class="badge">0</span></a>
 <a href="#">=</a>
 <a class="btn btn-default" href="#" rel="tooltip" data-placement="bottom"
 title="Increase(+) Decrease(-)"><strong>Wealth</strong><span class="wealth badge">0</span></a>
-
+%a.hide.accumulated_wealth
+  %span.badge
 
 
 = form_tag(budgets_path, remote: true, id: 'new-budget-form' ) do
   %table{:class => "table table-striped table-hover "}
-    %tr     
+    %tr
       %th *Account
       %th *Wealth Unit
       %th *Date y-m-d
@@ -29,8 +30,8 @@ title="Increase(+) Decrease(-)"><strong>Wealth</strong><span class="wealth badge
     %tr.actions
       %td= submit_tag 'POST',class: "btn btn-success", id: 'new-budget-form-submit'
       %td= link_to 'Add Row', '#', id: '_form',class: "btn "
-      %td= render 'shared/transaction_help' 
-      %td Unbalanced Amount<span class="unbalanced-amount badge">0</span>
+      %td= render 'shared/transaction_help'
+      %td{colspan: 3} Unbalanced Amount<span class="unbalanced-amount badge">0</span>
       %td
       %td
 
