@@ -1,0 +1,54 @@
+-# %section
+-#   %ul.nav.nav-tabs{style: "margin-bottom: 15px"}
+-#     %li
+-#       %h5
+-#         = current_user.group.name
+-#     %li.active
+-#       = link_to 'Balance WU', report_balance_ledgers_path, remote: true, data: { target: '#balance', toggle: 'tab'}
+-#     %li
+-#       = link_to 'P&L Monthly', report_plm_ledgers_path, remote: true, data: { target: '#plm', toggle: 'tab'}
+-#     %li
+-#       = link_to 'P&L Wealth Unit', report_plwu_ledgers_path, remote: true, data: { target: '#plwu', toggle: 'tab'}
+-#     %li
+-#       = link_to "KPI's", report_kpi_ledgers_path, remote: true, data: { target: '#kpi', toggle: 'tab'}
+-#
+-# #myTabContent.tab-content
+-#   #balance.tab-pane.fade.active.in
+-#     = render 'ledgers/reports/report_balance'
+-#   #plm.tab-pane.fade
+-#   #plwu.tab-pane.fade
+-#   #kpi.tab-pane.fade
+
+
+.pull-right
+  = form_tag future_balance_future_reports_path, remote: true, method: :get do
+    = text_field_tag 'end_date', nil, class: 'form-control', placeholder: 'End date', data: { behaviour: 'datepicker' }
+    = submit_tag 'submit', class: 'btn btn-primary'
+%table{:class => "table table-striped table-hover ", :id => "bs_table"}
+  %thead
+    %th{:class => ""} Accounts\Wealth Units
+    - @all_transactions_hash_bs.each do |wunit, ledegers|
+      %td
+        = wunit
+    %th Total
+  %tbody
+    - @accounts_bs.each do |account|
+      %tr
+        %td
+          = account.name
+        - @all_transactions_hash_bs.each do |k, v|
+          %td
+            - if v[account.id]
+              =number_with_precision( v[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+        %td
+          - if @account_hash_bs[account.id]
+            =number_with_precision( @account_hash_bs[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+    %tr
+      %td
+        %strong Accumulated Wealth
+      - @all_transactions_hash_bs.each do |k, v|
+        %td
+          =number_with_precision( v.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+      %td
+        =number_with_precision( @account_hash_bs.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+= high_chart("my_id5", @chart_future_balance)
