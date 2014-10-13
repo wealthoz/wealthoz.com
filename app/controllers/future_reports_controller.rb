@@ -34,7 +34,7 @@ class FutureReportsController < ApplicationController
       f.chart(:width => 800)
       @accounts_bs.each do |account|
           data = chart_transactions.keys.map  do |wunit|
-          if testo[account.id][wunit]
+          if testo[account.id] && testo[account.id][wunit]
             testo[account.id][wunit].inject(0) { |sum, obj| sum + obj.ammount }.to_i
           else
             0
