@@ -35,5 +35,4 @@
           = number_with_precision( @budgets_pl.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
       %td
         %b= number_with_precision( @total.inject(0) {|sum, (k, v)| sum + v }, precision: 2, separator: '.', delimiter: ',')
-
-= high_chart("my_id5", @chart_actual_budget)
+= high_chart("my_id10", @chart_actual_budget)
