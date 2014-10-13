@@ -11,6 +11,14 @@ WealthOZ201::Application.routes.draw do
 
     end
   end
+
+  resources :future_reports, only: [:index] do
+    collection do
+      get :future_balance
+      get :actual_budget
+    end
+  end
+
   match '/report',   to: 'ledgers#report',   via: 'get'
   match '/wealthoz',   to: 'ledgers#wealthoz',   via: 'get'
   match '/wealth_index',   to: 'ledgers#wealth_index',   via: 'get'
