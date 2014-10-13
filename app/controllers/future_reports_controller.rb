@@ -5,7 +5,7 @@ class FutureReportsController < ApplicationController
   # end
   def future_balance
     @current_group = current_user.group
-    @accounts_bs = @current_group.accounts.where(fs_id: [1,2,5])
+    @accounts_bs = @current_group.accounts.where(fs_id: [1,2])
 
     if params[:end_date]
       ledgers = @current_group.ledgers.where('post_date < ?', Date.parse(params[:end_date]))
@@ -15,8 +15,8 @@ class FutureReportsController < ApplicationController
       budgets = @current_group.budgets.where('budget_date > ?', ledgers.last.post_date)
     end
 
-    ledgers_bs = ledgers.joins(:account).where('fs_id = 1 OR fs_id = 2 OR fs_id = 5')
-    budgets_bs = budgets.joins(:account).where('fs_id = 1 OR fs_id = 2 OR fs_id = 5')
+    ledgers_bs = ledgers.joins(:account).where('fs_id = 1 OR fs_id = 2')
+    budgets_bs = budgets.joins(:account).where('fs_id = 1 OR fs_id = 2')
 
     @all_transactions = ledgers_bs + budgets_bs
 
@@ -33,7 +33,7 @@ class FutureReportsController < ApplicationController
     @chart_future_balance = LazyHighCharts::HighChart.new('column') do |f|
       f.chart(:width => 800)
       @accounts_bs.each do |account|
-        data = chart_transactions.keys.map  do |wunit|
+          data = chart_transactions.keys.map  do |wunit|
           if testo[account.id][wunit]
             testo[account.id][wunit].inject(0) { |sum, obj| sum + obj.ammount }.to_i
           else
