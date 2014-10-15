@@ -311,8 +311,8 @@ class LedgersController < ApplicationController
     graph_assets =   wunits.map {|el| ledger_hash_a_summed.fetch(el, 0)}.as_json.map { |i| i.to_i }
     graph_income = months.map {|el| ledger_hash_income_summed.fetch(el, 0)}.as_json.map { |i| i.to_i }
 
-    wealth_assets = @account_hash_bs.values.flatten.map(&:ammount).inject(0, &:+)/(graph_assets.inject(:+) + 0.01) *100  #No zeros
-    margin =  @account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+)/(graph_income.inject(:+) + 0.01) *100   #No zeros
+    @wealth_assets = @account_hash_bs.values.flatten.map(&:ammount).inject(0, &:+)/(graph_assets.inject(:+) + 0.01) *100  #No zeros
+    @margin =  @account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+)/(graph_income.inject(:+) + 0.01) *100   #No zeros
 
    @chart_index = LazyHighCharts::HighChart.new('line') do |f|
       f.chart(:width => 800)
@@ -328,9 +328,9 @@ class LedgersController < ApplicationController
     data_table.new_column('number'  , 'Value')
     data_table.add_rows(2)
     data_table.set_cell(0, 0, 'W/A %' )
-    data_table.set_cell(0, 1, wealth_assets.round)
+    data_table.set_cell(0, 1, @wealth_assets.round)
     data_table.set_cell(1, 0, 'Margin %')
-    data_table.set_cell(1, 1, margin.round)
+    data_table.set_cell(1, 1, @margin.round)
 
     opts   = { :width => 550, :height => 550, :greenFrom => 50, :greenTo => 30,
       :yellowFrom => 10, :yellowTo => 0,:redFrom =>0,:redTo =>-30 ,:minorTicks => 5,:min => 50, :max => -30 }
