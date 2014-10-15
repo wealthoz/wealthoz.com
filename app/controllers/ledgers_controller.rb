@@ -54,7 +54,7 @@ class LedgersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @ledger.update(ledger_params)
+      if @ledger.update(single_ledger_params)
         format.html { redirect_to ledgers_url , notice: 'Transaction was successfully updated.' }
         format.json { head :no_content }
       else
@@ -336,12 +336,12 @@ class LedgersController < ApplicationController
       :yellowFrom => 10, :yellowTo => 0,:redFrom =>0,:redTo =>-30 ,:minorTicks => 5,:min => 50, :max => -30 }
     @chart_ratio = GoogleVisualr::Interactive::Gauge.new(data_table, opts)
     render
-    
-        
+
+
   end
 
   alias_method :report, :report_balance
-  
+
   def wealthoz
 
    wealthoz = Group.find(14)
@@ -394,6 +394,10 @@ end
 
     def ledger_params
       params.permit(ledgers: [:account_id, :group_id, :post_date, :ammount, :text, :wunit])
+    end
+
+    def single_ledger_params
+      params.require(:ledger).permit([:account_id, :group_id, :post_date, :ammount, :text, :wunit])
     end
 
     def set_ledger
