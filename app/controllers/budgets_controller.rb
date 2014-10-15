@@ -54,10 +54,10 @@ class BudgetsController < ApplicationController
 
 
   def update
-    
+
     @budget = Budget.find(params[:id])
     respond_to do |format|
-      if @budget.update(budget_params)
+      if @budget.update(single_budget_params)
         format.html { redirect_to budgets_url, notice: 'Budget was successfully updated.' }
         format.json { head :no_content }
       else
@@ -82,6 +82,10 @@ class BudgetsController < ApplicationController
 
     def budget_params
       params.permit(budgets: [:account_id, :group_id, :budget_date, :ammount, :text, :wunit])
+    end
+
+    def single_budget_params
+      params.require(:budget).permit([:account_id, :group_id, :budget_date, :ammount, :text, :wunit])
     end
 
     def set_budget
