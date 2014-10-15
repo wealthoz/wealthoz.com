@@ -44,7 +44,7 @@ class FutureReportsController < ApplicationController
 
         f.series(name: "#{account.name}",:data => data)
       end
-       f.title({ :text=>"Profit and Loss by Wealth Units"})
+       f.title({ :text=>"Future Balance by Wealth Units"})
        f.xAxis(:categories => chart_transactions.keys)
       #  f.yAxis(:title => {:text => "All amounts in " + @fx})
        f.options[:chart][:defaultSeriesType] = "column"
@@ -108,7 +108,7 @@ class FutureReportsController < ApplicationController
        f.chart(:width => 800)
        f.series(:name=>'Actual',:data=> actual_chart.map(&:to_i))
        f.series(:name=>'Budget',:data=> budget_chart.map(&:to_i))
-       f.title({ :text=>"Profit and Loss by Wealth Units"})
+       f.title({ :text=>"Actual vs Budget (Income and Expenses)"})
        f.xAxis(:categories => account_chart)
       #  f.yAxis(:title => {:text => "All amounts in " + @fx})
        f.options[:chart][:defaultSeriesType] = "bar"

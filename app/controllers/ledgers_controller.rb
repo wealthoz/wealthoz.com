@@ -302,7 +302,7 @@ class LedgersController < ApplicationController
 
     #Graph Index = ledger_hash_index values - accumulated
     graph_index =  ledger_hash_index_summed.values.as_json.map { |i| i.to_i }.inject([]) { |x, y| x + [(x.last || 0) + y] }
-    graph_weeks = ledger_hash_index_summed.keys
+    graph_weeks = ledger_hash_index_summed.keys.reverse
 
     #Draw KPI's
     months = (1..12).to_a
@@ -320,7 +320,7 @@ class LedgersController < ApplicationController
       f.title({ :text=> @current_group.name + " Wealth : amounts in " + @fx})
       f.xAxis(:categories => graph_weeks,:title => {:text => "All amounts in " + @fx})
       f.options[:chart][:defaultSeriesType] = "line"
-      f.legend(:align => 'top', :verticalAlign => 'left',:y=>20, :layout => 'horizontal',)
+      f.legend(:align => 'top', :verticalAlign => 'left',:y=>40,:x=>30, :layout => 'horizontal',)
     end
 
     data_table = GoogleVisualr::DataTable.new
@@ -332,10 +332,12 @@ class LedgersController < ApplicationController
     data_table.set_cell(1, 0, 'Margin %')
     data_table.set_cell(1, 1, margin.round)
 
-    opts   = { :width => 350, :height => 350, :greenFrom => 50, :greenTo => 30,
+    opts   = { :width => 550, :height => 550, :greenFrom => 50, :greenTo => 30,
       :yellowFrom => 10, :yellowTo => 0,:redFrom =>0,:redTo =>-30 ,:minorTicks => 5,:min => 50, :max => -30 }
     @chart_ratio = GoogleVisualr::Interactive::Gauge.new(data_table, opts)
     render
+    
+        
   end
 
   alias_method :report, :report_balance

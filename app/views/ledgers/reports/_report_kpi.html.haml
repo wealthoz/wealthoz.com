@@ -3,29 +3,21 @@
 </div>
 = render_chart @chart_ratio, "chart"
 <div class="span10">
-%p W/A %. This ratio is equal to your Group Total Wealth divided by your Total Assets.
-%p Margin % . This ratio is equal to your period Wealth divided by the total Income of the Group for the period.
 
-%table{:class => "table table-striped table-hover " }
-  %thead
-    %th
-    %th W/A %
-    %th Margin %
-  %tbody
-    %tr
-      %td Green
-      %td
-      %td
-    %tr
-      %td White
-      %td
-      %td
-    %tr
-      %td Yellow
-      %td
-      %td
-    %tr
-      %td Red
-      %td
-      %td
+                
+<div class="alert alert-dismissable alert-info">
+<button class="close" type="button" data-dismiss="alert">×</button>
+<p>W/A %. This ratio is equal to your Group Total Wealth divided by your Total Assets.</p>
+%p   {bezkrainost do 30}, {30 do 10},{10 do 0}, ot {0 do -30}
+      
+</div>
+
+<div class="alert alert-dismissable alert-info">
+<button class="close" type="button" data-dismiss="alert">×</button>
+<p>Margin % . This ratio is equal to your period Wealth divided by the total Income of the Group for the period.</p>
+%p   {bezkrainost do 30}, {30 do 10},{10 do 0}, ot {0 do -30}
+
+</div>
+
+
 </div>
