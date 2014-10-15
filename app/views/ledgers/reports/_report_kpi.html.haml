@@ -4,20 +4,8 @@
 = render_chart @chart_ratio, "chart"
 <div class="span10">
 
-                
-<div class="alert alert-dismissable alert-info">
-<button class="close" type="button" data-dismiss="alert">×</button>
-<p>W/A %. This ratio is equal to your Group Total Wealth divided by your Total Assets.</p>
-%p   {bezkrainost do 30}, {30 do 10},{10 do 0}, ot {0 do -30}
-      
-</div>
-
-<div class="alert alert-dismissable alert-info">
-<button class="close" type="button" data-dismiss="alert">×</button>
-<p>Margin % . This ratio is equal to your period Wealth divided by the total Income of the Group for the period.</p>
-%p   {bezkrainost do 30}, {30 do 10},{10 do 0}, ot {0 do -30}
-
-</div>
-
-
-</div>
+.row
+  .span6
+    = wealth_assets_text(@wealth_assets)
+  .span6
+    = margin_text(@margin)
