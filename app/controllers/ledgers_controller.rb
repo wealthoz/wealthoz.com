@@ -344,7 +344,7 @@ class LedgersController < ApplicationController
   
   def wealthoz
 
-   wealthoz = Group.find(14)
+   wealthoz = Group.find(2)
    #Balance Sheet accounts
     @accounts_bs = wealthoz.accounts.where('fs_id = 1 OR fs_id = 2 OR fs_id = 5')
     @accounts_bs_a = wealthoz.accounts.where('fs_id = 1')
