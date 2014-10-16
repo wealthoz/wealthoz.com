@@ -54,7 +54,7 @@ class LedgersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @ledger.update(ledger_params)
+      if @ledger.update(single_ledger_params)
         format.html { redirect_to ledgers_url , notice: 'Transaction was successfully updated.' }
         format.json { head :no_content }
       else
@@ -311,8 +311,8 @@ class LedgersController < ApplicationController
     graph_assets =   wunits.map {|el| ledger_hash_a_summed.fetch(el, 0)}.as_json.map { |i| i.to_i }
     graph_income = months.map {|el| ledger_hash_income_summed.fetch(el, 0)}.as_json.map { |i| i.to_i }
 
-    wealth_assets = @account_hash_bs.values.flatten.map(&:ammount).inject(0, &:+)/(graph_assets.inject(:+) + 0.01) *100  #No zeros
-    margin =  @account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+)/(graph_income.inject(:+) + 0.01) *100   #No zeros
+    @wealth_assets = @account_hash_bs.values.flatten.map(&:ammount).inject(0, &:+)/(graph_assets.inject(:+) + 0.01) *100  #No zeros
+    @margin =  @account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+)/(graph_income.inject(:+) + 0.01) *100   #No zeros
 
    @chart_index = LazyHighCharts::HighChart.new('line') do |f|
       f.chart(:width => 800)
@@ -328,20 +328,20 @@ class LedgersController < ApplicationController
     data_table.new_column('number'  , 'Value')
     data_table.add_rows(2)
     data_table.set_cell(0, 0, 'W/A %' )
-    data_table.set_cell(0, 1, wealth_assets.round)
+    data_table.set_cell(0, 1, @wealth_assets.round)
     data_table.set_cell(1, 0, 'Margin %')
-    data_table.set_cell(1, 1, margin.round)
+    data_table.set_cell(1, 1, @margin.round)
 
     opts   = { :width => 550, :height => 550, :greenFrom => 50, :greenTo => 30,
       :yellowFrom => 10, :yellowTo => 0,:redFrom =>0,:redTo =>-30 ,:minorTicks => 5,:min => 50, :max => -30 }
     @chart_ratio = GoogleVisualr::Interactive::Gauge.new(data_table, opts)
     render
-    
-        
+
+
   end
 
   alias_method :report, :report_balance
-  
+
   def wealthoz
 
    wealthoz = Group.find(2)
@@ -394,6 +394,10 @@ end
 
     def ledger_params
       params.permit(ledgers: [:account_id, :group_id, :post_date, :ammount, :text, :wunit])
+    end
+
+    def single_ledger_params
+      params.require(:ledger).permit([:account_id, :group_id, :post_date, :ammount, :text, :wunit])
     end
 
     def set_ledger
