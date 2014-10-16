@@ -1,31 +1,42 @@
+<a class="btn btn-success assets" href="#" rel="tooltip" data-placement="bottom"
+title="Increase(+) Decrease(-)">Assets<span class="badge" >0</span></a>
+<a class="btn btn-warning debt" href="#" rel="tooltip" data-placement="bottom"
+title="Increase(-) Decrease(+)">-Debt<span class="badge">0</span></a>
+<a href="#">=</a>
+<a class="btn btn-success income" href="#" rel="tooltip" data-placement="bottom"
+title="Increase(+) Decrease(-)">Income<span class="badge">0</span></a>
+<a class="btn btn-warning expenses" href="#" rel="tooltip" data-placement="bottom"
+title="Increase(-) Decrease(+)">-Expenses<span class="badge">0</span></a>
+<a href="#">=</a>
+<a class="btn btn-default" href="#" rel="tooltip" data-placement="bottom"
+title="Increase(+) Decrease(-)"><strong>Wealth</strong><span class="wealth badge">0</span></a>
+%a.hide.accumulated_wealth
+  %span.badge
 
-= form_tag(ledgers_path, remote: true, id: 'new-ledgers-form') do
+
+= form_tag(budgets_path, remote: true, id: 'new-ledger-form' ) do
   %table{:class => "table table-striped table-hover "}
     %tr
-      %th
-      %th{:class=>"text-success"} + ASSETS increase (+)
-      %th{:class=>"text-warning"} - DEBT increace (-)
-      %th =
-      %th{:class=>"text-success"} + INCOME increace (+)
-      %th{:class=>"text-warning"} - EXPENSES increace (-)          
-      %th =WEALTH
-    %tr
-      %th
       %th *Account
       %th *Wealth Unit
-      %th *Date d.m.y
-      %th *Ammount
+      %th *Date y-m-d
+      %th *Amount
       %th Text
       %th Action
-      
-    %tr{:class => "info"}
+
+    %tr.new-ledger-row
       = render 'ledger_fields'
 
     %tr.actions
+      %td= submit_tag 'POST',class: "btn btn-success", id: 'new-ledger-form-submit'
+      %td= link_to 'Add Row', '#', id: '_form',class: "btn "
+      %td= render 'shared/transaction_help'
+      %td{colspan: 3} Unbalanced Amount<span class="unbalanced-amount badge">0</span>
       %td
-      %td= submit_tag 'POST',class: "btn btn-success" 
-      %td= button_tag 'Add row', id: '_form2',class: "btn btn-primary" 
+      %td
 
-    %tr.new_ledger_row.hidden{:class => "info"}
+    %tr.new_budget_row.hidden{:class => ""}
       = render 'ledger_fields'
-
+%p *Required fields
+%p{:class => "text-success"} In order to POST a transaction all required fields must be Green
+%p{:class => "text-success"} and the Unbalanced Amount must be Zero
