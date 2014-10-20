@@ -7,7 +7,7 @@
     = select_tag "ledgers[][wunit]", grouped_options_for_select(@wunit), class: 'ledger-wunit-select  form-control required-field', prompt: 'Select W.Unit'
 %td
   .form-group
-    = date_field_tag"ledgers[][budget_date]", Date.today, class: ' ledger-date-input form-control required-field'
+    = date_field_tag"ledgers[][post_date]", Date.today, class: ' ledger-date-input form-control required-field'
 
 %td
   .form-group
