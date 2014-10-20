@@ -12,6 +12,8 @@ WealthOZ201::Application.routes.draw do
     end
   end
 
+  resources :cut_off_wealths
+
   resources :future_reports, only: [:index] do
     collection do
       get :future_balance
