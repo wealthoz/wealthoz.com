@@ -47,9 +47,8 @@
                 <i class="icon "></i> Post <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Budgets</a></li>
-                <li><a href="#">Income</a></li>
-                <li><a href="#">Revaluation</a></li>
+                
+                <li><%= link_to '<i class="icon-pencil "></i> Wealth Cut-off'.html_safe, new_ledger_path %></li>
                 <li><%= link_to '<i class="icon-pencil "></i> Transaction'.html_safe, new_ledger_path %></li>
                 <li><%= link_to '<i class="icon-pencil "></i> Budget'.html_safe, new_budget_path %></li>
               </ul>	
