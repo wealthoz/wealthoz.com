@@ -1,0 +1,23 @@
+= form_tag(cut_off_wealths_path, remote: true, id: 'new-cut-off-wealth-form' ) do
+  %table{:class => "table table-striped table-hover "}
+    %tr
+      %th *Account
+      %th *Wealth Unit
+      %th *Date y-m-d
+      %th *Amount
+      %th Text
+      %th Action
+
+    %tr.new-ledger-row
+      = render 'ledger_fields'
+
+    %tr.actions
+      %td= submit_tag 'POST',class: "btn btn-success", id: 'new-cut-off-wealth-form-submit', disabled: true
+      %td= link_to 'Add Row', '#', id: '_form',class: "btn "
+      %td= render 'shared/transaction_help'
+      %td
+      %td
+      %td
+
+    %tr.new_budget_row.hidden{:class => ""}
+      = render 'ledger_fields'
