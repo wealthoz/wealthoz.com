@@ -34,11 +34,11 @@
                 <li><%= link_to '<i class="icon-user "></i> Profile'.html_safe, current_user %></li>
                 <li><%= link_to '<i class="icon-cog "></i> User Settings'.html_safe, edit_user_path(current_user) %></li>
                 <li><%= link_to '<i class="icon-star "></i> Group Settings'.html_safe,  new_group_path  %></li>
-                <li><%= link_to '<i class="icon-suitcase "></i> Projects '.html_safe,  new_project_path  %></li>
+                <li><%= link_to '<i class="icon-leaf "></i> Projects '.html_safe,  new_project_path  %></li>
                 <li><%= link_to '<i class="icon-wrench "></i> Accounts'.html_safe,  accounts_path %></li>
                 <li class="divider"></li>
                 <li>
-                  <%= link_to '<i class="icon-power-off "></i> Sign out'.html_safe, signout_path, method: "delete" %>
+                  <%= link_to '<i class="icon-off "></i> Sign out'.html_safe, signout_path, method: "delete" %>
                 </li>
               </ul>
           <% if current_user.group.name != "Pool" %>
@@ -48,7 +48,7 @@
               </a>
               <ul class="dropdown-menu">
                 
-                <li><%= link_to '<i class="icon-pencil "></i> Wealth Cut-off'.html_safe, new_ledger_path %></li>
+                <li><%= link_to '<i class="icon-pencil "></i> Wealth Cut-off'.html_safe, new_cut_off_wealth_path %></li>
                 <li><%= link_to '<i class="icon-pencil "></i> Transaction'.html_safe, new_ledger_path %></li>
                 <li><%= link_to '<i class="icon-pencil "></i> Budget'.html_safe, new_budget_path %></li>
               </ul>	
@@ -69,7 +69,7 @@
                <i class="icon "></i>  Together <b class="caret"></b>               
               </a>
               <ul class="dropdown-menu">
-              	<li><%= link_to '<i class="icon-group "></i> Members'.html_safe, users_path %></li>
+              	<li><%= link_to '<i class="icon-log-out "></i> Members'.html_safe, users_path %></li>
               	<li><%= link_to '<i class="icon-flag "></i> WealthOZ'.html_safe, wealthoz_path %></li>
                 <li><%= link_to '<i class="icon "></i> Wealth Index'.html_safe, wealth_index_path %></li>
                 <li><%= link_to '<i class="icon-gift "></i> Support Us'.html_safe, donate_path %></li>                

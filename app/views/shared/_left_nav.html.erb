@@ -10,35 +10,35 @@
     
         		  	<% if signed_in? %>        		  	
 	        		  <li>
-							<%= link_to '<i class="icon"></i> Sign up'.html_safe, signup_path %>        		  	 
+							<%= link_to '<i class="icon"></i>Sign up'.html_safe, signup_path %>        		  	 
 	        		  		or 
-	        		  		<%= link_to '<i class="icon-signin "></i> Log in'.html_safe, signin_path %>
+	        		  		<%= link_to '<i ></i>Log in'.html_safe, signin_path %>
 	        		  </li><br />
 	        		  <li>
 	        		  		Create a 
-	        		  		<%= link_to '<i class="icon-bullhorn "></i> FuturePost'.html_safe, root_path %>
+	        		  		<%= link_to '<i class="icon-bullhorn "></i>FuturePost'.html_safe, root_path %>
 	        		  </li><br />
 	        		  <li>
 	        		  		Follow other 
-	        		  		<%= link_to '<i class="icon-group "></i> Members'.html_safe, users_path %>
+	        		  		<%= link_to '<i class="icon-globe"></i>Members'.html_safe, users_path %>
 	        		  </li><br />
 	        		  <li>
 	        		  		Create your own 
 	        		  		<%= link_to '<i class="icon-star "></i>Wealth Group'.html_safe,  new_group_path  %>
-	        		  		or
-	        		  		<%= link_to '<i class="icon-cog "></i>link to existing one'.html_safe, edit_group_user_path(current_user) %>
+	        		  		or link to
+	        		  		<%= link_to '<i class="icon-cog "></i>existing one'.html_safe, edit_group_user_path(current_user) %>
 	        		  </li><br />
 	        		  <li>
 	        		  		Add your 
-	        		  		<%= link_to '<i class="icon-suitcase "></i> Projects '.html_safe,  new_project_path  %>
+	        		  		<%= link_to '<i class="icon-leaf "></i>Projects '.html_safe,  new_project_path  %>
 	        		  </li><br />
 	        		  <li>
 		        		  	Create 
-		        		  	<%= link_to '<i class="icon-wrench "></i> Accounts'.html_safe,  accounts_path %> 
+		        		  	<%= link_to '<i class="icon-wrench "></i>Accounts'.html_safe,  accounts_path %> 
 		        		  	(min 15)
 	        		  </li><br />
 	        		  <li>
-	        		  		<%= link_to '<i class="icon-pencil "></i>Cut-off your Wealth'.html_safe, new_ledger_path %>
+	        		  		<%= link_to '<i class="icon-pencil "></i>Cut-off your Wealth'.html_safe, new_cut_off_wealth_path %>
 	        		  		then book your 
 	        		  		<%= link_to '<i class="icon-pencil "></i>Transactions'.html_safe, new_ledger_path %>
 	        		  		and 
@@ -46,9 +46,9 @@
 	        		  </li><br />
 	        		  <li>
 		        		  	See 
-		        		  	<%= link_to '<i class="icon-hand-left "></i> Past'.html_safe, report_path %>
+		        		  	<%= link_to '<i class="icon-hand-left "></i>Past'.html_safe, report_path %>
 		        		  	and 
-		        		  	<%= link_to '<i class="icon-hand-right "></i> Future '.html_safe, future_reports_path %> 
+		        		  	<%= link_to '<i class="icon-hand-right "></i>Future '.html_safe, future_reports_path %> 
 		        		  	Reports
 	        		  </li><br />
 	        		  <li>Analyze and explore opportunities</li><br />
