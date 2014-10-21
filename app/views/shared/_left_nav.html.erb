@@ -25,8 +25,8 @@
 	        		  <li>
 	        		  		Create your own 
 	        		  		<%= link_to '<i class="icon-star "></i>Wealth Group'.html_safe,  new_group_path  %>
-	        		  		and 
-	        		  		<%= link_to '<i class="icon-cog "></i>link to it'.html_safe, edit_user_path(current_user) %>
+	        		  		or
+	        		  		<%= link_to '<i class="icon-cog "></i>link to existing one'.html_safe, edit_group_user_path(current_user) %>
 	        		  </li><br />
 	        		  <li>
 	        		  		Add your 
@@ -38,16 +38,17 @@
 		        		  	(min 15)
 	        		  </li><br />
 	        		  <li>
-	        		  		Book your 
+	        		  		<%= link_to '<i class="icon-pencil "></i>Cut-off your Wealth'.html_safe, new_ledger_path %>
+	        		  		then book your 
 	        		  		<%= link_to '<i class="icon-pencil "></i>Transactions'.html_safe, new_ledger_path %>
 	        		  		and 
-	        		  		Budgets
+	        		  		<%= link_to '<i class="icon-pencil "></i>Budgets'.html_safe, new_ledger_path %>
 	        		  </li><br />
 	        		  <li>
 		        		  	See 
-		        		  	<%= link_to '<i class="icon-rotate-left "></i> Past'.html_safe, report_path %>
+		        		  	<%= link_to '<i class="icon-hand-left "></i> Past'.html_safe, report_path %>
 		        		  	and 
-		        		  	Future 
+		        		  	<%= link_to '<i class="icon-hand-right "></i> Future '.html_safe, future_reports_path %> 
 		        		  	Reports
 	        		  </li><br />
 	        		  <li>Analyze and explore opportunities</li><br />
