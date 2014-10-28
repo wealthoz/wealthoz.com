@@ -13,7 +13,7 @@
     %th Accounts\Wealth Units
     - @ledgers_hash_pl.each do |wunit, ledegers|
       %td
-        = wunit
+        %strong= wunit
     %th Total
   %tbody
     - @accounts_pl.each do |account|
@@ -32,7 +32,7 @@
         %strong Wealth for the period
       - @ledgers_hash_pl.each do |k, v|
         %td
-          =number_with_precision(v.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+          %strong=number_with_precision(v.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
       %td
-        =number_with_precision(@account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+        %strong=number_with_precision(@account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
 =render 'chart_pl_w'

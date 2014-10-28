@@ -16,7 +16,7 @@
     %th{:class => ""} Accounts\Wealth Units
     - @ledgers_hash_bs.each do |wunit, ledegers|
       %td
-        = wunit
+        %strong= wunit
     %th Total
   %tbody
     - @accounts_bs.each do |account|
@@ -36,7 +36,7 @@
         %strong Accumulated Wealth
       - @ledgers_hash_bs.each do |k, v|
         %td
-          =number_with_precision( v.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+          %strong=number_with_precision( v.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
       %td
-        =number_with_precision( @account_hash_bs.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
+        %strong=number_with_precision( @account_hash_bs.values.flatten.map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
 = render 'ledgers/chart_bs'

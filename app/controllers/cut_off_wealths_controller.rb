@@ -21,9 +21,9 @@ class CutOffWealthsController < ApplicationController
 
     respond_to do |format|
       # if @ledger.save
-        format.html { redirect_to ledgers_path, notice: 'Transaction Y was successfully created.' }
+        format.html { redirect_to ledgers_path, notice: 'You successfully cut-off your Wealth.' }
         format.json { render action: 'index', status: :created, location: @ledger }
-        format.js { render js: 'alert("hello")'}
+        format.js { render js: 'alert("You successfully cut-off your Wealth.")'}
       # else
       #   format.html { render action: 'new' }
       #   format.json { render json: @ledger.errors, status: :unprocessable_entity }
