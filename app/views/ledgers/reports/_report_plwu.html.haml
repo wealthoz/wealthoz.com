@@ -8,6 +8,16 @@
         = text_field_tag 'start_date',nil, class: 'form-control', placeholder: 'Start date', data: {behaviour: 'datepicker'}
         = text_field_tag 'end_date',nil, class: 'form-control', placeholder: 'End date', data: {behaviour: 'datepicker'}
         = submit_tag 'submit', class: 'btn btn-primary'
+        
+<script type="text/javascript">
+$('[data-behaviour~=datepicker]').datepicker({
+weekStart: 1,
+autoclose: true,
+format:'yyyy-mm-dd' ,
+todayHighlight: true   
+});
+</script>   
+     
 %table{:class => "table table-striped table-hover ", :id => "pl_w_table"  }
   %thead
     %th Accounts\Wealth Units
