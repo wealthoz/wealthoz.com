@@ -25,7 +25,13 @@ WealthOZ201::Application.routes.draw do
   match '/wealthoz',   to: 'ledgers#wealthoz',   via: 'get'
   match '/wealth_index',   to: 'ledgers#wealth_index',   via: 'get'
   resources :fxes
-  resource :group
+  resource :group do
+    resources :group_users, controller: 'groups/group_users', only: [:index] do
+      member do
+        get :approved
+      end
+    end
+  end
 
 
   #resources :users

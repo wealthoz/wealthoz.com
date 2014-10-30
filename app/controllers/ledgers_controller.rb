@@ -4,6 +4,8 @@ class LedgersController < ApplicationController
 
   def index
     current_group = current_user.group
+    authorize(current_group)
+
     #All Group transaction
     @ledgers = current_group.ledgers
   end
@@ -14,6 +16,8 @@ class LedgersController < ApplicationController
 
   def new
    current_group = current_user.group
+   authorize(current_group)
+
     @accounts = current_group.accounts.group_by(&:fs).map do |k,v|
       [k.report_class, v.map {|el|  [el.name, el.id] }]
     end
@@ -74,6 +78,8 @@ class LedgersController < ApplicationController
 
   def report_balance
   #  #Balance Sheet accounts
+    authorize(@current_group, :view?)
+
     @accounts_bs = @current_group.accounts.where(fs_id: [1,2,5])
     @accounts_bs_a = @current_group.accounts.where(fs_id: 1)
     @accounts_bs_d = @current_group.accounts.where(fs_id: 2)

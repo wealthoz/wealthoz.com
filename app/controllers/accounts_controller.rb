@@ -6,8 +6,11 @@ class AccountsController < ApplicationController
 
   # GET /accounts
   # GET /accounts.json
+
   def index
     current_group = current_user.group
+    authorize(current_group)
+
     @accounts = current_group.accounts.joins(:fs)
 
     respond_to do |format|
@@ -19,19 +22,25 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1
   # GET /accounts/1.json
+
   def show
+    current_group = current_user.group
+    authorize(current_group)
     @account = Account.find(params[:id])
   end
 
   # GET /accounts/new
   def new
+    current_group = current_user.group
+    authorize(current_group)
     @account = Account.new
   end
 
   # GET /accounts/1/edit
   def edit
-    @account = Account.find(params[:id])
     current_group = current_user.group
+    authorize(current_group)
+    @account = Account.find(params[:id])
     @accounts = current_group.accounts
 
   end
@@ -40,6 +49,7 @@ class AccountsController < ApplicationController
   # POST /accounts.json
   def create
     current_group = current_user.group
+    authorize(current_group)
 
     @account = current_group.accounts.build(account_params)
 
@@ -67,6 +77,8 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1
   # PATCH/PUT /accounts/1.json
   def update
+    current_group = current_user.group
+    authorize(current_group)
     @account = Account.find(params[:id])
     respond_to do |format|
       if @account.update(account_params)

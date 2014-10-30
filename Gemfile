@@ -15,6 +15,8 @@ gem 'lazy_high_charts', '1.5.4'
 
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
+gem 'pundit'
+
 group :development do
   gem 'hpricot'
   gem 'ruby_parser'
