@@ -2,6 +2,8 @@ class CutOffWealthsController < ApplicationController
 
   def new
     current_group = current_user.group
+    authorize(current_group)
+
     @accounts = current_group.accounts.where(fs: [1,2]).group_by(&:fs).map do |k,v|
       [k.report_class, v.map {|el|  [el.name, el.id] }]
     end

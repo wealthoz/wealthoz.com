@@ -5,6 +5,8 @@ class FutureReportsController < ApplicationController
   # end
   def future_balance
     @current_group = current_user.group
+    authorize(@current_group, :view?)
+
     @accounts_bs = @current_group.accounts.where(fs_id: [1,2])
 
     if params[:end_date]

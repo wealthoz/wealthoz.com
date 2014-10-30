@@ -5,6 +5,8 @@ class BudgetsController < ApplicationController
   def index
 
     current_group = current_user.group
+    authorize(current_group)
+
     @budgets = current_group.budgets
     @ledgers = current_group.ledgers
     @entries = @budgets + @ledgers
@@ -20,9 +22,10 @@ class BudgetsController < ApplicationController
 
   def new
     current_group = current_user.group
-   @accounts = current_group.accounts.group_by(&:fs).map do |k,v|
-     [k.report_class, v.map {|el|  [el.name, el.id] }]
-   end
+    authorize(current_group)
+    @accounts = current_group.accounts.group_by(&:fs).map do |k,v|
+      [k.report_class, v.map {|el|  [el.name, el.id] }]
+    end
 
 
    @wunit = {
