@@ -23,10 +23,8 @@
 	        		  		<%= link_to '<i class="icon-globe"></i>Members'.html_safe, users_path %>
 	        		  </li><br />
 	        		  <li>
-	        		  		Create your own 
-	        		  		<%= link_to '<i class="icon-star "></i>Wealth Group'.html_safe,  new_group_path  %>
-	        		  		or link to
-	        		  		<%= link_to '<i class="icon-cog "></i>existing one'.html_safe, edit_group_user_path(current_user) %>
+	        		  		Manage your 
+	        		  		<%= link_to '<i class="icon-cog "></i>User and Group settings'.html_safe, edit_user_path(current_user) %>
 	        		  </li><br />
 	        		  <li>
 	        		  		Add your 

@@ -20,20 +20,26 @@
 
 
 	<section>
-      <%= f.submit "Save changes", class: "btn btn-large btn-success" %>
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     </section>
     <% end %>
     <%= gravatar_for @user %>
     <a href="http://gravatar.com/emails">change</a>
   </div>
     <section>
+    	<h5>Group Settings</h5>
     <p>
-		  <%= link_to "Choose Wealth Group", edit_group_user_path , class: "btn btn-primary" %>
+		  <%= link_to "Join existing Wealth Group", edit_group_user_path , class: "btn btn-primary" %>
     </p>
+    <h6 class="text-warning"> <strong>or</strong></h6>
     <p>
-  		<%= link_to "Create New Wealth Group", new_group_path , class: "btn btn-warning" %>
+  		<%= link_to "Create New Wealth Group", new_group_path , class: "btn btn-primary" %>
     </p>
-		<h5 class="text-warning">You can have only <strong>one Wealth Group</strong> !!!</h5>
+		<h6 class="text-warning">You can have only <strong>one Wealth Group</strong> !!!</h6>
+	<p>
+  		<%= link_to "Requests for joining your Group", group_group_users_path , class: "btn btn-primary" %>
+    </p>	
+		
 	</section>
 
 	<br />
