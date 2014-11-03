@@ -19,7 +19,6 @@
 //= require twitter/bootstrap
 //= require bootstrap
 //= require bootstrap-datepicker
-//= require bootstrap-tooltip
-//= require bootstrap-popover
+
 //= require bootstrapValidator.min
 //= require_tree .

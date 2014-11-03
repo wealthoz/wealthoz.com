@@ -10,7 +10,6 @@ gem 'pg'
 # gem 'sqlite3'
 
 gem 'haml-rails'
-#gem 'pivot_table'
 gem 'lazy_high_charts', '1.5.4'
 
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
@@ -28,7 +27,7 @@ group :development do
   # gem "better_errors"
   # gem 'jazz_hands'
   gem 'pry'
-  gem 'hirb'
+  
 end
 
 gem 'highline'
@@ -40,7 +39,7 @@ gem "binding_of_caller"
 gem "twitter-bootstrap-rails"
 gem 'tzinfo-data'
 
-gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap-sass', '~> 3.3.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
@@ -65,7 +64,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
