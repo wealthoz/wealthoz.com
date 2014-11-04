@@ -8,7 +8,7 @@ WealthOZ201::Application.routes.draw do
       get :report_plm
       get :report_plwu
       get :report_kpi
-
+      
     end
   end
 
@@ -27,7 +27,7 @@ WealthOZ201::Application.routes.draw do
       get :report_plm
       get :report_plwu
       get :report_kpi
-
+      get :report_story
     end
   end
   match '/transparent',   to: 'transparents#report',   via: 'get'

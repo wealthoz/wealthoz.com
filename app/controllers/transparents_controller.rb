@@ -1,6 +1,6 @@
 class TransparentsController < ApplicationController
   before_action :set_ledger, only: [:show, :edit, :update, :destroy]
-  before_action :set_data, only: [:report, :report_balance, :report_plm, :report_plwu, :report_kpi]
+  before_action :set_data, only: [:report, :report_balance, :report_plm, :report_plwu, :report_kpi, :report_story]
 
 
   def report_balance
@@ -174,6 +174,7 @@ class TransparentsController < ApplicationController
     end
   end
 
+  
   def report_kpi
     @ledgers = @current_group.ledgers
 
@@ -272,46 +273,12 @@ class TransparentsController < ApplicationController
 
   end
 
+  def report_story
+end  
+
 alias_method :report, :report_balance
 
-  def wealthoz
 
-   wealthoz = Group.find(2)
-   #Balance Sheet accounts
-    @accounts_bs = wealthoz.accounts.where('fs_id = 1 OR fs_id = 2 OR fs_id = 5')
-    @accounts_bs_a = wealthoz.accounts.where('fs_id = 1')
-    @accounts_bs_d = wealthoz.accounts.where('fs_id = 2')
-
-   #Profit and loss accounts
-    @accounts_pl = wealthoz.accounts.where('fs_id = 3 OR fs_id = 4')
-
-    @ledgers = wealthoz.ledgers
-   #Balance Sheet Transactions
-    @ledgers_bs = @ledgers.joins(:account).where('fs_id = 1 OR fs_id = 2 OR fs_id = 5')
-   #Profit&Loss Transactions
-    @ledgers_pl = @ledgers.joins(:account).where('fs_id = 3 OR fs_id = 4')
-
-   #HAshes
-    @ledgers_hash_bs = @ledgers_bs.group_by(&:wunit).sort_by {|k,v| k}.reverse.map do |k, v|
-      [k, v.group_by(&:account_id)]
-    end
-
-    @ledgers_hash_pl = @ledgers_pl.group_by(&:wunit).sort_by {|k,v| k}.reverse.map do |k, v|
-      [k, v.group_by(&:account_id)]
-    end
-
-    @ledgers_hash_pl_m = @ledgers_pl.group_by{ |m| m.post_date.beginning_of_month}.sort_by {|k,v| k}.map do |k, v|
-      [k, v.group_by(&:account_id)]
-    end
-   #Accounts
-    @account_hash_bs = @ledgers_bs.group_by(&:account_id)
-    @account_hash_pl = @ledgers_pl.group_by(&:account_id)
-
-end
-
-def wealth_index
-
-end
 
 
   private
