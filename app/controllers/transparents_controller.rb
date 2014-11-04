@@ -1,16 +1,16 @@
-class TransparentController < ApplicationController
-  # def index
-    #
-    # end
-  
+class TransparentsController < ApplicationController
+  before_action :set_ledger, only: [:show, :edit, :update, :destroy]
+  before_action :set_data, only: [:report, :report_balance, :report_plm, :report_plwu, :report_kpi]
+
+
   def report_balance
   #  #Balance Sheet accounts
     @current_group = Group.find(2)
-    @fx = @current_group.fx.fx
+
     @accounts_bs = @current_group.accounts.where(fs_id: [1,2,5])
     @accounts_bs_a = @current_group.accounts.where(fs_id: 1)
     @accounts_bs_d = @current_group.accounts.where(fs_id: 2)
-  #
+
     if params[:end_date]
       @ledgers = @current_group.ledgers.where('post_date <= ?', Date.parse(params[:end_date]))
     else
@@ -53,19 +53,16 @@ class TransparentController < ApplicationController
       f.plot_options(:bar=>{:stacking=>"normal",:dataLabels => {:enabled => "true",:color=>"grey"}})
 
     end
-    
   end
-  alias_method :index, :report_balance
-  
+
   def report_plm
-    @current_group = Group.find(2)
-    @fx = @current_group.fx.fx
     if params[:date]
       @ledgers = @current_group.ledgers.where('extract(year  from post_date) = ?', params[:date][:year])
       # .where('post_date <= ?', Date.parse(params[:date][:year]))
     else
       @ledgers = @current_group.ledgers
     end
+
 
     @accounts_pl = @current_group.accounts.where('fs_id = 3 OR fs_id = 4')
     @ledgers_pl = @ledgers.joins(:account).where('fs_id = 3 OR fs_id = 4')
@@ -114,10 +111,9 @@ class TransparentController < ApplicationController
       f.legend(:align => 'top', :verticalAlign => 'left',:y=>20, :layout => 'horizontal',)
       f.plot_options(:column=>{:stacking=>"normal",})
     end
-    
+
   end
-  alias_method :index, :report_plm
- 
+
   def report_plwu
     @accounts_pl = @current_group.accounts.where('fs_id = 3 OR fs_id = 4')
     if params[:start_date] && params[:end_date]
@@ -125,8 +121,6 @@ class TransparentController < ApplicationController
     else
       @ledgers = @current_group.ledgers
     end
-    @current_group = Group.find(2)
-     @fx = @current_group.fx.fx
 
     #Profit&Loss Transactions
     @ledgers_pl = @ledgers.joins(:account).where('fs_id = 3 OR fs_id = 4')
@@ -181,11 +175,8 @@ class TransparentController < ApplicationController
   end
 
   def report_kpi
-    @current_group = Group.find(2)
-     @fx = @current_group.fx.fx
-
     @ledgers = @current_group.ledgers
-    
+
     @accounts_bs = @current_group.accounts.where('fs_id = 1 OR fs_id = 2 OR fs_id = 5')
     @accounts_bs_a = @current_group.accounts.where('fs_id = 1')
     @accounts_bs_d = @current_group.accounts.where('fs_id = 2')
@@ -276,21 +267,72 @@ class TransparentController < ApplicationController
     opts   = { :width => 550, :height => 550, :greenFrom => 50, :greenTo => 30,
       :yellowFrom => 10, :yellowTo => 0,:redFrom =>0,:redTo =>-30 ,:minorTicks => 5,:min => 50, :max => -30 }
     @chart_ratio = GoogleVisualr::Interactive::Gauge.new(data_table, opts)
-    
+    render
+
+
   end
 
+alias_method :report, :report_balance
 
-  
-private
-   # Use callbacks to share common setup or constraints between actions.
+  def wealthoz
 
-   # Never trust parameters from the scary internet, only allow the white list through.
+   wealthoz = Group.find(2)
+   #Balance Sheet accounts
+    @accounts_bs = wealthoz.accounts.where('fs_id = 1 OR fs_id = 2 OR fs_id = 5')
+    @accounts_bs_a = wealthoz.accounts.where('fs_id = 1')
+    @accounts_bs_d = wealthoz.accounts.where('fs_id = 2')
 
-   def set_data
-     #Set my Transparent Group to...
-     @current_group = Group.find(2)
-     @fx = @current_group.fx.fx
-   end
+   #Profit and loss accounts
+    @accounts_pl = wealthoz.accounts.where('fs_id = 3 OR fs_id = 4')
 
-  
+    @ledgers = wealthoz.ledgers
+   #Balance Sheet Transactions
+    @ledgers_bs = @ledgers.joins(:account).where('fs_id = 1 OR fs_id = 2 OR fs_id = 5')
+   #Profit&Loss Transactions
+    @ledgers_pl = @ledgers.joins(:account).where('fs_id = 3 OR fs_id = 4')
+
+   #HAshes
+    @ledgers_hash_bs = @ledgers_bs.group_by(&:wunit).sort_by {|k,v| k}.reverse.map do |k, v|
+      [k, v.group_by(&:account_id)]
+    end
+
+    @ledgers_hash_pl = @ledgers_pl.group_by(&:wunit).sort_by {|k,v| k}.reverse.map do |k, v|
+      [k, v.group_by(&:account_id)]
+    end
+
+    @ledgers_hash_pl_m = @ledgers_pl.group_by{ |m| m.post_date.beginning_of_month}.sort_by {|k,v| k}.map do |k, v|
+      [k, v.group_by(&:account_id)]
+    end
+   #Accounts
+    @account_hash_bs = @ledgers_bs.group_by(&:account_id)
+    @account_hash_pl = @ledgers_pl.group_by(&:account_id)
+
+end
+
+def wealth_index
+
+end
+
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+
+    def set_data
+      @current_group = Group.find(2)
+      @fx = @current_group.fx.fx
+    end
+
+    def ledger_params
+      params.permit(ledgers: [:account_id, :group_id, :post_date, :ammount, :text, :wunit])
+    end
+
+    def single_ledger_params
+      params.require(:ledger).permit([:account_id, :group_id, :post_date, :ammount, :text, :wunit])
+    end
+
+    def set_ledger
+      @ledger = Ledger.find(params[:id])
+    end
 end

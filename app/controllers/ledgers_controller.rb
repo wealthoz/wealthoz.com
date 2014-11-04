@@ -345,7 +345,7 @@ class LedgersController < ApplicationController
 
   end
 
-  alias_method :report, :report_balance
+alias_method :report, :report_balance
 
   def wealthoz
 
