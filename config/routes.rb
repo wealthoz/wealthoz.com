@@ -20,6 +20,16 @@ WealthOZ201::Application.routes.draw do
       get :actual_budget
     end
   end
+  
+  resources :transparent, only: [:index]  do
+  collection do
+      get :report_balance
+      get :report_plm
+      get :report_plwu
+      get :report_kpi
+
+    end
+  end
 
   match '/report',   to: 'ledgers#report',   via: 'get'
   match '/wealthoz',   to: 'ledgers#wealthoz',   via: 'get'

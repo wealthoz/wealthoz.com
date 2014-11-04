@@ -60,6 +60,14 @@ m_Group [label = <<table border="0" align="center" cellspacing="0.5" cellpadding
   <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
 </table>
 >];
+m_GroupUser [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">GroupUser</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="status">status <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+>];
 m_Ledger [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
   <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Ledger</font></td></tr>
 </table>
@@ -102,6 +110,7 @@ m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding=
 <table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
   <tr><td align="left" width="130" port="admin">admin <font face="Arial Italic" color="grey60">boolean</font></td></tr>
   <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="group_name">group_name <font face="Arial Italic" color="grey60">string</font></td></tr>
   <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
   <tr><td align="left" width="130" port="password_digest">password_digest <font face="Arial Italic" color="grey60">string</font></td></tr>
   <tr><td align="left" width="130" port="remember_token">remember_token <font face="Arial Italic" color="grey60">string</font></td></tr>
@@ -114,12 +123,15 @@ m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding=
   m_Group -> m_Budget [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Group -> m_Fs [arrowhead = "none", arrowtail = "none", weight = "2"];
   m_Fx -> m_Group [arrowhead = "normal", arrowtail = "none", weight = "2"];
-  m_Group -> m_User [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Group -> m_GroupUser [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Group -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
   m_Group -> m_Project [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_Group -> m_Ledger [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_GroupUser [arrowhead = "none", arrowtail = "none", weight = "2"];
   m_User -> m_Micropost [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_User -> m_Relationship [arrowhead = "normal", arrowtail = "none", weight = "2"];
   m_User -> m_Relationship [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Group [style = "dotted", arrowhead = "none", arrowtail = "none", weight = "1", constraint = "false"];
   m_User -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
   m_User -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
 }
