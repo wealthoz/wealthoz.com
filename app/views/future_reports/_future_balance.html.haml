@@ -1,25 +1,6 @@
--# %section
--#   %ul.nav.nav-tabs{style: "margin-bottom: 15px"}
--#     %li
--#       %h5
--#         = current_user.group.name
--#     %li.active
--#       = link_to 'Balance WU', report_balance_ledgers_path, remote: true, data: { target: '#balance', toggle: 'tab'}
--#     %li
--#       = link_to 'P&L Monthly', report_plm_ledgers_path, remote: true, data: { target: '#plm', toggle: 'tab'}
--#     %li
--#       = link_to 'P&L Wealth Unit', report_plwu_ledgers_path, remote: true, data: { target: '#plwu', toggle: 'tab'}
--#     %li
--#       = link_to "KPI's", report_kpi_ledgers_path, remote: true, data: { target: '#kpi', toggle: 'tab'}
--#
--# #myTabContent.tab-content
--#   #balance.tab-pane.fade.active.in
--#     = render 'ledgers/reports/report_balance'
--#   #plm.tab-pane.fade
--#   #plwu.tab-pane.fade
--#   #kpi.tab-pane.fade
-%h4= "Future Balance Sheet as of #{params[:end_date]}"
 
+%h4= "Future Balance Sheet as of #{params[:end_date]}"
+%p="All amounts in "+@fx
 .pull-right
   = form_tag future_balance_future_reports_path, remote: true, method: :get do
     = text_field_tag 'end_date', nil, class: 'form-control', placeholder: 'End date', data: { behaviour: 'datepicker' }

@@ -4,6 +4,7 @@
     = text_field_tag 'end_date',nil, class: 'form-control', placeholder: 'End date', data: {behaviour: 'datepicker'}
     = submit_tag 'submit', class: 'btn btn-primary'
 %h4="Actual vs Budgeted from #{params[:start_date]} to #{params[:end_date]}"
+%p="All amounts in "+@fx
 %table.table.table-striped.table-hover
   %thead
     %tr

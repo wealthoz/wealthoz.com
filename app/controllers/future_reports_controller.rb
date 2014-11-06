@@ -6,7 +6,8 @@ class FutureReportsController < ApplicationController
   def future_balance
     @current_group = current_user.group
     authorize(@current_group, :view?)
-
+    @fx = @current_group.fx.fx
+    
     @accounts_bs = @current_group.accounts.where(fs_id: [1,2])
 
     if params[:end_date]
@@ -59,7 +60,7 @@ class FutureReportsController < ApplicationController
 
   def actual_budget
     @current_group = current_user.group
-
+    @fx = @current_group.fx.fx
     @accounts_pl = @current_group.accounts.where(fs_id: [3,4])
 
     if params[:start_date] && params[:end_date]
