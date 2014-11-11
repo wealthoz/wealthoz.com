@@ -27,11 +27,15 @@ group :development do
   # gem "better_errors"
   # gem 'jazz_hands'
   gem 'pry'
-  
+
+  gem "capistrano", '~> 2.15.5'
+  gem 'net-ssh', '2.7.0'
+  # gem 'capistrano-bundle'
 end
 
 gem 'highline'
 gem "binding_of_caller"
+gem 'net-ssh', '2.7.0'
 
 #gem "libv8", git: "git://github.com/cowboyd/libv8.git", submodules: true
 #gem "therubyracer"
@@ -80,7 +84,7 @@ end
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
