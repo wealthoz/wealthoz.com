@@ -30,12 +30,12 @@ group :development do
 
   gem "capistrano", '~> 2.15.5'
   gem 'net-ssh', '2.7.0'
+  gem "rvm-capistrano"
   # gem 'capistrano-bundle'
 end
 
 gem 'highline'
 gem "binding_of_caller"
-gem 'net-ssh', '2.7.0'
 
 #gem "libv8", git: "git://github.com/cowboyd/libv8.git", submodules: true
 #gem "therubyracer"

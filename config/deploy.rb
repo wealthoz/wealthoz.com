@@ -1,25 +1,19 @@
 require "bundler/capistrano"
+require "rvm/capistrano"
 
-server "128.199.50.114", :web, :app, :db, primary: true
+server "107.170.110.50", :web, :app, :db, primary: true
 
-set :application, 'WealthOZ'
-
+set :application, "wealthoz"
 set :user, "deployer"
-
-set :port, 22
+set :port, 1035
 set :deploy_to, "/home/#{user}/apps/#{application}"
-
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
 set :repository, 'git@bitbucket.org:WealthOZ/wealthoz-2.01.git'
-
+set :rvm_ruby_version, 'ruby-2.1.4'
 set :branch, "master"
-
-set :default_environment, {
-  'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
-}
 
 
 default_run_options[:pty] = true
