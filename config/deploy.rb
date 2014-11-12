@@ -1,14 +1,15 @@
 require "bundler/capistrano"
 require "rvm/capistrano"
 
-server "107.170.110.50", :web, :app, :db, primary: true
+server "128.199.50.114", :web, :app, :db, primary: true
 
 set :application, "wealthoz"
 set :user, "deployer"
-set :port, 1035
+set :port, 22
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
+set :rvm_type, :system
 
 set :scm, "git"
 set :repository, 'git@bitbucket.org:WealthOZ/wealthoz-2.01.git'
