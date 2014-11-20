@@ -24,16 +24,11 @@ development:
 #   encoding: UTF8
 
 production:
-   adapter:  postgresql
-   encoding: UTF8
-   database: wealthoz203
-   username: manager1
-   password: 924842
-   pool: 5
-   timeout: 5000
-   host: localhost
-
-
-
-
-
+  adapter:  postgresql
+  encoding: UTF8
+  database: wealthoz_production
+  username: postgres
+  password: 'color221'
+  pool: 5
+  timeout: 5000
+  host: localhost
