@@ -56,7 +56,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $black;
+  color: 000000;
 }
 
 p {
@@ -68,7 +68,7 @@ p {
 
 #logo {
   float: left;
-  font-style:italic;  
+  font-style:italic;
   font-size: 1.7em;
   padding-top: 9px;
   font-weight: bold;
@@ -81,11 +81,11 @@ p {
 
 #move2 {
    float: left;
-  font-style:italic;  
+  font-style:italic;
   font-size: 1em;
   padding-top: 4px;
   margin-left :10px;
- 
+
   line-height: 1;
    &:hover {
   text-decoration: none;
@@ -116,12 +116,12 @@ img{border:1px solid $white;
  -webkit-border-radius: 10px;
  -moz-border-radius: 10px;
  border-radius: 10px;
- } 
- 
+ }
+
 #social a:hover {  opacity: .4;border-bottom:solid;border-color:#C60;  }
 
  a {
-  
+
   color: $blue;
   &:hover {
   color: $red;
@@ -286,7 +286,7 @@ aside {
     }
     &:hover {
       text-decoration: none;
-      
+
     }
   }
   strong {
@@ -301,5 +301,3 @@ aside {
     margin: 1px 1px;
   }
 }
-
-
