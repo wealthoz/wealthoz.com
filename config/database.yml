@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 development:
   adapter:  postgresql
-  database: wealthoz201
+  database: wealthoz_development
   username: manager
   password: 924842
   host: localhost

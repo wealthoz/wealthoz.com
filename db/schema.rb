@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140826052822) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "accounts", force: true do |t|
     t.string   "name"
     t.integer  "fs_id"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 20140826052822) do
     t.integer  "group_id"
   end
 
-  add_index "accounts", ["default"], name: "index_accounts_on_default"
-  add_index "accounts", ["name"], name: "index_accounts_on_name"
+  add_index "accounts", ["default"], name: "index_accounts_on_default", using: :btree
+  add_index "accounts", ["name"], name: "index_accounts_on_name", using: :btree
 
   create_table "budgets", force: true do |t|
     t.integer  "account_id"
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140826052822) do
     t.datetime "updated_at"
   end
 
-  add_index "budgets", ["account_id", "wunit", "budget_date"], name: "index_budgets_on_account_id_and_wunit_and_budget_date"
+  add_index "budgets", ["account_id", "wunit", "budget_date"], name: "index_budgets_on_account_id_and_wunit_and_budget_date", using: :btree
 
   create_table "fs", force: true do |t|
     t.string   "report"
@@ -46,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140826052822) do
     t.datetime "updated_at"
   end
 
-  add_index "fs", ["report", "report_class"], name: "index_fs_on_report_and_report_class"
+  add_index "fs", ["report", "report_class"], name: "index_fs_on_report_and_report_class", using: :btree
 
   create_table "fxes", force: true do |t|
     t.string   "country"
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 20140826052822) do
     t.datetime "updated_at"
   end
 
-  add_index "fxes", ["fx"], name: "index_fxes_on_fx"
+  add_index "fxes", ["fx"], name: "index_fxes_on_fx", using: :btree
 
   create_table "group_users", force: true do |t|
     t.integer "group_id"
@@ -72,7 +75,7 @@ ActiveRecord::Schema.define(version: 20140826052822) do
     t.integer  "fx_id"
   end
 
-  add_index "groups", ["name"], name: "index_groups_on_name"
+  add_index "groups", ["name"], name: "index_groups_on_name", using: :btree
 
   create_table "ledgers", force: true do |t|
     t.integer  "account_id"
@@ -86,8 +89,8 @@ ActiveRecord::Schema.define(version: 20140826052822) do
     t.string   "wunit"
   end
 
-  add_index "ledgers", ["account_id", "group_id", "post_date"], name: "index_ledgers_on_account_id_and_group_id_and_post_date"
-  add_index "ledgers", ["wunit"], name: "index_ledgers_on_wunit"
+  add_index "ledgers", ["account_id", "group_id", "post_date"], name: "index_ledgers_on_account_id_and_group_id_and_post_date", using: :btree
+  add_index "ledgers", ["wunit"], name: "index_ledgers_on_wunit", using: :btree
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -98,8 +101,8 @@ ActiveRecord::Schema.define(version: 20140826052822) do
     t.string   "topic"
   end
 
-  add_index "microposts", ["topic"], name: "index_microposts_on_topic"
-  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
+  add_index "microposts", ["topic"], name: "index_microposts_on_topic", using: :btree
+  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -109,8 +112,6 @@ ActiveRecord::Schema.define(version: 20140826052822) do
     t.integer  "group_id"
   end
 
-  add_index "projects", ["name"], name: "index_projects_on_name_and_group_id"
-
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -118,9 +119,9 @@ ActiveRecord::Schema.define(version: 20140826052822) do
     t.datetime "updated_at"
   end
 
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -133,7 +134,7 @@ ActiveRecord::Schema.define(version: 20140826052822) do
     t.string   "group_name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
