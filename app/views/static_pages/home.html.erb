@@ -2,7 +2,7 @@
 
 <% if signed_in? %>
   <div class="row">
-    <aside class="span4">
+    <aside class="col-xs-3">
       <section>
         <%= render 'shared/user_info' %>
       </section>
@@ -14,33 +14,32 @@
         <%= render 'shared/micropost_form' %>
       </section>
       <section>
-        
+
       </section>
     </aside>
-    <div class="span8">
+    <div class="col-xs-5">
       <h4>FuturePosts Feed</h4>
       <%= render 'shared/feed' %>
     </div>
 
-    
+
   </div>
 <% else %>
 
 <div class="center hero-unit">
-	
+
 	<%= render 'shared/video_youtube' %>
-	
+
 	<h3>"Wealth OZ" a financial app that solves the two most
-		difficult and important financial problems out there." 
+		difficult and important financial problems out there."
 	</h3>
 	<%= link_to "Sign up it's free!", signup_path , class: "btn btn-success btn-large" %>
 	<h2>Problem A</h2>
 	<p>People do not know their WEALTH !!!</p>
-	
+
 	<h2>Problem B</h2>
 	<p>People do not know their GROUP WEALTH !!!</p>
 	<h2>COMING SOON ...</h2>
-  
+
 </div>
 <% end %>
-

@@ -1,4 +1,4 @@
-<div class="navbar navbar-fixed-top navbar-inverse">
+<div class="navbar navbar-fixed-top navbar-default">
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -7,12 +7,12 @@
             <span class="icon-bar"></span>
           </a>
           <%= link_to "Wealth", root_path, id: "logo",:class=> "text-success"%><p id= "logo" class="text-warning">OZ</p>
-          <p id= "move2"class="text-warning"> &beta;</p> 
+          <p id= "move2"class="text-warning"> &beta;</p>
           <div class="container-fluid nav-collapse">
-          	   
+
             <ul class="nav">
                 <li><%= link_to '<span class="glyphicon glyphicon-cloud"></span> FuturePost'.html_safe, root_path %></li>
-                
+
                 <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon "></i> Learn <b class="caret"></b>
@@ -20,12 +20,12 @@
               <ul class="dropdown-menu">
           		<li><%= link_to "Why",    why_path %></li>
          		<li><%= link_to "How",    how_path %></li>
-                <li><a href="#">Blog</a></li>   
-              </ul>	    
-              </li> 
+                <li><a href="#">Blog</a></li>
+              </ul>
+              </li>
 
       <% if signed_in? %>
-              
+
               <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="icon "></i> Set <b class="caret"></b>
@@ -46,32 +46,32 @@
                 <i class="icon "></i> Post <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                
+
                 <li><%= link_to '<i class="icon-pencil "></i> Wealth Cut-off'.html_safe, new_cut_off_wealth_path %></li>
                 <li><%= link_to '<i class="icon-pencil "></i> Transaction'.html_safe, new_ledger_path %></li>
                 <li><%= link_to '<i class="icon-pencil "></i> Budget'.html_safe, new_budget_path %></li>
-              </ul>	
-                            
+              </ul>
+
 			<li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="icon"></i> Report <b class="caret"></b>               
+                <i class="icon"></i> Report <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to '<i class="icon-hand-left "></i> Past Reports'.html_safe, report_path %></li>  
+                <li><%= link_to '<i class="icon-hand-left "></i> Past Reports'.html_safe, report_path %></li>
                 <li><%= link_to '<i class="icon-hand-right "></i> Future Reports'.html_safe, future_reports_path %></li>
                 <li><%= link_to '<i class="icon-list-alt "></i> Transactions'.html_safe, ledgers_path %></li>
-                <li><%= link_to '<i class="icon-list-alt "></i> Budgets'.html_safe, budgets_path %></li>       
-              </ul>	                                    
-              
+                <li><%= link_to '<i class="icon-list-alt "></i> Budgets'.html_safe, budgets_path %></li>
+              </ul>
+
  			<li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               <i class="icon "></i>  Together <b class="caret"></b>               
+               <i class="icon "></i>  Together <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
               	<li><%= link_to '<i class="icon-globe"></i> Members'.html_safe, users_path %></li>
               	<li><%= link_to '<i class="icon-flag "></i> WealthOZ'.html_safe, transparent_path %></li>
-                <li><%= link_to '<i class="icon-gift "></i> Support Us'.html_safe, donate_path %></li>                
-              </ul>	                                             
+                <li><%= link_to '<i class="icon-gift "></i> Support Us'.html_safe, donate_path %></li>
+              </ul>
   		<%end%>
             </li>
       <% else %>

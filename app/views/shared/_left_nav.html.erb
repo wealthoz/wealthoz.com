@@ -1,52 +1,52 @@
 	<div id="sidebar" class="container-fluid" >
      <div class="row-fluid">
-        <div class="span3">
+        <div class="col-xs-3">
           <div class="well sidebar-nav" >
-            <ul class="nav nav-list" >            	
+            <ul class="nav nav-list" >
               <li class="nav-header" ">"10 steps to Wealth"</li>
         		  <br />
         		  <br />
         		  <ol class="text-primary" >
-    
-        		  	<% if signed_in? %>        		  	
+
+        		  	<% if signed_in? %>
 	        		  <li>
-							<%= link_to '<i class="icon"></i>Sign up'.html_safe, signup_path %>        		  	 
-	        		  		or 
+							<%= link_to '<i class="icon"></i>Sign up'.html_safe, signup_path %>
+	        		  		or
 	        		  		<%= link_to '<i ></i>Log in'.html_safe, signin_path %>
 	        		  </li><br />
 	        		  <li>
-	        		  		Create a 
+	        		  		Create a
 	        		  		<%= link_to '<i class="icon-bullhorn "></i>FuturePost'.html_safe, root_path %>
 	        		  </li><br />
 	        		  <li>
-	        		  		Follow other 
+	        		  		Follow other
 	        		  		<%= link_to '<i class="icon-globe"></i>Members'.html_safe, users_path %>
 	        		  </li><br />
 	        		  <li>
-	        		  		Manage your 
+	        		  		Manage your
 	        		  		<%= link_to '<i class="icon-cog "></i>User and Group settings'.html_safe, edit_user_path(current_user) %>
 	        		  </li><br />
 	        		  <li>
-	        		  		Add your 
+	        		  		Add your
 	        		  		<%= link_to '<i class="icon-leaf "></i>Projects '.html_safe,  new_project_path  %>
 	        		  </li><br />
 	        		  <li>
-		        		  	Create 
-		        		  	<%= link_to '<i class="icon-wrench "></i>Accounts'.html_safe,  accounts_path %> 
-		        		  	
+		        		  	Create
+		        		  	<%= link_to '<i class="icon-wrench "></i>Accounts'.html_safe,  accounts_path %>
+
 	        		  </li><br />
 	        		  <li>
 	        		  		<%= link_to '<i class="icon-pencil "></i>Cut-off your Wealth'.html_safe, new_cut_off_wealth_path %>
-	        		  		then book your 
+	        		  		then book your
 	        		  		<%= link_to '<i class="icon-pencil "></i>Transactions'.html_safe, new_ledger_path %>
-	        		  		and 
+	        		  		and
 	        		  		<%= link_to '<i class="icon-pencil "></i>Budgets'.html_safe, new_ledger_path %>
 	        		  </li><br />
 	        		  <li>
-		        		  	See 
+		        		  	See
 		        		  	<%= link_to '<i class="icon-hand-left "></i>Past'.html_safe, report_path %>
-		        		  	and 
-		        		  	<%= link_to '<i class="icon-hand-right "></i>Future '.html_safe, future_reports_path %> 
+		        		  	and
+		        		  	<%= link_to '<i class="icon-hand-right "></i>Future '.html_safe, future_reports_path %>
 		        		  	Reports
 	        		  </li><br />
 	        		  <li>Analyze and explore opportunities</li><br />
@@ -56,12 +56,12 @@
 						  <button class="close" type="button" data-dismiss="alert">×</button>
 						  <p>You have to Sign in to the system in order to see all "10 STEPS"</p>
 					</div>
-	        		  
+
 	        		<% end %>
         		  </ol>
-                                     
+
             </ul>
-            
+
  			<div >
 			  <h4>Wealth Formula:</h4>
 				  <div class="btn-group-vertical">
@@ -79,8 +79,10 @@
 					<a class="btn" data-toggle="modal" data-target=".bs-example5-modal-lg"><strong>Wealth</strong></a>
 					<%= render 'shared/help_wealth'%>
 				  </div>
-			  
+
 			</div>
-			              
+
           </div><!--/.well -->
         </div><!--/span-->
+</div>
+</div>

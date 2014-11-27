@@ -24,7 +24,7 @@ group :development do
   gem 'hirb'
   gem 'quiet_assets'
 
-  # gem "better_errors"
+  gem "better_errors"
   # gem 'jazz_hands'
   gem 'pry'
 
@@ -40,17 +40,18 @@ gem "binding_of_caller"
 #gem "libv8", git: "git://github.com/cowboyd/libv8.git", submodules: true
 #gem "therubyracer"
 #gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"
+#gem "twitter-bootstrap-rails"
 gem 'tzinfo-data'
 
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
+#gem 'bootstrap-will_paginate', '0.0.9'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-validator-rails'
 gem 'bootswatch-rails'
+gem 'autoprefixer-rails'
 
 gem "google_visualr"
 
