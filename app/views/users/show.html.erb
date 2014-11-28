@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
+  <aside class="col-md-4">
     <section>
       <h5>
         <%= gravatar_for @user %>
@@ -8,31 +8,31 @@
         <br>
         from
         <br>
-       <strong><%= @group.name %></strong> 
+       <strong><%= @group.name %></strong>
       </h5>
     </section>
        <section>
       <%= render 'shared/stats' %>
     </section>
 
-       <div class="span8">
+       <div class="col-md-4">
   			<%= render 'follow_form' if signed_in? %>
   		<div>
-  	
-    <section>
-    	
+
+
+
     	<h4><%= @group.name %> Memebers <span class="badge"><%= @current_group.all.collect(&:name).count %></span></h4>
-   	
+
     	<strong><%= @current_group.all.collect(&:name).join ", " %></strong>
-    	    		    
-     </section>
+
+
  </aside>
-  <div class="span8">
-  	
+  <div class="col-md-8">
+
   	<%= render 'shared/projects_info' %>
   <div>
-  	
-  <div class="span8">
+
+  <div >
     <% if @user.microposts.any? %>
       <h4>FuturePosts <span class="badge"><%= @user.microposts.count %></span></h4>
       <ol class="microposts">
@@ -42,4 +42,3 @@
     <% end %>
   </div>
 </div>
-

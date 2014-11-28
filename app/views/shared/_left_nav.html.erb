@@ -1,58 +1,55 @@
-	<div id="sidebar" class="container-fluid" >
-     <div class="row-fluid">
-        <div class="col-xs-3">
-          <div class="well sidebar-nav" >
+<div class="col-md-3">
+<div class="well">
             <ul class="nav nav-list" >
-              <li class="nav-header" ">"10 steps to Wealth"</li>
-        		  <br />
+              <h2><li class="nav-header">"10 steps to Wealth"</li></h2>
         		  <br />
         		  <ol class="text-primary" >
 
         		  	<% if signed_in? %>
 	        		  <li>
-							<%= link_to '<i class="icon"></i>Sign up'.html_safe, signup_path %>
+							<%= link_to '<span class="glyphicon glyphicon-ok"></span>Sign up'.html_safe, signup_path %>
 	        		  		or
-	        		  		<%= link_to '<i ></i>Log in'.html_safe, signin_path %>
+	        		  		<%= link_to '<span class="glyphicon glyphicon-ok"></span>Log in'.html_safe, signin_path %>
 	        		  </li><br />
 	        		  <li>
 	        		  		Create a
-	        		  		<%= link_to '<i class="icon-bullhorn "></i>FuturePost'.html_safe, root_path %>
+	        		  		<%= link_to '<span class="glyphicon glyphicon-bullhorn "></span>FuturePost'.html_safe, root_path %>
 	        		  </li><br />
 	        		  <li>
 	        		  		Follow other
-	        		  		<%= link_to '<i class="icon-globe"></i>Members'.html_safe, users_path %>
+	        		  		<%= link_to '<span class="glyphicon glyphicon-globe"></span>Members'.html_safe, users_path %>
 	        		  </li><br />
 	        		  <li>
 	        		  		Manage your
-	        		  		<%= link_to '<i class="icon-cog "></i>User and Group settings'.html_safe, edit_user_path(current_user) %>
+	        		  		<%= link_to '<span class="glyphicon glyphicon-cog "></span>User and Group settings'.html_safe, edit_user_path(current_user) %>
 	        		  </li><br />
 	        		  <li>
 	        		  		Add your
-	        		  		<%= link_to '<i class="icon-leaf "></i>Projects '.html_safe,  new_project_path  %>
+	        		  		<%= link_to '<span class="glyphicon glyphicon-leaf "></span>Projects '.html_safe,  new_project_path  %>
 	        		  </li><br />
 	        		  <li>
 		        		  	Create
-		        		  	<%= link_to '<i class="icon-wrench "></i>Accounts'.html_safe,  accounts_path %>
+		        		  	<%= link_to '<span class="glyphicon glyphicon-wrench "></span>Accounts'.html_safe,  accounts_path %>
 
 	        		  </li><br />
 	        		  <li>
-	        		  		<%= link_to '<i class="icon-pencil "></i>Cut-off your Wealth'.html_safe, new_cut_off_wealth_path %>
+	        		  		<%= link_to '<span class="glyphicon glyphicon-pencil "></span>Cut-off your Wealth'.html_safe, new_cut_off_wealth_path %>
 	        		  		then book your
-	        		  		<%= link_to '<i class="icon-pencil "></i>Transactions'.html_safe, new_ledger_path %>
+	        		  		<%= link_to '<span class="glyphicon glyphicon-pencil "></span>Transactions'.html_safe, new_ledger_path %>
 	        		  		and
-	        		  		<%= link_to '<i class="icon-pencil "></i>Budgets'.html_safe, new_ledger_path %>
+	        		  		<%= link_to '<span class="glyphicon glyphicon-pencil "></span>Budgets'.html_safe, new_ledger_path %>
 	        		  </li><br />
 	        		  <li>
 		        		  	See
-		        		  	<%= link_to '<i class="icon-hand-left "></i>Past'.html_safe, report_path %>
+		        		  	<%= link_to '<span class="glyphicon glyphicon-hand-left "></span>Past'.html_safe, report_path %>
 		        		  	and
-		        		  	<%= link_to '<i class="icon-hand-right "></i>Future '.html_safe, future_reports_path %>
+		        		  	<%= link_to '<span class="glyphicon glyphicon-hand-right "></span>Future '.html_safe, future_reports_path %>
 		        		  	Reports
 	        		  </li><br />
 	        		  <li>Analyze and explore opportunities</li><br />
-	        		  <li><%= link_to '<i class="icon-gift "></i> Support Us'.html_safe, donate_path %></li><br />
+	        		  <li><%= link_to '<span class="glyphicon glyphicon-gift "></span> Support Us'.html_safe, donate_path %></li><br />
 	        		  <% else %>
-	        		  <div class="alert alert-dismissable alert-success">
+	       <div class="alert alert-dismissable alert-success">
 						  <button class="close" type="button" data-dismiss="alert">×</button>
 						  <p>You have to Sign in to the system in order to see all "10 STEPS"</p>
 					</div>
@@ -61,7 +58,7 @@
         		  </ol>
 
             </ul>
-
+      <br>
  			<div >
 			  <h4>Wealth Formula:</h4>
 				  <div class="btn-group-vertical">
@@ -70,19 +67,16 @@
 					<%= render 'shared/help_assets'%>
 					<a class="btn btn-warning " data-toggle="modal" data-target=".bs-example2-modal-lg">-Debt</a>
 					<%= render 'shared/help_debt'%>
-					<a>=</a>
+          <a class="btn " data-toggle="modal">=</a>
 					<a class="btn btn-success " data-toggle="modal" data-target=".bs-example3-modal-lg">Income</a>
 					<%= render 'shared/help_income'%>
 					<a class="btn btn-warning " data-toggle="modal" data-target=".bs-example4-modal-lg">-Expenses</a>
 					<%= render 'shared/help_expenses'%>
-					<a>=</a>
-					<a class="btn" data-toggle="modal" data-target=".bs-example5-modal-lg"><strong>Wealth</strong></a>
+          <a class="btn " data-toggle="modal">=</a>
+					<a class="btn btn-primy" data-toggle="modal" data-target=".bs-example5-modal-lg"><strong>Wealth</strong></a>
 					<%= render 'shared/help_wealth'%>
 				  </div>
 
 			</div>
-
-          </div><!--/.well -->
-        </div><!--/span-->
 </div>
 </div>

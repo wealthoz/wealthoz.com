@@ -5,7 +5,6 @@
 
 /* mixins, variables, etc. */
 
-$grayLight: #eaeaea;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -124,7 +123,7 @@ p {
 
     a {
 
-      color:  $gray bold;
+      color:  bold;
       &:hover {
 
         font-style: bold;
@@ -204,7 +203,7 @@ p {
 
       #ledgers2.input.select.textarea.uneditable-input{
         border: 1px solid #bbb;
-        
+
         margin-bottom: 1px;
         @include box_sizing;
       }
