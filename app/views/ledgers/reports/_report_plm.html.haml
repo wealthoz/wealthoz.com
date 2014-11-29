@@ -1,4 +1,4 @@
-%h4 Profit & Loss Monthly
+%h3 Profit & Loss Monthly
 %div.row
   %div.col-md-6
     %p="All amounts in "+ @fx
@@ -6,17 +6,17 @@
     %div.pull-right
       = form_tag report_plm_ledgers_path, remote: true, method: :get do
         = select_year(default_or_select_year, start_year: (Time.now - 10.year).year, end_year: (Time.now + 5.year).year)
-        = submit_tag 'submit', class: 'btn btn-primary'
+        = submit_tag 'submit', class: 'btn btn-primary btn-sm'
 %table{:class => "table table-striped table-hover ", :id => "pl_m_table" }
   %thead
-    %th Accounts\Months
+    %th{:class => "success"} Accounts\Months
     - @ledgers_hash_pl_m.each do |m, ledegers|
-      %td
+      %td{:class => "success"}
         %strong= m.month
-    %th Total
+    %th{:class => "success"} Total
   %tbody
     - @accounts_pl.each do |account|
-      %tr
+      %tr{:class => "active"}
         %td
           = account.name
         - @ledgers_hash_pl_m.each do |k, v|
@@ -26,7 +26,7 @@
         %td
           - if @account_hash_pl[account.id]
             =number_with_precision( @account_hash_pl[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
-    %tr
+    %tr{:class => "info"} 
       %td
         %strong Wealth for the period
       - @ledgers_hash_pl_m.each do |k, v|

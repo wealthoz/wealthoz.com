@@ -1,11 +1,11 @@
 =render 'chart_index'
-<div class="span5" id='chart'>
+<div class="col-md-10" id='chart'>
 </div>
 = render_chart @chart_ratio, "chart"
-<div class="span10">
+<div class="col-md-10">
 
 .row
-  .span6
+  .col-md-6
     = wealth_assets_text(@wealth_assets)
-  .span6
+  .col-md-6
     = margin_text(@margin)

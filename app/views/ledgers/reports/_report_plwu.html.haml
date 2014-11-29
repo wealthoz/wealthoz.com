@@ -1,4 +1,4 @@
-%h4 Profit & Loss by Wealth Units
+%h3 Profit & Loss by Wealth Units
 %div.row
   %div.col-md-6
     %p="All amounts in "+ @fx
@@ -7,27 +7,27 @@
       = form_tag report_plwu_ledgers_path, remote: true, method: :get do
         = text_field_tag 'start_date',nil, class: 'form-control', placeholder: 'Start date', data: {behaviour: 'datepicker'}
         = text_field_tag 'end_date',nil, class: 'form-control', placeholder: 'End date', data: {behaviour: 'datepicker'}
-        = submit_tag 'submit', class: 'btn btn-primary'
-        
+        = submit_tag 'submit', class: 'btn btn-primary btn-sm'
+
 <script type="text/javascript">
 $('[data-behaviour~=datepicker]').datepicker({
 weekStart: 1,
 autoclose: true,
 format:'yyyy-mm-dd' ,
-todayHighlight: true   
+todayHighlight: true
 });
-</script>   
-     
+</script>
+
 %table{:class => "table table-striped table-hover ", :id => "pl_w_table"  }
   %thead
-    %th Accounts\Wealth Units
+    %th{:class => "success"}  Accounts\Wealth Units
     - @ledgers_hash_pl.each do |wunit, ledegers|
-      %td
+      %td{:class => "success"}
         %strong= wunit
-    %th Total
+    %th{:class => "success"} Total
   %tbody
     - @accounts_pl.each do |account|
-      %tr
+      %tr{:class => "active"}
         %td
           = account.name
         - @ledgers_hash_pl.each do |k, v|
@@ -37,7 +37,7 @@ todayHighlight: true
         %td
           - if @account_hash_pl[account.id]
             =number_with_precision( @account_hash_pl[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
-    %tr
+    %tr{:class => "info"}
       %td
         %strong Wealth for the period
       - @ledgers_hash_pl.each do |k, v|

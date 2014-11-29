@@ -7,7 +7,7 @@
 	    <%= link_to feed_item.user.name, feed_item.user %>
 	  </span>
 	  <span class="topic">Topic: <%= feed_item.topic %></span>
-	  <span class="content" style="width:500px"><%= feed_item.content %></span>
+	  <span class="content" ><%= feed_item.content %></span>
 	  <span class="timestamp">
 	    Posted <%= time_ago_in_words(feed_item.created_at) %> ago concerning <%= feed_item.post_date %>
 	  </span>
@@ -18,7 +18,7 @@
 	  <span class="user">
 	    <%= link_to feed_item.user.name, feed_item.user %>
 	  </span>
-	  
+
 	  <span class="topic">Topic: <%= feed_item.topic %></span>
 	  <span class="content">The Content will be available on: <%= feed_item.post_date %></span>
 	  <span class="timestamp">
@@ -27,5 +27,3 @@
 	</div>
   <% end %>
 </li>
-
-

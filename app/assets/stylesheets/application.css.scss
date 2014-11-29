@@ -100,7 +100,7 @@ p {
       /* new custom width */
       width: 900px;
       /* must be half of the width, minus scrollbar on the left (30px) */
-
+      margin-left: 200px;
     }
 
     /* footer */
@@ -119,15 +119,14 @@ p {
       border-radius: 10px;
     }
 
-    #social a:hover {  opacity: .4;border-bottom:solid;border-color:#C60;  }
+    #social a:hover {  opacity: .4;border-bottom:solid; }
 
     a {
 
-      color:  bold;
+
       &:hover {
 
-        font-style: bold;
-        text-decoration: none;
+
       }}
 
       small {
@@ -136,7 +135,7 @@ p {
 
       ul {
         float: left;
-        list-style: none;
+
       }
 
       ul li {
@@ -187,6 +186,9 @@ p {
       }
 
       /* forms */
+      .form-group {
+        margin-bottom: 2px;
+      }
 
       textarea,.uneditable-input {
         border: 1px solid #bbb;
@@ -197,19 +199,19 @@ p {
       input,select,{
         border: 1px solid #bbb;
         width: 140px !important;
-        margin-bottom: 2px;
+        margin: 2px;
         @include box_sizing;
       }
 
       #ledgers2.input.select.textarea.uneditable-input{
         border: 1px solid #bbb;
 
-        margin-bottom: 1px;
+        margin: 1px;
         @include box_sizing;
       }
 
       input {
-        height: auto !important;
+
       }
 
       #error_explanation {
