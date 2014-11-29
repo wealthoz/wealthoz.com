@@ -2,19 +2,19 @@
   = form_tag actual_budget_future_reports_path, remote: true, method: :get do
     = text_field_tag 'start_date',nil, class: 'form-control', placeholder: 'Start date', data: {behaviour: 'datepicker'}
     = text_field_tag 'end_date',nil, class: 'form-control', placeholder: 'End date', data: {behaviour: 'datepicker'}
-    = submit_tag 'submit', class: 'btn btn-primary'
-%h4="Actual vs Budgeted from #{params[:start_date]} to #{params[:end_date]}"
+    = submit_tag 'submit', class: 'btn btn-primary btn-sm'
+%h3="Actual vs Budgeted from #{params[:start_date]} to #{params[:end_date]}"
 %p="All amounts in "+@fx
-%table.table.table-striped.table-hover
+%table{:class => "table table-striped table-hover ", :id => "act-bud"}
   %thead
-    %tr
+    %tr{:class => "success"}
       %th Account
       %th Actual
       %th Budget
       %th Difference
   %tbody
     - @accounts_pl.each do |account|
-      %tr
+      %tr{:class => "active"}
         %td
           = account.name
         %td
@@ -25,7 +25,7 @@
             = @budgets_hash_pl[account.id].inject(0) { |sum, obj| sum + obj.ammount }
         %td
           = @total[account.id]
-    %tr
+    %tr{:class => "info"}
       %td
         %b Wealth for the period
       %td

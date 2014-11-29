@@ -112,12 +112,12 @@ $(document).ready(ready)
 
 jQuery ->
   $('#transactions').dataTable()
-  
-jQuery ->
-  $('#bs_table').dataTable(ordering: false)  
 
 jQuery ->
-  $('#pl_m_table').dataTable(ordering: false)  
+  $('#bs_table').dataTable(searching: false,paging: false,)
 
 jQuery ->
-  $('#pl_w_table').dataTable(ordering: false)  
+  $('#pl_m_table').dataTable(searching: false,paging: false,)
+
+jQuery ->
+  $('#pl_w_table').dataTable(searching: false,paging: false,)
