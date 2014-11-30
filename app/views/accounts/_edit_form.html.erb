@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name,"New Account Name" %><br>
+    <br>
     <%= f.text_field :name %>
-    
-
+    <%= f.label :name,"New Account Name" %>
+    <br>
   </div>
  <div class="actions">
-    <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+    <%= f.submit "Save", class: "btn btn-sm btn-success" %>
   </div>
 <% end %>
 
@@ -26,6 +26,6 @@
 <h5 class="text-warning"><strong>
 	Changing the name of the Account will change it across all your booked Transactions!!!
 </strong></h5>
-	
 
-<h5 class="text-warning">You cannot change the report class this account belongs (e.g. Assets,Debt,Income, Expenses)!!!</h5>
+
+<h5 class="text-warning">You cannot change the report class this account belongs to (e.g. Assets,Debt,Income, Expenses)!!!</h5>

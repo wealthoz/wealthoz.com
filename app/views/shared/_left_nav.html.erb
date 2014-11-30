@@ -2,7 +2,7 @@
 <div class="well">
             <ul class="nav nav-list" >
               <h2><li class="nav-header">"10 steps to Wealth"</li></h2>
-        		  <br />
+        		  <br>
         		  <ol class="text-primary" >
 
         		  	<% if signed_in? %>
@@ -49,9 +49,9 @@
 	        		  <li>Analyze and explore opportunities</li><br />
 	        		  <li><%= link_to '<span class="glyphicon glyphicon-gift "></span> Support Us'.html_safe, donate_path %></li><br />
 	        		  <% else %>
-	       <div class="alert alert-dismissable alert-success">
-						  <button class="close" type="button" data-dismiss="alert">×</button>
-						  <p>You have to Sign in to the system in order to see all "10 STEPS"</p>
+	       <div class="alert alert-success">
+
+						  <p>You have to Sign in to WealthOZ in order to see all "10 STEPS"</p>
 					</div>
 
 	        		<% end %>

@@ -96,11 +96,13 @@ p {
 
 
     /* sidebar */
-    body .modal {
-      /* new custom width */
-      width: 900px;
-      /* must be half of the width, minus scrollbar on the left (30px) */
-      margin-left: 200px;
+    .modal-dialog {
+      position: relative;
+      width: auto;
+      margin: 80px;
+    }
+    .modal-content {
+      padding: 30px;
     }
 
     /* footer */
@@ -257,7 +259,7 @@ p {
         }
       }
 
-
+      /* Content Micropost */
 
       /* Users index */
 
@@ -280,11 +282,11 @@ p {
         overflow: auto;
         a {
           float: left;
-          padding: 0 0px;
+          padding: 2px 5px;
           border-left: 1px solid ;
           color: gray;
           &:first-child {
-            padding-left: 0;
+            padding-left: 2;
             border: 0;
           }
           &:hover {
@@ -304,3 +306,11 @@ p {
           margin: 1px 1px;
         }
       }
+/*Jumbotron*/
+
+.jumbotron {
+padding: 15px 15px;
+margin-bottom: 30px;
+color: inherit;
+background-color: #ecf0f1;
+}

@@ -26,20 +26,20 @@
   </div>
 <% else %>
 
-<div class="center hero-unit">
+<div class="center jumbotron">
 
 	<%= render 'shared/video_youtube' %>
 
 	<h3>"Wealth OZ" a financial app that solves the two most
 		difficult and important financial problems out there."
 	</h3>
-	<%= link_to "Sign up it's free!", signup_path , class: "btn btn-success btn-large" %>
-	<h2>Problem A</h2>
-	<p>People do not know their WEALTH !!!</p>
+	<%= link_to "Sign up it's free!", signup_path , class: "btn btn-success btn-lg" %>
+	<h3>Problem A</h3>
+	<p class="text-warning">People do not know their WEALTH !!!</p>
 
-	<h2>Problem B</h2>
-	<p>People do not know their GROUP WEALTH !!!</p>
-	<h2>COMING SOON ...</h2>
+	<h3>Problem B</h3>
+	<p class="text-warning">People do not know their GROUP WEALTH !!!</p>
+
 
 </div>
 <% end %>
