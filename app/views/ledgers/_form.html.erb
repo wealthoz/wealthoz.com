@@ -13,26 +13,33 @@
     </div>
   <% end %>
 
-	<div class="field"> 
-      <%= f.label :account_id %>
-      <%= f.collection_select(:account_id, @accounts, :id, :name) %>
+	<div class="field">
 
+      <%= f.collection_select(:account_id, @accounts, :id, :name) %>
+      <%= f.label :account_id %>
+
+      <br>
+      <%= f.collection_select(:wunit, User.all + Project.all,:name,:name) %>
       <%= f.label :wunit %>
-      <%= f.collection_select(:wunit, User.all + Project.all,:name,:name) %>     
-            
-      <%= f.label :post_date %>
+
+      <br>
       <%= f.date_select :post_date %>
-      
-      <%= f.label :ammount %>
+      <%= f.label :post_date %>
+
+      <br>
       <%= f.number_field :ammount %>
-      
-      <%= f.label :text %>
+      <%= f.label :ammount %>
+
+      <br>
       <%= f.text_field :text %>
-      
+      <%= f.label :text %>
+
+      <br>
 	</div>
-            
+
 	<div class="ledgers">
-		<%= f.submit "Save", class: "btn btn-large btn-success" %>
+		<%= f.submit "Save", class: "btn btn-sm btn-success" %>
 	</div>
 <% end %>
 <br/>
+<p class="text-danger">*Editing a single record may lead to undalanced transactions!</p>
