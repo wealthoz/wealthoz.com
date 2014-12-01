@@ -15,13 +15,13 @@
 
   <tbody>
     <% @ledgers.each do |ledger| %>
-      <tr class="">
+      <tr class="active">
         <td><%= ledger.account.name %></td>
         <td><%= ledger.wunit %></td>
         <td><%= ledger.post_date %></td>
         <td><%= ledger.ammount %></td>
-        <td><%= link_to 'Edit', edit_ledger_path(ledger) %></td>
-        <td><%= link_to 'Delete', ledger, method: :delete, data: { confirm: 'Delete this Transaction?' } %></td>
+        <td><%= link_to 'Edit', edit_ledger_path(ledger),class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Delete', ledger, method: :delete, data: { confirm: 'Delete this Transaction?'},class: 'btn btn-warning btn-xs' %></td>
         <td><%= ledger.text %></td>
       </tr>
     <% end %>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Transaction', new_ledger_path , class: "btn btn-success"%>
+<%= link_to 'New Transaction', new_ledger_path , class: "btn btn-sm btn-success"%>

@@ -19,8 +19,8 @@
         %td= budget.budget_date
         %td= budget.ammount
         %td= budget.text
-        %td= link_to 'Edit', edit_budget_path(budget)
-        %td= link_to 'Destroy', budget, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Edit', edit_budget_path(budget),class: 'btn btn-warning btn-xs'
+        %td= link_to 'Delete', budget, :method => :delete, :data => { :confirm => 'Are you sure?' },class: 'btn btn-warning btn-xs'
 
 %br
 

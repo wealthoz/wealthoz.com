@@ -2,7 +2,8 @@
   <ol class="microposts">
     <%= render partial: 'shared/feed_item', collection: @feed_items %>
   </ol>
-  <ul class="pagination">
+
+  
   <%= will_paginate @feed_items %>
-  </ul>
+
 <% end %>

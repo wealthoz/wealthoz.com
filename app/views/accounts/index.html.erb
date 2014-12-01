@@ -20,8 +20,8 @@
         <td><%= account.name %></td>
         <td><%= account.fs.report_class %></td>
         <td><%= account.group.name %></td>
-        <td><%= link_to 'Edit',  edit_account_path(account) %></td>
-        <td><%= link_to 'Show', account %></td>
+        <td><%= link_to 'Edit',  edit_account_path(account),class: 'btn btn-warning btn-xs' %></td>
+        <td><%= link_to 'Show', account,class: 'btn btn-warning btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>
