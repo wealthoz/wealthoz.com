@@ -7,7 +7,7 @@
       = form_tag report_plwu_transparents_path, remote: true, method: :get do
         = text_field_tag 'start_date',nil, class: 'form-control', placeholder: 'Start date', data: {behaviour: 'datepicker'}
         = text_field_tag 'end_date',nil, class: 'form-control', placeholder: 'End date', data: {behaviour: 'datepicker'}
-        = submit_tag 'submit', class: 'btn btn-primary'
+        = submit_tag 'submit', class: 'btn btn-primary btn-sm'
 
 <script type="text/javascript">
 $('[data-behaviour~=datepicker]').datepicker({
@@ -20,14 +20,14 @@ todayHighlight: true
 
 %table{:class => "table table-striped table-hover ", :id => "pl_w_table"  }
   %thead
-    %th Accounts\Wealth Units
+    %th.success Accounts\Wealth Units
     - @ledgers_hash_pl.each do |wunit, ledegers|
-      %td
+      %td.success
         %strong= wunit
-    %th Total
+    %th.success Total
   %tbody
     - @accounts_pl.each do |account|
-      %tr
+      %tr.active
         %td
           = account.name
         - @ledgers_hash_pl.each do |k, v|
@@ -37,7 +37,7 @@ todayHighlight: true
         %td
           - if @account_hash_pl[account.id]
             =number_with_precision( @account_hash_pl[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
-    %tr
+    %tr.info
       %td
         %strong Wealth for the period
       - @ledgers_hash_pl.each do |k, v|
