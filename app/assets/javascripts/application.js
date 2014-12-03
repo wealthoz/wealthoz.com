@@ -15,11 +15,8 @@
 //= require dataTables/jquery.dataTables
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
-//= require highcharts/highstock
 //= require bootstrap-sprockets
 //= require bootstrap
-
 //= require bootstrap-datepicker
-
 //= require bootstrapValidator.min
 //= require_tree .

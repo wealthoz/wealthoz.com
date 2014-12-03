@@ -209,7 +209,6 @@ Fs.create(report: 'Income Statement',report_class: 'Income')
 Fs.create(report: 'Income Statement',report_class: 'Expenses')
 Fs.create(report: 'Balance Sheet',report_class: 'Accumulated Wealth')
 
+#user1 = User.create(name:  'Ivan Petkov'  , email: 'ivan.v.petkov@gmail.com', admin: true ,password: 924842 , group: group)
 
-
-
-
+#Group.create(name: 'WealthOZ',fx_id: 19  )
