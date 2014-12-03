@@ -67,6 +67,9 @@
               	<li><%= link_to '<span class="glyphicon glyphicon-flag "></span> WealthOZ'.html_safe, transparent_path %></li>
                 <li><%= link_to '<span class="glyphicon glyphicon-gift "></span> Support Us'.html_safe, donate_path %></li>
               </ul>
+      <% else %>
+            <li><%= link_to "Create Wealth Group", new_group_path , class: "btn  btn-sm btn-warning" %></li>
+
   		<%end%>
             </li>
       <% else %>

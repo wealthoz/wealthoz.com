@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
     if @group.save
       @group_user = current_user.group_user.update(group_id: @group.id, status: GroupUser.statuses[:approved])
       flash[:success] = "A new Wealth Group was created!"
-      redirect_to current_user
+      redirect_to(root_url)
     else
       render 'groups/new'
     end
