@@ -321,8 +321,8 @@ class LedgersController < ApplicationController
     graph_assets =   wunits.map {|el| ledger_hash_a_summed.fetch(el, 0)}.as_json.map { |i| i.to_i }
     graph_income = months.map {|el| ledger_hash_income_summed.fetch(el, 0)}.as_json.map { |i| i.to_i }
 
-    @wealth_assets = @account_hash_bs.values.flatten.map(&:ammount).inject(0, &:+)/(graph_assets.inject(:+) + 0.01) *100  #No zeros
-    @margin =  @account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+)/(graph_income.inject(:+) + 0.01) *100   #No zeros
+    @wealth_assets = @account_hash_bs.values.flatten.map(&:ammount).inject(0, &:+)/(graph_assets.inject(:+) + 0.0001) *100  #No zeros
+    @margin =  @account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+)/(graph_income.inject(:+) + 0.0001) *100   #No zeros
 
    @chart_index = LazyHighCharts::HighChart.new('line') do |f|
       f.chart(:width => 800)
