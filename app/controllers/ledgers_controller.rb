@@ -35,6 +35,11 @@ class LedgersController < ApplicationController
   def edit
     current_group = current_user.group
     @accounts = current_group.accounts
+    @users =  current_group.users
+    @projects = current_group.projects
+
+    @wunits = @users + @projects
+
   end
 
 

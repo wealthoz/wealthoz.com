@@ -19,7 +19,7 @@
       <%= f.label :account_id %>
 
       <br>
-      <%= f.collection_select(:wunit, User.all + Project.all,:name,:name) %>
+      <%= f.collection_select(:wunit, @wunits,:id,:name) %>
       <%= f.label :wunit %>
 
       <br>
