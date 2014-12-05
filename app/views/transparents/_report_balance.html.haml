@@ -20,7 +20,7 @@
     %th.success Total
   %tbody
     - @accounts_bs.each do |account|
-      %tr.active
+      %tr
         %td
           = account.name
         - @ledgers_hash_bs.each do |k, v|

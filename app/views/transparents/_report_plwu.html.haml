@@ -27,7 +27,7 @@ todayHighlight: true
     %th.success Total
   %tbody
     - @accounts_pl.each do |account|
-      %tr.active
+      %tr
         %td
           = account.name
         - @ledgers_hash_pl.each do |k, v|
