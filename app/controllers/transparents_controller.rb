@@ -234,7 +234,7 @@ class TransparentsController < ApplicationController
     end
 
     #Graph Index = ledger_hash_index values - accumulated
-    #Sorts the index hash by weeks and displays accum wealth 
+    #Sorts the index hash by weeks and displays accum wealth
     graph_index =  ledger_hash_index_summed.sort.to_h.values.as_json.map{ |i| i.to_i }.inject([]) { |x, y| x + [(x.last || 0) + y] }
     graph_weeks = ledger_hash_index_summed.sort.to_h.keys
 
@@ -253,6 +253,7 @@ class TransparentsController < ApplicationController
       f.series(:type=> 'area',:name=>'Wealth Index',:data=> graph_index )
       f.title({ :text=> @current_group.name + " Wealth : amounts in " + @fx})
       f.xAxis(:categories => graph_weeks,:title => {:text => "All amounts in " + @fx})
+      f.yAxis(:min => 140000 )
       f.options[:chart][:defaultSeriesType] = "line"
       f.legend(:align => 'top', :verticalAlign => 'left',:y=>40,:x=>30, :layout => 'horizontal',)
     end
