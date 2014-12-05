@@ -15,14 +15,14 @@
     %th{:class => "success"} Total
   %tbody
     - @accounts_bs.each do |account|
-      %tr{:class => "active"}
-        %td{:class => "active"}
+      %tr{:class => ""}
+        %td{:class => ""}
           = account.name
         - @all_transactions_hash_bs.each do |k, v|
-          %td{:class => "active"}
+          %td{:class => ""}
             - if v[account.id]
               =number_with_precision( v[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
-        %td{:class => "active"}
+        %td{:class => ""}
           - if @account_hash_bs[account.id]
             =number_with_precision( @account_hash_bs[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
     %tr{:class => "info"}

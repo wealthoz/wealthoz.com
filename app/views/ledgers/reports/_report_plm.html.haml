@@ -16,7 +16,7 @@
     %th{:class => "success"} Total
   %tbody
     - @accounts_pl.each do |account|
-      %tr{:class => "active"}
+      %tr{:class => ""}
         %td
           = account.name
         - @ledgers_hash_pl_m.each do |k, v|
@@ -26,7 +26,7 @@
         %td
           - if @account_hash_pl[account.id]
             =number_with_precision( @account_hash_pl[account.id].map(&:ammount).inject(0, &:+),precision: 2, separator: '.', delimiter: ',')
-    %tr{:class => "info"} 
+    %tr{:class => "info"}
       %td
         %strong Wealth for the period
       - @ledgers_hash_pl_m.each do |k, v|

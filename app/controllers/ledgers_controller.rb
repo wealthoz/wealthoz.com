@@ -282,7 +282,8 @@ class LedgersController < ApplicationController
       [k, v.group_by(&:account_id)]
     end
 
-    @hash_group_index = @ledgers_bs.group_by{ |item| item.post_date.beginning_of_week }
+    #Wealth Graph
+    @hash_group_index = @ledgers_bs.group_by{ |item| item.post_date }
     ledger_hash_index_summed = {}
     @ledgers_bs.each do |item|
       key = item.post_date.beginning_of_week
@@ -311,8 +312,9 @@ class LedgersController < ApplicationController
     end
 
     #Graph Index = ledger_hash_index values - accumulated
-    graph_index =  ledger_hash_index_summed.values.as_json.map { |i| i.to_i }.inject([]) { |x, y| x + [(x.last || 0) + y] }
-    graph_weeks = ledger_hash_index_summed.keys.reverse
+    #Sorts the index hash by weeks and displays accum wealth 
+    graph_index =  ledger_hash_index_summed.sort.to_h.values.as_json.map { |i| i.to_i }.inject([]) { |x, y| x + [(x.last || 0) + y] }
+    graph_weeks = ledger_hash_index_summed.sort.to_h.keys
 
     #Draw KPI's
     months = (1..12).to_a
