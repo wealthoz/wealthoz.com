@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.group = Group.where(name: 'Pool').first
     if @user.save
-      flash[:success] = "Welcome to Wealth OZ!"
+      flash[:success] = "Welcome to WealthOZ. Sign in to use the system !!!"
       redirect_to @user
     else
       render 'new'
