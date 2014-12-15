@@ -1,8 +1,7 @@
 <div class="col-md-3">
 <div class="well">
             <ul class="nav nav-list" >
-              <h2><li class="nav-header">"10 steps to Wealth"</li></h2>
-        		  <br>
+              <h2>"10 steps to Wealth"</h2>
         		  <ol class="text-primary" >
 
         		  	<% if signed_in? %>
@@ -33,8 +32,11 @@
 
 	        		  </li><br />
 	        		  <li>
-	        		  		<%= link_to '<span class="glyphicon glyphicon-pencil "></span>Cut-off your Wealth'.html_safe, new_cut_off_wealth_path %>
-	        		  		then book your
+                    Measure your
+	        		  		<%= link_to '<span class="glyphicon glyphicon-pencil "></span>Initial Wealth'.html_safe, new_cut_off_wealth_path %>
+                </li><br />
+                <li>
+	        		  		Book your
 	        		  		<%= link_to '<span class="glyphicon glyphicon-pencil "></span>Transactions'.html_safe, new_ledger_path %>
 	        		  		and
 	        		  		<%= link_to '<span class="glyphicon glyphicon-pencil "></span>Budgets'.html_safe, new_ledger_path %>
@@ -46,7 +48,7 @@
 		        		  	<%= link_to '<span class="glyphicon glyphicon-hand-right "></span>Future '.html_safe, future_reports_path %>
 		        		  	Reports
 	        		  </li><br />
-	        		  <li>Analyze and explore opportunities</li><br />
+
 	        		  <li><%= link_to '<span class="glyphicon glyphicon-gift "></span> Support Us'.html_safe, donate_path %></li><br />
 	        		  <% else %>
 	       <div class="alert alert-success">
@@ -59,8 +61,8 @@
 
             </ul>
       <br>
- 			<div >
-			  <h4>Wealth Formula:</h4>
+ 			<div class="col-md-6" >
+			  <h4>The Wealth Formula:</h4>
 				  <div class="btn-group-vertical">
 
 					<a class="btn btn-success " data-toggle="modal" data-target=".bs-example1-modal-lg">Assets</a>
