@@ -120,7 +120,7 @@ class LedgersController < ApplicationController
     graph_debt =   wunits.map {|el| ledger_hash_d_summed.fetch(el, 0)}.as_json.map { |i| i.to_i }
 
     @chart_bs = LazyHighCharts::HighChart.new('column') do |f|
-      f.chart(:width => 800 )
+      f.chart(:width => 900 )
       f.series(:name=>'Assets',:data=> graph_assets )
       f.series(:name=>'Debt',:data=> graph_debt )
       f.title({ :text=>"Balance Sheet by Wealth Units " })
@@ -179,7 +179,7 @@ class LedgersController < ApplicationController
     graph_invest = graph_income.zip(graph_expense).map { |x, y| y + x }
 
     @chart_pl_m = LazyHighCharts::HighChart.new('column') do |f|
-      f.chart(:width => 800)
+      f.chart(:width => 900)
       f.series(:type=> 'column',:name=>'Income',:data=> graph_income )
       f.series(:type=> 'column',:name=>'Expenses',:data=> graph_expense )
       f.series(:type=> 'spline',:name=> 'Investments(Borrowings)', :data=> graph_invest)
@@ -240,7 +240,7 @@ class LedgersController < ApplicationController
 
 
    @chart_pl_w = LazyHighCharts::HighChart.new('column') do |f|
-      f.chart(:width => 800)
+      f.chart(:width => 900)
       f.series(:name=>'Income',:data=> graph_incomew)
       f.series(:name=>'Expenses',:data=> graph_expensew  )
       f.title({ :text=>"Profit and Loss by Wealth Units"})
@@ -327,10 +327,10 @@ class LedgersController < ApplicationController
     @margin =  @account_hash_pl.values.flatten.map(&:ammount).inject(0, &:+)/(graph_income.inject(:+) + 0.0001) *100   #No zeros
 
    @chart_index = LazyHighCharts::HighChart.new('line') do |f|
-      f.chart(:width => 800)
+      f.chart(:width => 900,:height => 500)
       f.series(:type=> 'area',:name=>'Wealth Index',:data=> graph_index )
       f.title({ :text=> @current_group.name + " Wealth : amounts in " + @fx})
-      f.xAxis(:categories => graph_weeks,:title => {:text => "All amounts in " + @fx})  
+      f.xAxis(:categories =>graph_weeks,:title => {:text => "All amounts in " + @fx})
       f.options[:chart][:defaultSeriesType] = "area"
       f.legend(:align => 'top', :verticalAlign => 'left',:y=>40,:x=>30, :layout => 'horizontal',)
     end
