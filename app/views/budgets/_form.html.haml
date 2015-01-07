@@ -32,13 +32,15 @@ title="Increase(+) Decrease(-)"><strong>Wealth</strong><span class="wealth badge
       %td= link_to 'Add Row', '#', id: '_form',class: "btn btn-success btn-sm"
       %td= render 'shared/transaction_help'
       %td{colspan: 3} Unbalanced Amount<span class="unbalanced-amount badge">0</span>
-      %td
-      %td
+      
+
 
     %tr.new_budget_row.hidden{:class => "active"}
       = render 'budget_fields'
-%p *Required fields
-%p{:class => "text-success"} In order to POST a transaction all required fields must be Green
-%p{:class => "text-success"} and the Unbalanced Amount must be Zero
+
+<div class="well" >
+%p{:class => "text-danger"} *Required fields
+%p{:class => "text-success"} In order to POST a transaction all required fields must be Green and the Unbalanced Amount must be Zero
 %p{:class => "text-danger"} Under column Amounts enter <strong>negative values/minus/</strong> when: decreasing assets, increasing debt or adding expenses
 %p{:class => "text-info"} Under column Amounts enter <strong>positive values/plus/</strong> when: increasing assets, decreasing debt or adding income
+</div>

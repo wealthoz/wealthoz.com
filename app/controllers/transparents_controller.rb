@@ -42,7 +42,7 @@ class TransparentsController < ApplicationController
     graph_debt =   wunits.map {|el| ledger_hash_d_summed.fetch(el, 0)}.as_json.map { |i| i.to_i }
 
     @chart_bs = LazyHighCharts::HighChart.new('column') do |f|
-      f.chart(:width => 800 )
+      f.chart(:width => 900 )
       f.series(:name=>'Assets',:data=> graph_assets )
       f.series(:name=>'Debt',:data=> graph_debt )
       f.title({ :text=>"Balance Sheet by Wealth Units " })

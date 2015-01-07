@@ -1,11 +1,16 @@
-%h3 Profit & Loss Monthly
+-if params[:date]
+  %h3
+    = " Profit & Loss Monthly for #{params[:date].values.map(&:to_i)}"
+-else
+  %h3  Profit & Loss Monthly
+
 %div.row
   %div.col-md-6
     %p="All amounts in "+ @fx
   %div.col-md-6
     %div.pull-right
       = form_tag report_plm_ledgers_path, remote: true, method: :get do
-        = select_year(default_or_select_year, start_year: (Time.now - 10.year).year, end_year: (Time.now + 5.year).year)
+        = select_year(default_or_select_year, start_year: (Time.now - 8.year).year, end_year: (Time.now + 1.year).year)
         = submit_tag 'submit', class: 'btn btn-primary btn-sm'
 %table{:class => "table table-striped table-hover ", :id => "pl_m_table" }
   %thead

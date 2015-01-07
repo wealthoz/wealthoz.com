@@ -1,4 +1,9 @@
-%h3 Profit & Loss by Wealth Units
+-if params[:end_date]
+  %h3
+    = "Profit & Loss by Wealth Units for the period #{params[:start_date]} to #{params[:end_date]}"
+-else
+  %h3 Profit & Loss by Wealth Units
+
 %div.row
   %div.col-md-6
     %p="All amounts in "+ @fx
