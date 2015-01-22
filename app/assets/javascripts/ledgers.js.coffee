@@ -47,31 +47,34 @@ ready = ->
       $('select.ledger-account-select:visible option:selected').each ->
         console.log $(@).closest('tr').find('.ledger-ammount-input').val()
         if $(@).closest('tr').find('.ledger-ammount-input').val()
-          if $.inArray(parseInt($(@).val()), account_ids) > -1
-            total += parseInt($(@).closest('tr').find('.ledger-ammount-input').val()) || 0
+          if $.inArray(parseFloat($(@).val()), account_ids) > -1
+            total += parseFloat($(@).closest('tr').find('.ledger-ammount-input').val()) || parseFloat(0)
         else
           console.log 'nqma'
-      $(".#{fs_name.toLowerCase().split(' ').join('_')}").find('.badge').html(total)
+      $(".#{fs_name.toLowerCase().split(' ').join('_')}").find('.badge').html(total.toFixed(2))
       # console.log $(".#{fs_name.toLowerCase()}").find('.badge')
-      assets   = parseInt($('.assets .badge').html())   || 0
-      debt     = parseInt($('.debt .badge').html())     || 0
-      income   = parseInt($('.income .badge').html())   || 0
-      expenses = parseInt($('.expenses .badge').html()) || 0
-      accumulated_wealth = parseInt($('.accumulated_wealth .badge').html()) || 0
+      assets   = parseFloat($('.assets .badge').html())   || parseFloat(0)
+      debt     = parseFloat($('.debt .badge').html())     || parseFloat(0)
+      income   = parseFloat($('.income .badge').html())   || parseFloat(0)
+      expenses = parseFloat($('.expenses .badge').html()) || parseFloat(0)
+      accumulated_wealth = parseFloat($('.accumulated_wealth .badge').html()) || parseFloat(0)
 
       unbalanced = assets + debt - income - expenses - accumulated_wealth
-      $('.unbalanced-amount').html(unbalanced)
+      $('.unbalanced-amount').html(unbalanced.toFixed(2))
 
 
       wealth = assets + debt
       $('.wealth').html(wealth)
 
       disabled = false
+
       $('#new-ledger-form .form-group .required-field:input:visible').each ->
+        console.log($(@).val() == '', $(@).val())
         if $(@).val() == ''
           disabled = true
+      console.log(parseInt(unbalanced), disabled)
 
-      if unbalanced == 0 && not disabled
+      if parseInt(unbalanced) == 0 && not disabled
         $('#new-ledger-form-submit').attr('disabled', false)
       else
         $('#new-ledger-form-submit').attr('disabled', true)

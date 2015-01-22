@@ -41,22 +41,19 @@ ready = ->
       fs_name = data.fss[fs_id]
       total = 0
       $('select.budget-account-select:visible option:selected').each ->
-        console.log $(@).closest('tr').find('.budget-ammount-input').val()
         if $(@).closest('tr').find('.budget-ammount-input').val()
-          if $.inArray(parseInt($(@).val()), account_ids) > -1
-            total += parseInt($(@).closest('tr').find('.budget-ammount-input').val()) || 0
-        else
-          console.log 'nqma'
-      $(".#{fs_name.toLowerCase().split(' ').join('_')}").find('.badge').html(total)
-      # console.log $(".#{fs_name.toLowerCase()}").find('.badge')
-      assets   = parseInt($('.assets .badge').html())   || 0
-      debt     = parseInt($('.debt .badge').html())     || 0
-      income   = parseInt($('.income .badge').html())   || 0
-      expenses = parseInt($('.expenses .badge').html()) || 0
-      accumulated_wealth = parseInt($('.accumulated_wealth .badge').html()) || 0
+          if $.inArray(parseFloat($(@).val()), account_ids) > -1
+            total += parseFloat($(@).closest('tr').find('.budget-ammount-input').val()) || parseFloat(0)
+      $(".#{fs_name.toLowerCase().split(' ').join('_')}").find('.badge').html(total.toFixed(2))
+
+      assets   = parseFloat($('.assets .badge').html())   || parseFloat(0)
+      debt     = parseFloat($('.debt .badge').html())     || parseFloat(0)
+      income   = parseFloat($('.income .badge').html())   || parseFloat(0)
+      expenses = parseFloat($('.expenses .badge').html()) || parseFloat(0)
+      accumulated_wealth = parseInt($('.accumulated_wealth .badge').html()) || parseFloat(0)
 
       unbalanced = assets + debt - income - expenses - accumulated_wealth
-      $('.unbalanced-amount').html(unbalanced)
+      $('.unbalanced-amount').html(unbalanced.toFixed(2))
 
 
       wealth = assets + debt
@@ -67,7 +64,7 @@ ready = ->
         if $(@).val() == ''
           disabled = true
 
-      if unbalanced == 0 && not disabled
+      if parseInt(unbalanced) == 0 && not disabled
         $('#new-budget-form-submit').attr('disabled', false)
       else
         $('#new-budget-form-submit').attr('disabled', true)
