@@ -50,7 +50,7 @@ class LedgersController < ApplicationController
 
     respond_to do |format|
       # if @ledger.save
-        format.html { redirect_to :back, notice: 'Transaction Y was successfully created.' }
+        format.html { redirect_to :back, notice: 'A New Transaction was successfully created.' }
         format.json { render action: 'index', status: :created, location: @ledger }
         format.js
       # else
