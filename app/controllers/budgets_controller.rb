@@ -52,7 +52,7 @@ class BudgetsController < ApplicationController
     current_group.budgets.create(budget_params[:budgets])
 
     respond_to do |format|
-      format.html { redirect_to budgets_path, notice: 'Budget was successfully created.' }
+      format.html { redirect_to :back, notice: 'Budget was successfully created.' }
       format.json { render action: 'index', status: :created, location: @budget }
       format.js
     end
