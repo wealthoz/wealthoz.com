@@ -7,7 +7,7 @@ development:
   adapter:  postgresql
   database: wealthoz_development
   username: manager
-  password: 924842
+  password: 123
   host: localhost
   encoding: UTF8
   # encoding: UTF8
@@ -28,7 +28,7 @@ production:
   encoding: UTF8
   database: wealthoz_production
   username: postgres
-  password: 'color221'
+  password: 123
   pool: 5
   timeout: 5000
   host: localhost
